@@ -15,7 +15,7 @@ export default async function Dashboard() {
                 }}
             >
 
-            <SubmitButton/> 
+            <SubmitButton text="LogOut"/> 
             </form>
         </div>
     )

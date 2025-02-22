@@ -31,7 +31,7 @@ import SubmitButton from "../components/submitButton";
               <label>Email</label>
               <Input name="email" type="email" required placeholder = "example@gmail.com"/>
             </div>
-            <SubmitButton/>
+            <SubmitButton text="LogIn"/>
           </form>
         </CardContent>
       </Card>
