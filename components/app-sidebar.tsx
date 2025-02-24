@@ -47,7 +47,7 @@ const data = {
         },
         {
           title: "Invoices",
-          url: "/dashboard/Invoices",
+          url: "/dashboard/invoices",
         },
         {
           title: "Settings",
