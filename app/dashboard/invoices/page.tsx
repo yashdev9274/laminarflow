@@ -1,7 +1,23 @@
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { CreateInvoiceSheet } from "@/components/createInvoiceSheetButton";
+
+
 export default function InvoicePage(){
     return(
-        <div className="min-h-screen w-screen flex items-center justify-center">
-            Invoice Page
-        </div>
+            <Card>
+                <CardHeader>
+                    <div className="flex items-center justify-between">
+                        <div>
+                            <CardTitle className="text-lg font-semibold"> 
+                                Invoices
+                            </CardTitle>
+                            <CardDescription className="text-sm">
+                                You can manage your invoices here
+                            </CardDescription>
+                        </div>
+                        <CreateInvoiceSheet/>
+                    </div>
+                </CardHeader>
+            </Card>
     )
 }
