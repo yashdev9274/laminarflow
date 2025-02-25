@@ -6,7 +6,7 @@ export default async function Dashboard() {
 
     const session = await requireUser() 
     return (
-        <div className="min-h-screen w-screen flex items-center justify-center">
+        <div className="min-h-screen flex items-center justify-center">
             <h1>Dashboard</h1>
             <form
                 action={async () => {
