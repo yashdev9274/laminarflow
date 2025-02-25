@@ -9,7 +9,7 @@ export default function InvoiceTableAction(){
     return(
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <Button size="icon" variant="secondary">
+                <Button size="icon" variant="ghost" className="w-7 h-5">
                     <MoreHorizontal className="size-3"/>
                 </Button>
             </DropdownMenuTrigger>

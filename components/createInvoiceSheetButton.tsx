@@ -1,3 +1,5 @@
+"use client"
+
 import { Button, buttonVariants } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -11,18 +13,24 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
-import { PlusIcon } from "lucide-react"
+import { CalendarX2Icon, PlusIcon } from "lucide-react"
 import { Card, CardContent } from "./ui/card"
 import { Badge } from "./ui/badge"
 import { Select, SelectContent, SelectItem } from "./ui/select"
 import { SelectTrigger, SelectValue } from "@radix-ui/react-select"
+import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover"
+import { useState } from "react"
+import { Calendar } from "./ui/calendar"
+
 
 export function CreateInvoiceSheet() {
+    const [selectedDate, setSelectedDate] = useState(new Date())
+
   return (
     <div className="flex items-center justify-center w-11 ">
         <Sheet>
             <SheetTrigger asChild>
-                <Button className={buttonVariants()}>
+                <Button variant="secondary" className="w-4 h-7">
                     <PlusIcon/>
                 </Button>
             </SheetTrigger>
@@ -104,9 +112,33 @@ export function CreateInvoiceSheet() {
 
                         {/* Calendar */}
                         <div className="grid md:grid-cols-2 gap-6 mb-6">
-                            <div>
-                                <Label>Date</Label>
-                                {/* <Popover */}
+                            <div className="flex items-center gap-2">
+                                <Label>Date:</Label>
+                                <Popover>
+                                    <PopoverTrigger asChild>
+                                        <Button
+                                            variant="outline"
+                                            className="w-17 text-left justify-center mr-5"
+                                        >
+                                            <CalendarX2Icon/>
+                                            {selectedDate ? (
+                                                new Intl.DateTimeFormat("en-US", {
+                                                    dateStyle: "short",
+                                                }).format(selectedDate)
+                                                ) : (
+                                                <span>Pick a Date</span>
+                                            )}
+                                        </Button>
+                                    </PopoverTrigger>
+                                    <PopoverContent>
+                                        <Calendar
+                                            selected = {selectedDate}
+                                            onSelect={(date: any)=>setSelectedDate(date || new Date())}
+                                            mode="single"
+                                            fromDate={new Date()}
+                                        />
+                                    </PopoverContent>
+                                </Popover>
                             </div>
                         </div>
                     </CardContent>
