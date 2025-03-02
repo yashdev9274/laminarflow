@@ -24,6 +24,7 @@ import { Calendar } from "./ui/calendar"
 // import { ScrollArea } from "@radix-ui/react-scroll-area"
 import { ScrollArea, ScrollBar } from "./ui/scroll-area"
 import { Textarea } from "./ui/textarea"
+import { Separator } from "./ui/separator"
 
 
 export function CreateInvoiceSheet() {
@@ -180,7 +181,7 @@ export function CreateInvoiceSheet() {
                                         <Label className="mb-6">Payment Details</Label>
                                         <div className="grid grid-cols-12 gap-2 mb-6">
                                             <div className="col-span-10">
-                                                <Label>Description:</Label>
+                                                <Label className="flex justify-start">Description:</Label>
                                                 <Textarea
                                                     placeholder="Description"
                                                 />
@@ -212,20 +213,45 @@ export function CreateInvoiceSheet() {
                                                         onChange={(e)=>setAmount(e.target.value)}
                                                     />
                                             </div>
-                                        </div>                              
+                                        </div>
+
+                                        {/* Invoice subtotal */}
+
+                                        <div className="flex justify-end gap-4">
+                                            <div className="w-1/3">
+                                                <div className="flex justify-between py-2">
+                                                    <span>Subtotal</span>
+                                                    <span>5.00</span>
+                                                </div>
+                                                <Separator/>
+                                                <div className="flex justify-between py-2">
+                                                    <span>Total(INR)</span>
+                                                    <span className="font-medium underline underline-offset-2">5.00</span>
+                                                </div>
+                                            </div>
+                                        </div>                            
+                                    </div>
+
+                                    <div>
+                                        <label className="flex justify-start">
+                                            Note:
+                                        </label>
+                                        <Textarea
+                                            className="w-full justify-start mt-2"
+                                            placeholder="Add a note"
+                                        />
                                     </div>
                                 </CardContent>
                             </Card>
                             <ScrollBar orientation="vertical" />
-                        </ScrollArea>
-                        
-                        <SheetFooter className="flex justify-end mt-5">
-                            <SheetClose asChild>
-                                <Button type="submit">Save changes</Button>
-                            </SheetClose>
-                        </SheetFooter>
-                    </SheetHeader>
 
+                            <SheetFooter className="flex justify-end mt-5">
+                                <SheetClose asChild>
+                                    <Button type="submit">Save changes</Button>
+                                </SheetClose>
+                            </SheetFooter>
+                        </ScrollArea>    
+                    </SheetHeader>
             </SheetContent>
         </Sheet>
     </div>
