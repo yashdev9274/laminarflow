@@ -23,10 +23,14 @@ import { useState } from "react"
 import { Calendar } from "./ui/calendar"
 // import { ScrollArea } from "@radix-ui/react-scroll-area"
 import { ScrollArea, ScrollBar } from "./ui/scroll-area"
+import { Textarea } from "./ui/textarea"
 
 
 export function CreateInvoiceSheet() {
     const [selectedDate, setSelectedDate] = useState(new Date())
+    const [quantity, setQuantity]  = useState("");
+    const [rate, setRate] = useState("");
+    const [amount, setAmount] =  useState("");
 
   return (
     <div className="flex items-center justify-center w-11 ">
@@ -172,14 +176,43 @@ export function CreateInvoiceSheet() {
 
                                     {/* Payment Details */}
 
-                                    <div>
-                                        <Label>Payment Details</Label>
+                                    <div className="mb-6">
+                                        <Label className="mb-6">Payment Details</Label>
                                         <div className="grid grid-cols-12 gap-2 mb-6">
-                                            <div className="col-span-10">Description</div>
-                                            <div className="col-span-4">Quantity</div>
-                                            <div className="col-span-4">Rate</div>
-                                            <div className="col-span-4">Amount</div>
-                                        </div>                                
+                                            <div className="col-span-10">
+                                                <Label>Description:</Label>
+                                                <Textarea
+                                                    placeholder="Description"
+                                                />
+                                            </div>
+                                            <div className="col-span-4">
+                                                <Label>Quantity</Label>
+                                                <Input
+                                                    type="number"
+                                                    placeholder="0"
+                                                    value={quantity}
+                                                    onChange={(e)=>setQuantity(e.target.value)}
+                                                />
+                                            </div>
+                                            <div className="col-span-4">
+                                                <Label>Rate</Label>
+                                                    <Input
+                                                        type="number"
+                                                        placeholder="0"
+                                                        value={rate}
+                                                        onChange={(e)=>setRate(e.target.value)}
+                                                    />
+                                            </div>
+                                            <div className="col-span-4">
+                                                <Label>Amount</Label>
+                                                    <Input
+                                                        type="number"
+                                                        placeholder="0"
+                                                        value={amount}
+                                                        onChange={(e)=>setAmount(e.target.value)}
+                                                    />
+                                            </div>
+                                        </div>                              
                                     </div>
                                 </CardContent>
                             </Card>
