@@ -168,8 +168,8 @@ export function CreateInvoiceSheet() {
                                                 <SelectContent>
                                                     <SelectGroup>
                                                         <SelectItem value='0'>Due</SelectItem>
-                                                        <SelectItem value='Paid'>Paid</SelectItem>
-                                                        <SelectItem value='Sent'>Sent</SelectItem>
+                                                        <SelectItem value='15'>Net 15</SelectItem>
+                                                        <SelectItem value='30'>Net 30</SelectItem>
                                                     </SelectGroup>
                                                 </SelectContent>
                                             </Select>
@@ -241,15 +241,19 @@ export function CreateInvoiceSheet() {
                                             placeholder="Add a note"
                                         />
                                     </div>
+                                    <SheetFooter className="flex justify-end mt-5">
+                                        <SheetClose asChild>
+                                            <Button 
+                                                type="submit" 
+                                                className="w-full sm:w-auto px-6 py-2 text-base font-medium"
+                                            >
+                                                Save changes
+                                            </Button>
+                                        </SheetClose>
+                                    </SheetFooter>
                                 </CardContent>
                             </Card>
                             <ScrollBar orientation="vertical" />
-
-                            <SheetFooter className="flex justify-end mt-5">
-                                <SheetClose asChild>
-                                    <Button type="submit">Save changes</Button>
-                                </SheetClose>
-                            </SheetFooter>
                         </ScrollArea>    
                     </SheetHeader>
             </SheetContent>
