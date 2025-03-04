@@ -123,6 +123,9 @@ export function CreateInvoiceSheet() {
                                                     </SelectContent>
                                                 </Select>
                                             </div>
+                                            <p className="text-sm text-red-500">
+                                                {fields.currency.errors}
+                                            </p>
                                         </div>
 
                                         {/* User and Client Details */}
@@ -133,37 +136,62 @@ export function CreateInvoiceSheet() {
                                                 <Label>From:</Label>
                                                 <div className="space-y-2">
                                                     <Input
-                                                        placeholder="Your Name"
+                                                        placeholder="Name"
+                                                        name={fields.fromName.name}
+                                                        key={fields.fromName.key}
+                                                        defaultValue={fields.fromName.initialValue}
                                                     />
+                                                    <p className="text-sm text-red-500">{fields.fromName.errors}</p>
                                                     <Input
-                                                        placeholder="Your Email"
+                                                        placeholder="Email"
+                                                        name={fields.fromEmail.name}
+                                                        key={fields.fromEmail.key}
+                                                        defaultValue={fields.fromEmail.initialValue}
                                                     />
+                                                    <p className="text-sm text-red-500">{fields.fromEmail.errors}</p>
                                                     <Input
-                                                        placeholder="Your Address"
+                                                        placeholder="Address"
+                                                        name={fields.fromAddress.name}
+                                                        key={fields.fromAddress.key}
+                                                        defaultValue={fields.fromAddress.initialValue}
                                                     />
+                                                    <p className="text-sm text-red-500">{fields.fromAddress.errors}</p>
                                                 </div>
                                             </div>
 
                                             {/* Client Details */}
                                             <div>
-                                                <Label>To:</Label>
+                                                <Label>Client:</Label>
                                                 <div className="space-y-2">
                                                     <Input
-                                                        placeholder="Client Name"
+                                                        placeholder="Name"
+                                                        name={fields.clientName.name}
+                                                        key={fields.clientName.key}
+                                                        defaultValue={fields.clientName.initialValue}
                                                     />
+                                                    <p className="text-sm text-red-500">{fields.clientName.errors}</p>
                                                     <Input
-                                                        placeholder="Client Email"
+                                                        placeholder="Email"
+                                                        name={fields.clientEmail.name}
+                                                        key={fields.clientEmail.key}
+                                                        defaultValue={fields.clientEmail.initialValue}
                                                     />
+                                                    <p className="text-sm text-red-500">{fields.clientEmail.errors}</p>
                                                     <Input
-                                                        placeholder="Client Address"
+                                                        placeholder="Address"
+                                                        name={fields.clientAddress.name}
+                                                        key={fields.clientAddress.key}
+                                                        defaultValue={fields.clientAddress.initialValue}
                                                     />
+                                                    <p className="text-sm text-red-500">{fields.clientAddress.errors}</p>
                                                 </div>
                                             </div>
                                         </div>
 
+                                        {/* Calendar */}
+                                        
                                         <div className="grid md:grid-cols-2 gap-6 mb-6">
                                             
-                                            {/* Calendar */}
 
                                             <div className="flex items-center gap-2">
                                                 <Label>Date:</Label>
@@ -199,7 +227,11 @@ export function CreateInvoiceSheet() {
                                             
                                             <div className="flex items-center gap-2 mb-6">
                                                 <Label>Invoice Status:</Label>
-                                                <Select>
+                                                <Select
+                                                    name={fields.dueDate.name}
+                                                    key={fields.dueDate.key}
+                                                    defaultValue={fields.dueDate.initialValue}
+                                                >
                                                     <SelectTrigger className="w-17 text-left justify-center mr-5 gap-2">
                                                         <SelectValue 
                                                             placeholder='Due'
@@ -214,6 +246,9 @@ export function CreateInvoiceSheet() {
                                                         </SelectGroup>
                                                     </SelectContent>
                                                 </Select>
+                                                <p className="text-sm text-red-500">
+                                                    {fields.dueDate.errors}
+                                                </p>
                                             </div>
 
                                         {/* Payment Details */}
@@ -225,25 +260,41 @@ export function CreateInvoiceSheet() {
                                                     <Label className="flex justify-start">Description:</Label>
                                                     <Textarea
                                                         placeholder="Description"
+                                                        name={fields.invoiceItemDescription.name}
+                                                        key={fields.invoiceItemDescription.key}
+                                                        defaultValue={fields.invoiceItemDescription.initialValue}
                                                     />
+                                                    <p className="text-sm text-red-500">
+                                                        {fields.invoiceItemDescription.errors}
+                                                    </p>
                                                 </div>
                                                 <div className="col-span-4">
                                                     <Label>Quantity</Label>
                                                     <Input
+                                                        name={fields.invoiceItemQuantity.name}
+                                                        key={fields.invoiceItemQuantity.key}
                                                         type="number"
                                                         placeholder="0"
                                                         value={quantity}
                                                         onChange={(e)=>setQuantity(e.target.value)}
                                                     />
+                                                    <p className="text-sm text-red-500">
+                                                        {fields.invoiceItemQuantity.errors}
+                                                    </p>
                                                 </div>
                                                 <div className="col-span-4">
                                                     <Label>Rate</Label>
                                                         <Input
+                                                            name={fields.invoiceItemRate.name}
+                                                            key={fields.invoiceItemRate.key}
                                                             type="number"
                                                             placeholder="0"
                                                             value={rate}
                                                             onChange={(e)=>setRate(e.target.value)}
                                                         />
+                                                        <p className="text-sm text-red-500">
+                                                            {fields.invoiceItemRate.errors}
+                                                        </p>
                                                 </div>
                                                 <div className="col-span-4">
                                                     <Label>Amount</Label>
