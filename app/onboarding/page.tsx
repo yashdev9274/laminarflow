@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import SubmitButton from "../components/submitButton";
 import { useActionState } from "react";
 import { useForm } from "@conform-to/react";
-import onboardUser from "../utils/action";
+import { onboardUser } from "../utils/action";
 import { parseWithZod } from "@conform-to/zod";
 import { onboardingUserSchema } from "../utils/zodSchema";
 
