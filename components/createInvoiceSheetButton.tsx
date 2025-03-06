@@ -29,6 +29,7 @@ import { createInvoice } from "@/app/utils/action"
 import { useForm } from "@conform-to/react"
 import { parseWithZod } from "@conform-to/zod"
 import { invoiceSchema } from "@/app/utils/zodSchema"
+import { formatCurrency } from "@/hooks/formatCurrency"
 
 
 export function CreateInvoiceSheet() {
@@ -51,6 +52,8 @@ export function CreateInvoiceSheet() {
     const [quantity, setQuantity]  = useState("");
     const [rate, setRate] = useState("");
     const [amount, setAmount] =  useState("");
+
+    const calculateTotalAmount = (Number(quantity) || 0)* (Number(rate) || 0)
 
   return (
     <div className="flex items-center justify-center w-11 ">
@@ -75,6 +78,17 @@ export function CreateInvoiceSheet() {
                                         onSubmit={form.onSubmit}
                                         noValidate
                                     >
+                                        <input
+                                            type="hidden"
+                                            name={fields.date.name}
+                                            value={selectedDate.toISOString()}
+                                        />
+
+                                        <input
+                                            type="hidden"
+                                            name={fields.total.name}
+                                            value={calculateTotalAmount}
+                                        />
                                         <div className="flex flex-col gap-1 w-fit mb-6">
                                             <div className="flex items-center gap-4">
                                                 <Badge variant='secondary'>Draft</Badge>  
@@ -299,10 +313,8 @@ export function CreateInvoiceSheet() {
                                                 <div className="col-span-4">
                                                     <Label>Amount</Label>
                                                         <Input
-                                                            type="number"
-                                                            placeholder="0"
-                                                            value={amount}
-                                                            onChange={(e)=>setAmount(e.target.value)}
+                                                            value={formatCurrency({amount: calculateTotalAmount, currency: currency as any})}
+                                                            disabled
                                                         />
                                                 </div>
                                             </div>
@@ -313,12 +325,16 @@ export function CreateInvoiceSheet() {
                                                 <div className="w-1/3">
                                                     <div className="flex justify-between py-2">
                                                         <span>Subtotal</span>
-                                                        <span>5.00</span>
+                                                        <span>
+                                                            {formatCurrency({amount: calculateTotalAmount, currency: currency as any})} 
+                                                        </span>
                                                     </div>
                                                     <Separator/>
                                                     <div className="flex justify-between py-2">
-                                                        <span>Total(INR)</span>
-                                                        <span className="font-medium underline underline-offset-2">5.00</span>
+                                                        <span>Total({currency})</span>
+                                                        <span className="font-medium underline underline-offset-2">
+                                                            {formatCurrency({amount: calculateTotalAmount, currency: currency as any})}        
+                                                        </span>
                                                     </div>
                                                 </div>
                                             </div>                            
@@ -331,7 +347,11 @@ export function CreateInvoiceSheet() {
                                             <Textarea
                                                 className="w-full justify-start mt-2"
                                                 placeholder="Add a note"
+                                                name = {fields.note.name}
+                                                key={fields.note.key}
+                                                defaultValue={fields.note.initialValue}
                                             />
+                                            <p className="text-red-500 text-sm">{fields.note.errors}</p>
                                         </div>
                                         <SheetFooter className="flex justify-end mt-5">
                                             <SheetClose asChild>
