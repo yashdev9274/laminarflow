@@ -30,6 +30,7 @@ import { useForm } from "@conform-to/react"
 import { parseWithZod } from "@conform-to/zod"
 import { invoiceSchema } from "@/app/utils/zodSchema"
 import { formatCurrency } from "@/hooks/formatCurrency"
+import SubmitButton from "@/app/components/submitButton"
 
 
 export function CreateInvoiceSheet() {
@@ -355,12 +356,7 @@ export function CreateInvoiceSheet() {
                                         </div>
                                         <SheetFooter className="flex justify-end mt-5">
                                             <SheetClose asChild>
-                                                <Button 
-                                                    type="submit" 
-                                                    className="w-full sm:w-auto px-6 py-2 text-base font-medium"
-                                                >
-                                                    Save changes
-                                                </Button>
+                                                <SubmitButton text="Create Invoice"/>
                                             </SheetClose>
                                         </SheetFooter>
                                     </form>
