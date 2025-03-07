@@ -1,6 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { CreateInvoiceSheet } from "@/components/createInvoiceSheetButton";
-import InvoiceTable from "@/components/InvoiceTable";
+import { InvoiceTable } from "@/components/InvoiceTable";
 
 
 export default function InvoicePage(){
@@ -14,7 +14,7 @@ export default function InvoicePage(){
                                 Invoices
                             </CardTitle>
                             <CardDescription className="text-sm">
-                                You can manage your invoices here
+                                You can track your invoices here
                             </CardDescription>
                         </div>
                         <CreateInvoiceSheet/>

@@ -1,37 +1,71 @@
+""
+
+import { prisma } from "@/app/utils/db";
 import InvoiceTableAction from "./InvoiceTableAction";
 import { Table, TableBody, TableCaption, TableCell, TableFooter, TableHeader, TableRow } from "./ui/table";
+import { create } from "domain";
+import { Prisma } from "@prisma/client";
+import { requireUser } from "@/app/utils/requireAuth";
+import { formatCurrency } from "@/hooks/formatCurrency";
+import { Badge } from "./ui/badge";
 
-export default function InvoiceTable() {
+async function getData(userId: string){
+    const data = await prisma.invoice.findMany({
+        where:{
+            userId: userId, 
+        },
+        select:{
+            id: true,
+            clientName: true,
+            total: true,
+            dueDate: true,
+            status: true,
+            invoiceNumber: true,
+            currency: true,
+        },
+        orderBy:{
+            createdAt: "asc",
+        }
+    })
+    return data;
+}
+
+export async function InvoiceTable() {
+
+    const session = await requireUser();
+    const data = await getData(session.user?.id as string);
     return(
-        <div className="flex items-center justify-center">
+        <div>
             <Table>
                 <TableHeader>
                     <TableRow>
                         <th>Serial No.</th>
                         <th>Customer</th>
                         <th>Amount</th>
-                        <th>Due Date</th>
+                        <th>Date</th>
                         <th>Status</th>
                         <th className="text-right">Action</th>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    <TableRow>
-                        <TableCell>1</TableCell>
-                        <TableCell>John Doe</TableCell>
-                        <TableCell>$100</TableCell>
-                        <TableCell>12/12/2021</TableCell>
-                        <TableCell>Paid</TableCell>
-                        <TableCell className="text-right"><InvoiceTableAction/></TableCell>
-                    </TableRow>
+                    {data.map((invoice)=>(
+                        <TableRow key={invoice.id}>
+                            <TableCell>{invoice.invoiceNumber}</TableCell>
+                            <TableCell>{invoice.clientName}</TableCell>
+                            <TableCell>{formatCurrency({amount: invoice.total, currency: invoice.currency as any})}</TableCell>
+                            <TableCell>{new Intl.DateTimeFormat("en-IN",{dateStyle: "short"}).format(invoice.dueDate)}</TableCell>
+                            <TableCell><Badge>{invoice.status}</Badge></TableCell>
+                            <TableCell><InvoiceTableAction/></TableCell>
+                        </TableRow>
+                    ))}
                 </TableBody>
-                <TableFooter>
+                {/* <TableFooter>
                     <TableRow>
                         <TableCell colSpan={3}>Total</TableCell>
                         <TableCell className="text-right">$2,500.00</TableCell>
                     </TableRow>
-                </TableFooter>
-                <TableCaption> A list of all your invoices.</TableCaption>
+                </TableFooter> */}
+                <TableCaption> Record of your invoices.</TableCaption>
             </Table>
         </div>
     )
