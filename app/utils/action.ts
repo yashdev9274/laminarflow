@@ -5,6 +5,7 @@ import { prisma } from "./db";
 import { requireUser } from "./requireAuth"
 import { invoiceSchema, onboardingUserSchema } from "./zodSchema";
 import {parseWithZod} from "@conform-to/zod"
+import { emailClient } from "./mailtrap";
 
 export async function onboardUser(prevState: any, formData: FormData){
     const session = await requireUser(); 
@@ -63,6 +64,26 @@ export async function createInvoice(prevState: any, formData: FormData){
             invoiceItemRate: submission.value.invoiceItemRate,
             userId: session.user?.id,
         }
-    })
+    });
+
+
+    const sender={
+        email:"hello@demomailtrap.com",
+        name: "D3Flo",
+    };
+    
+    try {
+        emailClient.send({
+            from: sender,
+            to: [{ email: "yashdev.yvd@gmail.com" }],
+            subject: "New Invoice for you",
+            text: "Hey there, we have new invoice for you",
+            category: "Invoice test"
+        });
+    } catch (error) {
+        console.error("Failed to send email:", error);
+    }
+
     return redirect('/dashboard/invoices');
 }
+
