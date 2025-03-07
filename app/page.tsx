@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import Image from "next/image";
 import { signIn } from "./utils/auth";
 import Hero from "@/components/home/hero";
+import Footer from "@/components/home/footer";
 
 export default function Home() {
   return (
@@ -14,8 +15,9 @@ export default function Home() {
       {/* <div className="relative mx-auto mb-4 flex flex-col">
         Hello D3Flo user
       </div> */}
-      <div className="relative mx-auto mb-4 flex flex-col">
+      <div className="relative mx-auto  flex flex-col">
         <Hero/>
+        <Footer/>
       </div>
     </div>
   );
