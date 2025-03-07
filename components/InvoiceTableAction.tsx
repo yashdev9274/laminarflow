@@ -5,7 +5,7 @@ import { DropdownMenu,DropdownMenuTrigger,
     DropdownMenuItem } from "./ui/dropdown-menu";
 import { Button } from "./ui/button";
 
-export default function InvoiceTableAction(){
+export default function InvoiceTableAction({ status, id }: { status: string; id: string }) {
     return(
         <DropdownMenu>
             <DropdownMenuTrigger asChild>

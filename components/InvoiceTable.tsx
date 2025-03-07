@@ -18,10 +18,10 @@ async function getData(userId: string){
             id: true,
             clientName: true,
             total: true,
-            dueDate: true,
             status: true,
             invoiceNumber: true,
             currency: true,
+            createdAt: true,
         },
         orderBy:{
             createdAt: "asc",
@@ -53,9 +53,9 @@ export async function InvoiceTable() {
                             <TableCell>{invoice.invoiceNumber}</TableCell>
                             <TableCell>{invoice.clientName}</TableCell>
                             <TableCell>{formatCurrency({amount: invoice.total, currency: invoice.currency as any})}</TableCell>
-                            <TableCell>{new Intl.DateTimeFormat("en-IN",{dateStyle: "short"}).format(invoice.dueDate)}</TableCell>
+                            <TableCell>{new Intl.DateTimeFormat("en-US",{dateStyle: "long"}).format(invoice.createdAt)}</TableCell>
                             <TableCell><Badge>{invoice.status}</Badge></TableCell>
-                            <TableCell><InvoiceTableAction/></TableCell>
+                            <TableCell><InvoiceTableAction status={invoice.status} id={invoice.id}/></TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
