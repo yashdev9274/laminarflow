@@ -15,7 +15,7 @@ export default function Home() {
       {/* <div className="relative mx-auto mb-4 flex flex-col">
         Hello D3Flo user
       </div> */}
-      <div className="relative mx-auto  flex flex-col">
+      <div className="relative mx-auto flex flex-col">
         <Hero/>
         <Footer/>
       </div>
