@@ -39,10 +39,10 @@ export default function FAQ(){
                 <Accordion type="single" collapsible className="w-full">
                     <AccordionItem value="item-1" className="border-b py-2">
                         <AccordionTrigger className="text-left text-lg font-medium hover:no-underline">
-                            What is D3Flo?
+                            What is LaminarFlow?
                         </AccordionTrigger>
                         <AccordionContent className="text-muted-foreground">
-                            D3Flo is a modern financing system that helps businesses and builders create, manage, and track finances efficiently.
+                            LaminarFlow is a modern financing system that helps businesses and builders create, manage, and track finances efficiently.
                         </AccordionContent>
                     </AccordionItem>
 
@@ -66,10 +66,10 @@ export default function FAQ(){
 
                     <AccordionItem value="item-4" className="border-b py-2">
                         <AccordionTrigger className="text-left text-lg font-medium hover:no-underline">
-                            Can I customize my invoices?
+                            Can I customize my account?
                         </AccordionTrigger>
                         <AccordionContent className="text-muted-foreground">
-                            Yes, you can customize your invoices with your logo, colors, and preferred layout templates.
+                            Yes, you can customize your account with your logo, colors, and preferred layout templates.
                         </AccordionContent>
                     </AccordionItem>
                 </Accordion>

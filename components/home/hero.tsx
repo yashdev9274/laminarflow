@@ -16,7 +16,7 @@ export default function Hero(){
             </p>
             <div className="mx-auto w-full max-w-4xl">
                 <Balancer className="text-shinyGray mx-auto mt-3 text-center text-[15px] leading-tight sm:text-[22px] ">
-                    Manage your finances the way you want with <span className="font-mono">D3Flo</span> – an
+                    Manage your finances the way you want with <span className="font-mono">LaminarFlow</span> – an
                     open sourced Finance app that puts your privacy and safety first.
                 </Balancer>
             </div>

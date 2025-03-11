@@ -7,13 +7,13 @@ import Link from "next/link";
 const socialLinks = [
   {
     name: "GitHub",
-    href: "https://github.com/yashdev9274",
+    href: "https://git.new/laminarflow",
     icon: Github,
     ariaLabel: "GitHub"
   },
   {
     name: "Twitter",
-    href: "https://x.com/dew_yashtwt",
+    href: "https://dub.sh/yashdew",
     icon: Twitter,
     ariaLabel: "X (Twitter)"
   }
