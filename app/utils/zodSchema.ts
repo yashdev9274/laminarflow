@@ -6,6 +6,10 @@ export const onboardingUserSchema = z.object({
     address: z.string().min(2, "Address is required"),
 });
 
+export const earlyAccessSchema = z.object({
+    email:z.string().email("Invalid Email")
+})
+
 export const invoiceSchema = z.object({
     invoiceName: z.string().min(2, "Invoice Name is required"),
     invoiceNumber: z.number().min(1, "Minimum value is 1"),

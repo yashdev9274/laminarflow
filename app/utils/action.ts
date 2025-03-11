@@ -3,7 +3,7 @@
 import { redirect } from "next/navigation";
 import { prisma } from "./db";
 import { requireUser } from "./requireAuth"
-import { invoiceSchema, onboardingUserSchema } from "./zodSchema";
+import { earlyAccessSchema, invoiceSchema, onboardingUserSchema } from "./zodSchema";
 import {parseWithZod} from "@conform-to/zod"
 import { emailClient } from "./mailtrap";
 import { formatCurrency } from "@/hooks/formatCurrency";
@@ -93,3 +93,43 @@ export async function createInvoice(prevState: any, formData: FormData){
     return redirect('/dashboard/invoices');
 }
 
+export async function createEarlyAccessUser(prevState: any, formData: FormData){
+
+    const submission = parseWithZod(formData,{
+        schema: earlyAccessSchema
+    })
+
+    if(submission.status !== "success"){
+        return submission.reply()
+    }
+
+    const data = await prisma.earlyAccess.create({
+        data:{
+            email: submission.value.email
+        }
+    })
+
+}
+
+// export async function createEarlyAccessUser(data: FormData) {
+//     try {
+//       const email = data.get('email')
+//       const validated = earlyAccessSchema.parse({ email })
+  
+//       const exists = await prisma.earlyAccess.findUnique({
+//         where: { email: validated.email }
+//       })
+  
+//       if (exists) {
+//         return { error: "You're already on the waitlist!" }
+//       }
+  
+//       await prisma.earlyAccess.create({
+//         data: { email: validated.email }
+//       })
+  
+//       return { success: true }
+//     } catch (error) {
+//       return { error: "Invalid email address" }
+//     }
+//   }

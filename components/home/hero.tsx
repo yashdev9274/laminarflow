@@ -6,9 +6,30 @@ import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, For
 import { z } from "zod"
 import { Input } from "../ui/input"
 import { Button } from "../ui/button"
+import { useActionState } from "react"
+import { createEarlyAccessUser } from "@/app/utils/action"
+import { useForm } from "@conform-to/react"
+import { earlyAccessSchema } from "@/app/utils/zodSchema"
+import { parseWithZod } from "@conform-to/zod"
+import SubmitButton from "@/app/components/submitButton"
 
 
 export default function Hero(){
+
+    const [lastResult, action] = useActionState(createEarlyAccessUser, undefined);
+
+    const [form, fields]  = useForm({
+        lastResult,
+
+        onValidate({formData}){
+            return parseWithZod(formData,{schema: earlyAccessSchema});
+        },
+
+        shouldValidate: "onBlur",
+        shouldRevalidate: "onInput",
+
+    })
+
     return(
         <div className="mt-11">
             <p className="text-center text-4xl font-semibold leading-tight tracking-[-0.03em]  text-white sm:text-6xl md:px-0">
@@ -23,10 +44,23 @@ export default function Hero(){
             <Card className="mt-4 w-full border-none bg-transparent shadow-none">
                 <CardContent className="flex flex-col items-center justify-center px-0">
                 <div className="flex items-center justify-center gap-4 mt-7">
-                    <Input type="text" placeholder="you@example.com" className="placeholder:text-sm md:w-80" />
-                    <Button className="ml-2 px-4 py-2 rounded-lg bg-white text-black">
-                        Join waitlist
-                    </Button>
+                    <form
+                        action={action}
+                        id={form.id}
+                        onSubmit={form.onSubmit}
+                        noValidate
+                        className="flex w-full max-w-md items-center gap-2"
+                    >
+                        <Input 
+                            type="text" 
+                            placeholder="you@example.com" 
+                            className="placeholder:text-sm md:w-80" 
+                            name={fields.email.name}
+                            key={fields.email.key}
+                            defaultValue={fields.email.initialValue}
+                        />
+                        <SubmitButton text="Join Waiting List"/>
+                    </form>
                 </div>
                 <div className="text-center text-white mt-4">
                     20 people have already joined the waitlist
