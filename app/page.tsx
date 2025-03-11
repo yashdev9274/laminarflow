@@ -9,10 +9,13 @@ import FAQ from "@/components/home/faq";
 
 export default function Home() {
   return (
-    <div className="relative h-screen min-h-screen w-full overflow-auto bg-zinc text-gray-200">
+    <div className="relative h-screen min-h-screen w-full overflow-auto bg-black text-white">
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
         <div className="h-[500px] w-[500px] bg-[linear-gradient(90deg,#ffd5d0_0%,#ffafcc_30%,#dbffe4_70%,#e2d6ff_100%)] rounded-lg blur-[120px] opacity-5 dark:opacity-10" />
       </div>
+      {/* <div className="relative mx-auto mb-4 flex flex-col">
+        Hello D3Flo user
+      </div> */}
       <div className="relative mx-auto flex flex-col">
         <Hero/>
         <FAQ/>

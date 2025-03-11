@@ -24,7 +24,7 @@ async function getData(userId: string){
             createdAt: true,
         },
         orderBy:{
-            createdAt: "asc",
+            createdAt: "desc",
         }
     })
     return data;

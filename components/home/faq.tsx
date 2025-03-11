@@ -1,9 +1,29 @@
-import Balancer from "react-wrap-balancer";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../ui/accordion";
 
-export default function FAQ() {
-    return (
-        <section className="container py-20">
+export default function FAQ(){
+
+    const faqs = [
+        {
+          question: "What is D3 Invoice?",
+          answer: "D3 Invoice is a modern invoicing solution that helps businesses create, manage, and track invoices efficiently."
+        },
+        {
+          question: "How does billing work?",
+          answer: "We offer flexible billing plans based on your usage. You can start with our free tier and upgrade as your needs grow."
+        },
+        {
+          question: "Can I export my data?",
+          answer: "Yes, you can export your invoice data in multiple formats including PDF, CSV, and Excel."
+        },
+        {
+          question: "Is my data secure?",
+          answer: "We take security seriously. All your data is encrypted and stored securely in compliance with industry standards."
+        }
+      ]
+
+
+    return(
+         <section className="container py-20">
             {/* <div className="mx-auto flex max-w-4xl flex-col items-center justify-center text-center">
                 <h2 className="font-display text-4xl font-bold tracking-tight sm:text-5xl">
                     Frequently Asked Questions
