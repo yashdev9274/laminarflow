@@ -67,7 +67,7 @@ export default function Footer() {
           </div>
 
           <div className="text-center md:text-right text-sm text-gray-400">
-            D3Flo Inc. © 2025
+            LaminarFlow Inc. © 2025
           </div>
         </div>
         
