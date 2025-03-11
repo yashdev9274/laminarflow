@@ -6,7 +6,7 @@ import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, For
 import { z } from "zod"
 import { Input } from "../ui/input"
 import { Button } from "../ui/button"
-import { useActionState } from "react"
+import { useActionState, useEffect, useState } from "react"
 import { createEarlyAccessUser } from "@/app/utils/action"
 import { useForm } from "@conform-to/react"
 import { earlyAccessSchema } from "@/app/utils/zodSchema"
@@ -29,6 +29,21 @@ export default function Hero(){
         shouldRevalidate: "onInput",
 
     })
+
+    const [earlyAccessCount, setEarlyAccessCount] = useState(0)
+
+    useEffect(()=>{
+        const fetchEarlyAccessCount = async ()=>{
+            try {
+                const response = await fetch('/api/earlyaccess/count/route')
+                const data = await response.json()
+                setEarlyAccessCount(data.count)
+            } catch (error) {
+                console.log('Error fetching waitlist count:', error)
+            }
+        } 
+        fetchEarlyAccessCount()
+    },[])
 
     return(
         <div className="mt-11">
@@ -63,7 +78,9 @@ export default function Hero(){
                     </form>
                 </div>
                 <div className="text-center text-white mt-4">
-                    20 people have already joined the waitlist
+                {/* <span>{earlyAccessCount}</span> people already joined */}
+                <span>20</span> people already joined the waitlist!
+
                 </div>
                 </CardContent>
             </Card>
