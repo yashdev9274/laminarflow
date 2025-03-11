@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "D3Invoice",
-  description: "A modern SaaS application for invoice management.",
+  title: "LaminarFlow",
+  description: "A modern platform for managing your finances.",
 };
 
 export default function RootLayout({
