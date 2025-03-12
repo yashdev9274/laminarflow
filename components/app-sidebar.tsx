@@ -11,7 +11,14 @@ import {
   PieChart,
   Send,
   Settings2,
-  SquareTerminal,
+  Wallet,
+  LayoutDashboard,
+  ReceiptIndianRupee,
+  BadgeIndianRupee,
+  BriefcaseBusiness,
+  Building2, 
+  CircleCheckBig,
+  Settings
 } from "lucide-react"
 
 import { NavMain } from "@/components/nav-main"
@@ -27,31 +34,57 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
+import { NavCrm } from "./nav-crm"
 
 const data = {
   user: {
-    name: "D3Invoice",
-    email: "D3I@gmail.com",
+    name: "LaminarFlow",
+    email: "LF@gmail.com",
     avatar: "/avatars/shadcn.jpg",
   },
   navMain: [
     {
-      title: "Playground",
+      title: "Finance",
       url: "#",
-      icon: SquareTerminal,
+      icon: Wallet,
       isActive: true,
       items: [
         {
           title: "Dashboard",
           url: "/dashboard",
+          icon: LayoutDashboard 
         },
         {
           title: "Invoices",
           url: "/dashboard/invoices",
+          icon: ReceiptIndianRupee 
         },
         {
-          title: "Settings",
-          url: "/dashboard/settings",
+          title: "Transactions",
+          url: "/dashboard",
+          icon: BadgeIndianRupee 
+        },
+      ],
+    },
+    
+  ],
+
+  navCrm: [
+    {
+      title: "Workspace",
+      url: "#",
+      icon: BriefcaseBusiness,
+      isActive: true,
+      items: [
+        {
+          title: "Companies",
+          url: "/dashboard",
+          icon: Building2  
+        },
+        {
+          title: "Tasks",
+          url: "/dashboard",
+          icon: CircleCheckBig  
         },
       ],
     },
@@ -59,9 +92,9 @@ const data = {
   ],
   navSecondary: [
     {
-      title: "Support",
-      url: "#",
-      icon: LifeBuoy,
+      title: "Settings",
+      url: "/",
+      icon: Settings,
     },
     {
       title: "Feedback",
@@ -100,8 +133,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   <Command className="size-4" />
                 </div>
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-semibold">D3Invoice</span>
-                  <span className="truncate text-xs">Organisation</span>
+                  <span className="truncate font-semibold">LaminarFlow</span>
+                  <span className="truncate text-xs">Organization</span>
                 </div>
               </a>
             </SidebarMenuButton>
@@ -110,8 +143,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
-        {/* <NavProjects projects={data.projects} /> */}
-        {/* <NavSecondary items={data.navSecondary} className="mt-auto" /> */}
+        <NavCrm items={data.navCrm} />
+        <NavProjects projects={data.projects} />
+        <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={data.user} />

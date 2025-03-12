@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "LaminarFlow",
+  title: "LaminarFlow | Manage your business smartly",
   description: "A modern platform for managing your finances.",
 };
 
