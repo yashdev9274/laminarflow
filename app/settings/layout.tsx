@@ -43,7 +43,7 @@ export default async function SettingsLayout({children}:{children: ReactNode}){
                         <Breadcrumb>
                           <BreadcrumbList>
                             <BreadcrumbItem className="hidden md:block">
-                              <BreadcrumbLink href="/dashboard">
+                              <BreadcrumbLink href="/settings">
                                 Settings
                               </BreadcrumbLink>
                             </BreadcrumbItem>
