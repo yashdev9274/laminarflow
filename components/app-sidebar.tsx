@@ -97,8 +97,8 @@ const data = {
       icon: Settings,
     },
     {
-      title: "Feedback",
-      url: "#",
+      title: "Contact",
+      url: "https://dub.sh/yashdew",
       icon: Send,
     },
   ],
