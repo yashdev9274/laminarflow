@@ -2,12 +2,12 @@
 
 import { prisma } from "@/app/utils/db";
 import InvoiceTableAction from "./InvoiceTableAction";
-import { Table, TableBody, TableCaption, TableCell, TableFooter, TableHeader, TableRow } from "./ui/table";
+import { Table, TableBody, TableCaption, TableCell, TableFooter, TableHeader, TableRow } from "../../ui/table";
 import { create } from "domain";
 import { Prisma } from "@prisma/client";
 import { requireUser } from "@/app/utils/requireAuth";
 import { formatCurrency } from "@/hooks/formatCurrency";
-import { Badge } from "./ui/badge";
+import { Badge } from "../../ui/badge";
 
 async function getData(userId: string){
     const data = await prisma.invoice.findMany({

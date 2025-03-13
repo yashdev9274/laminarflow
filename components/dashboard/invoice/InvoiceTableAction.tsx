@@ -2,8 +2,9 @@ import { Download, MoreHorizontal, PenBoxIcon, Trash2Icon } from "lucide-react";
 import { DropdownMenu,DropdownMenuTrigger,
     DropdownMenuContent,
     DropdownMenuGroup,
-    DropdownMenuItem } from "./ui/dropdown-menu";
-import { Button } from "./ui/button";
+    DropdownMenuItem } from "../../ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
+// import { Button } from "../../ui/button";
 
 export default function InvoiceTableAction({ status, id }: { status: string; id: string }) {
     return(

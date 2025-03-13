@@ -1,6 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { CreateInvoiceSheet } from "@/components/createInvoiceSheetButton";
-import { InvoiceTable } from "@/components/InvoiceTable";
+import { CreateInvoiceSheet } from "@/components/dashboard/invoice/createInvoiceSheetButton";
+import { InvoiceTable } from "@/components/dashboard/invoice/InvoiceTable";
 
 
 export default function InvoicePage(){

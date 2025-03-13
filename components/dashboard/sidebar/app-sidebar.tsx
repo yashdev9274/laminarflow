@@ -21,10 +21,10 @@ import {
   Settings
 } from "lucide-react"
 
-import { NavMain } from "@/components/nav-main"
-import { NavProjects } from "@/components/nav-projects"
-import { NavSecondary } from "@/components/nav-secondary"
-import { NavUser } from "@/components/nav-user"
+import { NavMain } from "@/components/dashboard/sidebar/nav-main"
+import { NavProjects } from "@/components/dashboard/sidebar/nav-projects"
+import { NavSecondary } from "@/components/dashboard/sidebar/nav-secondary"
+import { NavUser } from "@/components/dashboard/sidebar/nav-user"
 import {
   Sidebar,
   SidebarContent,
@@ -63,6 +63,11 @@ const data = {
           title: "Transactions",
           url: "/dashboard",
           icon: BadgeIndianRupee 
+        },
+        {
+          title: "Travel",
+          url: "/dashboard",
+          icon: Map 
         },
       ],
     },
@@ -113,11 +118,6 @@ const data = {
       url: "#",
       icon: PieChart,
     },
-    {
-      name: "Travel",
-      url: "#",
-      icon: Map,
-    },
   ],
 }
 
@@ -144,7 +144,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarContent>
         <NavMain items={data.navMain} />
         <NavCrm items={data.navCrm} />
-        <NavProjects projects={data.projects} />
+        {/* <NavProjects projects={data.projects} /> */}
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
