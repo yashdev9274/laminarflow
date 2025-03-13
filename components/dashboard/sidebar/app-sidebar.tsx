@@ -61,7 +61,7 @@ const data = {
         },
         {
           title: "Transactions",
-          url: "/dashboard",
+          url: "/dashboard/transactions",
           icon: BadgeIndianRupee 
         },
         {

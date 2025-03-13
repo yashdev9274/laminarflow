@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-export default function InvoiceLayout({children}:{children: ReactNode}){
+export default function TransactionsLayout({children}:{children: ReactNode}){
     return(
         <div>
             <main>
