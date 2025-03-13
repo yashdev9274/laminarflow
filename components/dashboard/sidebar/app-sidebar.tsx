@@ -18,7 +18,8 @@ import {
   BriefcaseBusiness,
   Building2, 
   CircleCheckBig,
-  Settings
+  Settings,
+  Search
 } from "lucide-react"
 
 import { NavMain } from "@/components/dashboard/sidebar/nav-main"
@@ -35,6 +36,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
 import { NavCrm } from "./nav-crm"
+import { NavCommand } from "./nav-command"
 
 const data = {
   user: {
@@ -95,6 +97,12 @@ const data = {
     },
     
   ],
+  // navCommand:[
+  //   {
+  //     title: "Search",
+  //     icon: Search,
+  //   },
+  // ],
   navSecondary: [
     {
       title: "Settings",
@@ -142,6 +150,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
+        {/* <NavCommand/> */}
         <NavMain items={data.navMain} />
         <NavCrm items={data.navCrm} />
         {/* <NavProjects projects={data.projects} /> */}
