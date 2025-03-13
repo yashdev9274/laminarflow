@@ -36,7 +36,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
 import { NavCrm } from "./nav-crm"
-import { NavCommand } from "./nav-command"
+import NavCommand  from "./nav-command"
 
 const data = {
   user: {
@@ -97,12 +97,6 @@ const data = {
     },
     
   ],
-  // navCommand:[
-  //   {
-  //     title: "Search",
-  //     icon: Search,
-  //   },
-  // ],
   navSecondary: [
     {
       title: "Settings",
