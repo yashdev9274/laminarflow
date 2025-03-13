@@ -27,6 +27,8 @@ model User {
   Authenticator Authenticator[]
   invoices Invoice[]
   earlyaccess EarlyAccess?
+  companies Companies[]
+  tasks Tasks[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -124,4 +126,40 @@ model EarlyAccess {
   createdAt DateTime @default(now())
   user      User?    @relation(fields: [userId], references: [id])
   userId    String?  @unique
+}
+
+model Companies{
+  id String @id @default(uuid())
+  name String @unique
+  domainName String @unique
+  accountOwner String @unique
+  employees Int
+  address String
+  total Int
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  User User? @relation(fields: [userId], references: [id])
+  userId String?
+}
+
+model Tasks{
+  id String @id @default(uuid())
+  title String 
+  status TaskStatus
+  date DateTime
+  dueDate Int
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  User User? @relation(fields: [userId], references: [id])
+  userId String?
+}
+
+enum TaskStatus{
+  Todo
+  InProgress
+  Done
 }
