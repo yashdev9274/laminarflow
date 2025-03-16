@@ -30,20 +30,20 @@ export default function Hero(){
 
     })
 
-    const [earlyAccessCount, setEarlyAccessCount] = useState(0)
+    // const [earlyAccessCount, setEarlyAccessCount] = useState(0)
 
-    useEffect(()=>{
-        const fetchEarlyAccessCount = async ()=>{
-            try {
-                const response = await fetch('/api/earlyaccess/count/route')
-                const data = await response.json()
-                setEarlyAccessCount(data.count)
-            } catch (error) {
-                console.log('Error fetching waitlist count:', error)
-            }
-        } 
-        fetchEarlyAccessCount()
-    },[])
+    // useEffect(()=>{
+    //     const fetchEarlyAccessCount = async ()=>{
+    //         try {
+    //             const response = await fetch('/api/earlyaccess/count/route')
+    //             const data = await response.json()
+    //             setEarlyAccessCount(data.count)
+    //         } catch (error) {
+    //             console.log('Error fetching waitlist count:', error)
+    //         }
+    //     } 
+    //     fetchEarlyAccessCount()
+    // },[])
 
     return(
         <div className="mt-11">
