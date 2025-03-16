@@ -74,7 +74,7 @@ export default function Hero(){
                             key={fields.email.key}
                             defaultValue={fields.email.initialValue}
                         />
-                        <SubmitButton text="Join Waiting List"/>
+                        <SubmitButton text="Join Waiting List" />
                     </form>
                 </div>
                 <div className="text-center text-white mt-4">

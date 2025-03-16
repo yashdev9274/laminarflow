@@ -18,7 +18,7 @@ export default function SubmitButton({text}:iAppProp){
                     <Loader2 className="size-4 mr-2 animate-spin"/> Please wait...
                 </Button>
             ):(
-                <Button type= "submit" className="bg-black  text-white font-bold py-2 px-4 rounded">
+                <Button type= "submit" className="bg-white  text-black font-bold py-2 px-4 rounded">
                     {text}
                 </Button>
             )}
