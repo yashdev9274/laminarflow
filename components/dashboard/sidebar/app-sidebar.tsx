@@ -37,12 +37,13 @@ import {
 } from "@/components/ui/sidebar"
 import { NavCrm } from "./nav-crm"
 import NavCommand  from "./nav-command"
+import Image from "next/image"
 
 const data = {
   user: {
     name: "LaminarFlow",
     email: "LF@gmail.com",
-    avatar: "/avatars/shadcn.jpg",
+    avatar: "/LF-logo.png",
   },
   navMain: [
     {
@@ -131,8 +132,15 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
               <a href="/dashboard">
-                <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-                  <Command className="size-4" />
+                <div >
+                  {/* <Command className="size-4" /> */}
+                  <Image 
+                    src="/LF-logo.png" 
+                    alt="LaminarFlow logo" 
+                    width={32} 
+                    height={32} 
+                    priority
+                  />
                 </div>
                 <div className="grid flex-1 text-left text-sm leading-tight">
                   <span className="truncate font-semibold">LaminarFlow</span>
