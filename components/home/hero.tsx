@@ -34,7 +34,9 @@ export default function Hero(){
                         />
                     </Link>
                 {/* <TalkToFounder text="Talk to Founder" redirectTo="https://cal.com/yash-dewasthale/talk-finance-management-with-lf-global" className="align-right rounded" /> */}
-                    <RedirectButton text="Talk to Founder" href = "https://cal.link/LF-Founder-chat" className="align-right rounded" />
+                    <div className="flex justify-between items-center mr-10">
+                        <RedirectButton text="Talk to Founder" href = "https://cal.link/LF-Founder-chat" className="align-right rounded" />
+                    </div>
 
                 </div>
             </header>

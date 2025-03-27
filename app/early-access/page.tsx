@@ -59,7 +59,7 @@ export default function EarlyAccess(){
             </header>
         </div>
         
-        <Card className="mt-4 w-full border-none bg-transparent shadow-none">
+        <Card className="mt-4 w-full border-none bg-transparent shadow-none md:px-6 py-12 md:py-20">
                 <CardContent className="flex flex-col items-center justify-center px-0">
                     <p>
                         <span className="text-4xl font-semibold leading-tight tracking-[-0.03em] text-white sm:text-6xl md:px-0">
