@@ -15,6 +15,7 @@ import { AnimatedGridPattern } from "@/components/earlyAccess/sqaureBgGrid"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
 import RedirectButton from "../components/redirectButton"
+import { AnimatedNumber } from "@/components/earlyAccess/animated-number"
 
 
 export default function EarlyAccess(){
@@ -87,7 +88,15 @@ export default function EarlyAccess(){
                 </div>
                 <div className="text-center text-white mt-4">
                 {/* <span>{earlyAccessCount}</span> people already joined */}
-                <span>100</span> users have already joined the waitlist!
+                    <span>
+                    <AnimatedNumber
+                    springOptions={{
+                        bounce: 0,
+                        duration: 3000,
+                    }}
+                    value={100}
+                    />
+                    </span> users have already joined the waitlist!
 
                 </div>
                 </CardContent>

@@ -8,7 +8,7 @@ export default function InvoicePage(){
         <div className="flex flex-col gap-4 p-4 pt-0">
             <Card>
                 <CardHeader>
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between ml-2">
                         <div>
                             <CardTitle className="text-lg font-semibold"> 
                                 Invoices
