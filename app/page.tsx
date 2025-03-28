@@ -16,11 +16,13 @@ export default function Home() {
       </div>
       <div className="relative mx-auto flex flex-col">
         <Hero/>
-        <section className="flex flex-col gap-4 p-4 pt-0 mt-10 w-5/6 mx-auto">
-          <Card>
-            <Demo/>
-          </Card>
-        </section>
+        <div className="hidden md:block">
+          <section className="flex flex-col gap-4 p-4 pt-0 mt-10 w-5/6 mx-auto ">
+            <Card>
+              <Demo/>
+            </Card>
+          </section>
+        </div>
         <FAQ/>
         <Footer/>
       </div>

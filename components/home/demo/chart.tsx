@@ -163,7 +163,7 @@ export function ChartAreaInteractive() {
   return (
     <Card className="@container/card">
       <CardHeader className="relative">
-        <CardTitle>Total Visitors</CardTitle>
+        <CardTitle>Total Revenue</CardTitle>
         <CardDescription>
           <span className="@[540px]/card:block hidden">
             Total for the last 3 months
