@@ -6,7 +6,7 @@
      "status": "In Process",
      "target": "18",
      "limit": "5",
-     "reviewer": "Eddie Lake"
+     "reviewer": "Jan Doe"
    },
    {
      "id": 2,
@@ -15,7 +15,7 @@
      "status": "Done",
      "target": "29",
      "limit": "24",
-     "reviewer": "Eddie Lake"
+     "reviewer": "Steven Tey"
    },
    {
      "id": 3,
@@ -24,7 +24,7 @@
      "status": "Done",
      "target": "10",
      "limit": "13",
-     "reviewer": "Eddie Lake"
+     "reviewer": "Patrick"
    }
    
  ]

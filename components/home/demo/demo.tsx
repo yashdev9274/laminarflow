@@ -11,7 +11,6 @@ export default function Demo() {
   return (
    <section className="container mx-auto mt-3 hidden md:block">
     <SidebarProvider className="flex flex-1">
-      {/* <AppSidebar variant="inset" /> */}
       <SidebarInset>
         <SiteHeader />
         <div className="flex flex-1 flex-col">
@@ -21,7 +20,7 @@ export default function Demo() {
               <div className="px-4 lg:px-6">
                 <ChartAreaInteractive />
               </div>
-              <DataTable data={data} />
+              {/* <DataTable data={data} /> */}
             </div>
           </div>
         </div>
