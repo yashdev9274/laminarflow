@@ -35,15 +35,15 @@ export async function InvoiceTable() {
     const session = await requireUser();
     const data = await getData(session.user?.id as string);
     return(
-        <div>
-            <Table>
+        <div className="overflow-x-auto ml-2 min-h-[450px]">
+            <Table className="min-w-full">
                 <TableHeader>
                     <TableRow>
-                        <th>Serial No.</th>
-                        <th>Customer</th>
-                        <th>Amount</th>
-                        <th>Date</th>
-                        <th>Status</th>
+                        <th className="text-left">Serial No.</th>
+                        <th className="text-left">Customer</th>
+                        <th className="text-left">Amount</th>
+                        <th className="text-left">Date</th>
+                        <th className="text-left">Status</th>
                         <th className="text-right">Action</th>
                     </TableRow>
                 </TableHeader>

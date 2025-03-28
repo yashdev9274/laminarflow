@@ -1,3 +1,4 @@
+import { TransactionTable } from "@/components/dashboard/transactions/TransactionTable";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function Transactions(){
@@ -17,7 +18,7 @@ export default function Transactions(){
                </div>
             </CardHeader>
             <CardContent>
-               TransactionTable
+               <TransactionTable/>
             </CardContent>
          </Card>
       </div>
