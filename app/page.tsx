@@ -6,6 +6,7 @@ import { signIn } from "./utils/auth";
 import Hero from "@/components/home/hero";
 import Footer from "@/components/home/footer";
 import FAQ from "@/components/home/faq";
+import Demo from "@/components/home/demo/demo";
 
 export default function Home() {
   return (
@@ -15,6 +16,11 @@ export default function Home() {
       </div>
       <div className="relative mx-auto flex flex-col">
         <Hero/>
+        <section className="flex flex-col gap-4 p-4 pt-0 mt-10 w-5/6 mx-auto">
+          <Card>
+            <Demo/>
+          </Card>
+        </section>
         <FAQ/>
         <Footer/>
       </div>
