@@ -1,3 +1,4 @@
+import { CreateTransactionSheet } from "@/components/dashboard/transactions/createTransactionSheet";
 import { TransactionTable } from "@/components/dashboard/transactions/TransactionTable";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -15,6 +16,7 @@ export default function Transactions(){
                         Get real-time updates on your transactions.
                      </CardDescription>
                   </div>
+                  <CreateTransactionSheet/>
                </div>
             </CardHeader>
             <CardContent>
