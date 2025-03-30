@@ -86,7 +86,7 @@ const data = {
       items: [
         {
           title: "Companies",
-          url: "/dashboard",
+          url: "/dashboard/companies",
           icon: Building2  
         },
         {
