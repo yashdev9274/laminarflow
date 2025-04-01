@@ -4,8 +4,8 @@ export default function FAQ(){
 
     const faqs = [
         {
-          question: "What is D3 Invoice?",
-          answer: "D3 Invoice is a modern invoicing solution that helps businesses create, manage, and track invoices efficiently."
+          question: "What is LaminarFlow?",
+          answer: "LaminarFlow is a modern financial solution that helps businesses create, manage, and track financial workflow efficiently."
         },
         {
           question: "How does billing work?",
@@ -13,7 +13,7 @@ export default function FAQ(){
         },
         {
           question: "Can I export my data?",
-          answer: "Yes, you can export your invoice data in multiple formats including PDF, CSV, and Excel."
+          answer: "Yes, you can export your financial data in multiple formats including PDF, CSV, and Excel."
         },
         {
           question: "Is my data secure?",
