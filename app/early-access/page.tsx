@@ -88,7 +88,7 @@ export default function EarlyAccess(){
                 </div>
                 <div className="text-center text-white mt-4">
                 {/* <span>{earlyAccessCount}</span> people already joined */}
-                    <span>
+                    {/* <span>
                     <AnimatedNumber
                     springOptions={{
                         bounce: 0,
@@ -96,7 +96,7 @@ export default function EarlyAccess(){
                     }}
                     value={100}
                     />
-                    </span> users have already joined the waitlist!
+                    </span> users have already joined the waitlist! */}
 
                 </div>
                 </CardContent>
