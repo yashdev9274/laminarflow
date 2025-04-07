@@ -128,6 +128,25 @@ model EarlyAccess {
   userId    String?  @unique
 }
 
+model Transactions{
+  id        String   @id @default(uuid())
+  fromName  String
+  clientName String
+  amount    Int
+  accountName String
+  date      DateTime
+  status    TransactionStatus
+  paymentMethod String
+  createdAt DateTime @default(now())
+  updateAt  DateTime @updatedAt
+}
+
+enum TransactionStatus{
+  PENDING
+  COMPLETED
+  FAILED
+}
+
 model Companies{
   id String @id @default(uuid())
   name String @unique
