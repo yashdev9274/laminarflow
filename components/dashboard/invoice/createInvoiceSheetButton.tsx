@@ -110,7 +110,7 @@ export function CreateInvoiceSheet() {
                                                 <div>
                                                     <Input
                                                         placeholder="00"
-                                                        className="rounded-1-none"
+                                                        className="rounded-1"
                                                         name = {fields.invoiceNumber.name}
                                                         key = {fields.invoiceNumber.key}
                                                         defaultValue={fields.invoiceNumber.initialValue}

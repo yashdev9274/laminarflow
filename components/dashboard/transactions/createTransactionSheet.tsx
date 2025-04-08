@@ -5,6 +5,8 @@ import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { PlusIcon } from "lucide-react";
 import { TimelineItem } from "./TimelineItem";
+import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 export async function CreateTransactionSheet(){
    return(
@@ -26,18 +28,20 @@ export async function CreateTransactionSheet(){
                            className="grid gap-4"
                         >
                            <div className="flex flex-col gap-1 w-fit mb-6">
-                              <div className="flex items-center gap-4">
+                              <div className="flex items-center gap-10">
                                  <Badge variant='secondary'>Amount</Badge>
                                  <div className="space-y-1">
-
                                     <Input
                                        placeholder="$200"
                                        className="text-4xl font-medium border-spacing-1 px-2 h-auto"
                                     />
                                  </div>
                               </div>
+
+                              {/* Timeline Item */}
+
                               <div className="space-y-4 mt-5">
-                                 <TimelineItem
+                                 {/* <TimelineItem
                                     title="Payment from Acme Corp"
                                     date="Apr 7 at 5:03PM"
                                     variant="gray"
@@ -46,7 +50,34 @@ export async function CreateTransactionSheet(){
                                     title="AR"
                                     date="Apr 7 at 5:03PM"
                                     variant="green"
-                                 />
+                                 /> */}
+                              </div>
+
+                              <div className="grid md:grid-cols-1 gap-6 mb-6">
+                                 <div className="flex items-center gap-4">
+                                    <Label>Transaction No.</Label>
+                                    <div className="space-y-1">
+                                       <Input
+                                          placeholder="#00"
+                                          className="text-4xl font-medium border-spacing-1 px-2 h-auto"
+                                       />
+                                    </div>
+                                 </div>
+                                 <div className="flex items-center gap-11">
+                                    <Label className="mr-2">Currency</Label>
+                                    <Select
+                                       defaultValue="INR"
+                                    >
+                                       <SelectTrigger className="w-[80px] h-8">
+                                          <SelectValue/>
+                                       </SelectTrigger>
+                                       <SelectContent>
+                                          <SelectItem value = "INR">INR</SelectItem>
+                                          <SelectItem value = "USD">USD</SelectItem>
+                                          <SelectItem value = "EUR">EUR</SelectItem>
+                                       </SelectContent>
+                                    </Select>
+                                 </div>
                               </div>
                            </div>
                         </form>
