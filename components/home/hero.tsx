@@ -35,18 +35,21 @@ export default function Hero(){
                     </Link>
                 {/* <TalkToFounder text="Talk to Founder" redirectTo="https://cal.com/yash-dewasthale/talk-finance-management-with-lf-global" className="align-right rounded" /> */}
                     <div className="flex justify-between items-center mr-10">
-                        <RedirectButton text="Talk to Founder" href = "https://cal.link/LF-Founder-chat" className="align-right rounded" />
+                        <RedirectButton text="Contact for Demo" href = "https://cal.link/LF-Founder-chat" className="align-right rounded" />
                     </div>
 
                 </div>
             </header>
-            <p className="text-center text-4xl font-semibold leading-tight tracking-[-0.03em]  text-white sm:text-6xl md:px-0">
-                The future of TechFinance is here
-            </p>
+            <div>
+                <p className="text-center text-sm font-semibold leading-tight tracking-[-0.03em]  text-zinc-400 sm:text-6xl md:px-0">The #1 </p>
+                <p className="text-center text-4xl font-bold leading-tight tracking-[-0.03em]  text-white sm:text-6xl md:px-0"> 
+                    Open-Sourced Fintech 
+                </p>
+            </div>
             <div className="grid grid-col mx-auto w-full max-w-4xl">
                 <Balancer className="text-shinyGray mx-auto mt-3 mb-5 text-center text-[15px] leading-tight sm:text-[22px] ">
-                    Manage your finances the way you want with <span className="font-mono">LaminarFlow</span> – an
-                    open sourced Finance app that puts your privacy and safety first.
+                    Manage your finances the way you want with <span className="font-mono">LaminarFlow</span> – a
+                    modern, powerful, and affordable platform to manage your business' financial workflow
                 </Balancer>
                 <RedirectButton text="Join Waitlist" href='/early-access'/>
             </div>
