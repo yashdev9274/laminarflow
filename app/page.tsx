@@ -14,10 +14,10 @@ export default function Home() {
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
         <div className="h-[500px] w-[500px] bg-[linear-gradient(90deg,#ffd5d0_0%,#ffafcc_30%,#dbffe4_70%,#e2d6ff_100%)] rounded-lg blur-[120px] opacity-5 dark:opacity-10" />
       </div>
-      <div className="relative mx-auto flex flex-col">
+      <div className="relative mx-auto flex flex-col max-w-7xl px-4 md:px-6">
         <Hero/>
-        <div className="hidden md:block">
-          <section className="flex flex-col gap-4 p-4 pt-0 mt-10 w-5/6 mx-auto ">
+        <div className="w-full">
+          <section className="flex flex-col gap-4 p-4 pt-0 mt-10 w-full md:w-5/6 mx-auto">
             <Card>
               <Demo/>
             </Card>
