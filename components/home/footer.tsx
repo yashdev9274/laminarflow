@@ -31,7 +31,7 @@ export default function Footer() {
                 href={social.href} 
                 target="_blank"
                 aria-label={social.ariaLabel}
-                className="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors duration-200"
+                className="text-gray-500 hover:text-white dark:text-gray-400 dark:hover:text-white transition-colors duration-200"
               >
                 <social.icon className="h-5 w-5 hover:scale-110 transition-transform" />
                 <span className="sr-only">{social.ariaLabel}</span>
