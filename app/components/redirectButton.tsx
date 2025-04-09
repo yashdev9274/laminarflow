@@ -14,7 +14,7 @@ export default function RedirectButton({text, href, className=""}: iAppProps){
    return(
       <div className="flex justify-center items-center">
          <Link href={href}>
-            <Button className="bg-zinc-800 text-white hover:bg-black/20 font-bold py-2 px-4 rounded">
+            <Button className="bg-neutral-100 text-zinc-800 hover:bg-neutral-400 font-bold py-2 px-4 rounded">
                {text}
                <ArrowRight />
             </Button>
