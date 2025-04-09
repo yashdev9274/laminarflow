@@ -15,30 +15,31 @@ import SubmitButton from "@/app/components/submitButton"
 import RedirectButton from "@/app/components/redirectButton"
 import Image from "next/image"
 import Link from "next/link"
+import { NavbarDemo } from "../navbar/navbar"
 
 
 export default function Hero(){
 
     return(
-        <div className="mt-5">
-
+        <div className="mt-2">
             <header className="relative top-0 mb-5 ml-10 bg-background/60 backdrop-blur">
-                <div className="flex justify-between items-center container">
-                    <Link href='/' className='relative mr-6 flex items-center space-x-2'>
+                {/* <div className="flex justify-between items-center container"> */}
+                    {/* <Link href='/' className='relative mr-6 flex items-center space-x-2'> */}
                         {/* <span className="text-2xl font-bold px-10 text-white">LF</span> */}
-                        <Image
+                        {/* <Image
                             src="/LF-logo.png"
                             alt="LaminarFlow Logo"
                             width={50}
                             height={50}
-                        />
-                    </Link>
+                        /> */}
+                    {/* </Link> */}
                 {/* <TalkToFounder text="Talk to Founder" redirectTo="https://cal.com/yash-dewasthale/talk-finance-management-with-lf-global" className="align-right rounded" /> */}
-                    <div className="flex justify-between items-center mr-10">
-                        <RedirectButton text="Contact for Demo" href = "https://cal.link/LF-Founder-chat" className="align-right rounded" />
-                    </div>
-
-                </div>
+                    {/* <div className="flex justify-between items-center mr-10"> */}
+                        {/* <RedirectButton text="Contact for Demo" href = "https://cal.link/LF-Founder-chat" className="align-right rounded" /> */}
+                    {/* </div> */}
+{/*  */}
+                {/* </div> */}
+                <NavbarDemo/>
             </header>
             <div>
                 <p className="text-center text-sm font-semibold leading-tight tracking-[-0.03em]  text-zinc-400 sm:text-6xl md:px-0">The #1 </p>
