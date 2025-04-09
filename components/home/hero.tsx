@@ -16,6 +16,7 @@ import RedirectButton from "@/app/components/redirectButton"
 import Image from "next/image"
 import Link from "next/link"
 import { NavbarDemo } from "../navbar/navbar"
+import IntroBar from "@/app/components/introBar"
 
 
 export default function Hero(){
@@ -41,6 +42,8 @@ export default function Hero(){
                 {/* </div> */}
                 <NavbarDemo/>
             </header>
+
+            <IntroBar text="🪙 Introducing LaminarFlow" href="/"/>
             <div>
                 <p className="text-center text-sm font-semibold leading-tight tracking-[-0.03em]  text-zinc-400 sm:text-6xl md:px-0">The #1 </p>
                 <p className="text-center text-4xl font-bold leading-tight tracking-[-0.03em]  text-white sm:text-6xl md:px-0"> 
