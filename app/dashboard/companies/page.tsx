@@ -1,4 +1,5 @@
 import CompaniesTable from "@/components/dashboard/companies/CompaniesTable";
+import { CreateCompaniesSheet } from "@/components/dashboard/companies/createCompaniesSheet";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Building2 } from "lucide-react";
 
@@ -17,6 +18,7 @@ export default function Companies(){
                      <CardDescription className="text-sm">
                      </CardDescription>
                   </div>
+                  <CreateCompaniesSheet/>
                </div>
             </CardHeader>
             <CardContent>
