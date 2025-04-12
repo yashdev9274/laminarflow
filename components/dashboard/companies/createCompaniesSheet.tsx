@@ -5,11 +5,13 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
 import { ArrowLeft, Building2, PlusIcon } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useState } from "react";
+import { Separator } from "@/components/ui/separator"
+import { HomeTabContent } from "./homeTabContent";
 
 export function CreateCompaniesSheet(){
 
@@ -41,7 +43,7 @@ export function CreateCompaniesSheet(){
                            <SheetTitle>Companies</SheetTitle>
                         </div>
                      </div>
-
+                     <Separator className="my-4" />
 
                      {/* Navigation Tabs */}
                      <div className="border-b border-zinc-800">
@@ -94,8 +96,21 @@ export function CreateCompaniesSheet(){
                               </div>
                               </TabsTrigger>
                            </TabsList>
+
+
+                           {/* Tabs content */}
+                           <div className="flex-1 overflow-auto">
+                              <TabsContent value="home" className="h-full m-0">
+                                 <HomeTabContent />
+                              </TabsContent>
+                              <TabsContent value="files" className="h-full m-0">
+                                 {/* <FilesTabContent /> */}
+                              </TabsContent>
+                           </div>
                         </Tabs>
                      </div>
+
+
 
                      {/* <div className="flex-1 overflow-auto p-6"> */}
                         <Card className="w-full">
