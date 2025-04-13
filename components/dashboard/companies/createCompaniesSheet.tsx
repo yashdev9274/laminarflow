@@ -46,7 +46,7 @@ export function CreateCompaniesSheet(){
                      <Separator className="my-4" />
 
                      {/* Navigation Tabs */}
-                     <div className="border-b border-zinc-800">
+                     <div className="border-b border-zinc-800 w-full">
                         <Tabs defaultValue="home" className="w-full">
                            <TabsList className="bg-transparent h-12 p-0 pl-4">
                               <TabsTrigger
