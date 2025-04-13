@@ -113,7 +113,7 @@ export function CreateCompaniesSheet(){
 
 
                      {/* <div className="flex-1 overflow-auto p-6"> */}
-                        <Card className="w-full">
+                        {/* <Card className="w-full">
                            <CardContent className="p-6">
                               <form
                                  className="grid gap-4"
@@ -158,7 +158,7 @@ export function CreateCompaniesSheet(){
                                  </div>
                               </form>
                            </CardContent>
-                        </Card>
+                        </Card> */}
                      {/* </div> */}
 
                   </SheetHeader>
