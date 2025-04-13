@@ -113,7 +113,7 @@ d3-invoice/
 
 ## Self-Hosting
 
-You can self-host Dub.co for greater control over your data and design. [Read this guide]() to learn more.
+You can self-host [LaminarFlow](lamflo.xyz) for greater control over your data and design. [Read this guide]() to learn more.
 
 ## Contributing
 
