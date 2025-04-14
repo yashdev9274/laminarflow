@@ -1,8 +1,10 @@
+import SubmitButton from "@/app/components/submitButton";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { SheetClose, SheetFooter } from "@/components/ui/sheet";
 import { Building2 } from "lucide-react";
 import { Check, Edit2 } from "lucide-react"
 
@@ -10,23 +12,26 @@ import { Check, Edit2 } from "lucide-react"
 export function HomeTabContent(){
    return(
       <div className="p-6">
-         <div className="flex items-start gap-4 mb-6">
-            <div className="bg-zinc-600 rounded p-2 flex items-center justify-center">
-               <Building2 className="h-5 w-5 text-white" />
-            </div>
-            <div className="flex-1">
-               <Input 
-                  placeholder="Company Name"
-                  className="text-2xl font-semibold mb-1 w-full"
-               />
-               <p className="text-sm text-zinc-400">Added about 17 hours ago</p>
-            </div>
-         </div>
+         
 
          <Card className="bg-zinc-800 border-zinc-700 shadow-md">
             <CardContent className="p-0">
-               <div className="divide-y divide-zinc-700">
+               <form className="divide-y divide-zinc-700">
 
+
+               <div className="flex items-start gap-4 mb-6 ml-5 mt-5">
+                  <div className="bg-zinc-600 rounded p-2 flex items-center justify-center">
+                     <Building2 className="h-5 w-5 text-white" />
+                  </div>
+                  <div className="flex-1">
+                     <Input 
+                        placeholder="Company Name"
+                        className="border-zinc-700 border-spacing-3 text-sm font-semibold mb-1 w-[400px]"
+                     />
+                     <p className="text-sm text-zinc-400">Added about 17 hours ago</p>
+                  </div>
+               </div>
+                  
                   {/* address */}
                   <div className="flex items-center p-4">
                      <div className="w-32 text-sm text-zinc-400 flex items-center gap-2">
@@ -139,7 +144,13 @@ export function HomeTabContent(){
                         <span>Yash Dewasthale</span>
                      </div>
                   </div>
-               </div>
+                     <SheetFooter className="flex justify-end mt-6 mb-5 mr-5">
+                        <SheetClose asChild>
+                           <SubmitButton text="Create Record"/>
+                        </SheetClose>
+                     </SheetFooter>
+               </form>
+
             </CardContent>
          </Card>
       </div>
