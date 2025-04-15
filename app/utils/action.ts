@@ -133,3 +133,11 @@ export async function createEarlyAccessUser(prevState: any, formData: FormData){
 //       return { error: "Invalid email address" }
 //     }
 //   }
+
+
+
+// Create new transaction
+
+export async function createTransaction(prevState: any, fromData: FormData){
+    
+}

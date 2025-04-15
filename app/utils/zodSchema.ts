@@ -29,3 +29,17 @@ export const invoiceSchema = z.object({
     invoiceItemQuantity: z.number().min(1, "Quantity is required"),
     invoiceItemRate: z.number().min(1, "Price is required"),
 });
+
+export const transactionSchema = z.object({
+    fromName: z.string().min(2, "Sender Name is required"),
+    clientName: z.string().min(2,"Receiver Name is required"),
+    transactionNumber: z.number().min(1,"Transaction Number is required"),
+    amount: z.number().min(1, "Amount is required"),
+    currency: z.string().min(1,"Currency Number is required"),
+    category: z.string().min(1,"Category Number is required"),
+    transactionDescription: z.string().min(1,"Transactional Description Number is required"),
+    accountName: z.string().min(1,"Account Name is required"),
+    date: z.string().min(1,"Date is required"),
+    status: z.enum(["PENDING", "COMPLETED", "FAILED"]).default("PENDING"),
+    paymentMethod: z.string().min(1,"Payment Method is required"),
+});
