@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetClose, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import { ArrowDownFromLine, ArrowDownToLine, ArrowRightLeft, Banknote, CircleCheckBig, IndianRupee, Landmark, PlusIcon, ReceiptText, Tickets, Wallet } from "lucide-react";
+import { ArrowDownFromLine, ArrowDownToLine, ArrowRightLeft, Banknote, CalendarDays, CalendarX2Icon, CircleCheckBig, IndianRupee, Landmark, PlusIcon, ReceiptText, ScanLine, Tickets, Wallet } from "lucide-react";
 import { TimelineItem } from "./TimelineItem";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -14,10 +14,14 @@ import { Separator } from "@/components/ui/separator";
 import SubmitButton from "@/app/components/submitButton";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Textarea } from "@/components/ui/textarea";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Calendar } from "@/components/ui/calendar";
 
 export function CreateTransactionSheet(){
 
    const [open, setOpen] = useState(false)
+   const [selectedDate, setSelectedDate] = useState(new Date())
+
 
    return(
       <div className="flex items-center justify-center w-11">
@@ -157,6 +161,42 @@ export function CreateTransactionSheet(){
                                        </Select>
                                     </div>
 
+                                    {/* Calendar */}
+
+                                    <div className="flex items-center p-4">
+                                       <div className="w-32 text-sm text-zinc-400 flex font-mono items-center gap-2">
+                                          <CalendarDays/>
+                                          Date:
+                                       </div>
+                                       <div className="flex-1">
+                                       <Popover>
+                                                   <PopoverTrigger asChild>
+                                                      <Button
+                                                            variant="outline"
+                                                            className="w-17 text-left justify-center mr-5"
+                                                      >
+                                                            <CalendarX2Icon/>
+                                                            {selectedDate ? (
+                                                               new Intl.DateTimeFormat("en-US", {
+                                                                  dateStyle: "short",
+                                                               }).format(selectedDate)
+                                                               ) : (
+                                                               <span>Pick a Date</span>
+                                                            )}
+                                                      </Button>
+                                                   </PopoverTrigger>
+                                                   <PopoverContent>
+                                                      <Calendar
+                                                            selected = {selectedDate}
+                                                            onSelect={(date: any)=>setSelectedDate(date || new Date())}
+                                                            mode="single"
+                                                            fromDate={new Date()}
+                                                      />
+                                                   </PopoverContent>
+                                                </Popover>
+                                       </div>
+                                    </div>
+
                                     {/* Account  */}
 
                                     <div className="flex items-center p-4">
@@ -214,6 +254,28 @@ export function CreateTransactionSheet(){
                                              <SelectItem value = "TRAVEL">TRAVEL</SelectItem>
                                              <SelectItem value = "SOFTWARE">SOFTWARE</SelectItem>
                                              <SelectItem value = "TAXES">TAXES</SelectItem>
+                                          </SelectContent>
+                                       </Select>
+                                    </div>
+
+                                    {/* Payment Method */}
+
+                                    <div className="flex items-center p-4">
+                                       <Label className="w-32 text-sm text-zinc-400 font-mono flex items-center gap-2">
+                                          <ScanLine/> 
+                                          Payment Method
+                                       </Label>
+                                       <Select
+                                          defaultValue="CASH"
+                                          
+                                       >
+                                          <SelectTrigger className="border-zinc-700 border-spacing-3 text-sm font-mono mb-1 ml-8 w-full h-8">
+                                             <SelectValue/>
+                                          </SelectTrigger>
+                                          <SelectContent>
+                                             <SelectItem value = "CASH">CASH</SelectItem>
+                                             <SelectItem value = "STRIPE">STRIPE</SelectItem>
+                                             <SelectItem value = "UPI">UPI</SelectItem>
                                           </SelectContent>
                                        </Select>
                                     </div>

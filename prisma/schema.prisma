@@ -132,7 +132,11 @@ model Transactions{
   id        String   @id @default(uuid())
   fromName  String
   clientName String
+  transactionNumber Int
   amount    Int
+  currency  String
+  category String
+  transactionDescription String
   accountName String
   date      DateTime
   status    TransactionStatus
