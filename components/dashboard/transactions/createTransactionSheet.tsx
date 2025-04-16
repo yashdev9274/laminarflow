@@ -9,18 +9,43 @@ import { ArrowDownFromLine, ArrowDownToLine, ArrowRightLeft, Banknote, CalendarD
 import { TimelineItem } from "./TimelineItem";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { useState } from "react";
+import { useState, useActionState } from "react";
+import { useForm } from "@conform-to/react"
 import { Separator } from "@/components/ui/separator";
 import SubmitButton from "@/app/components/submitButton";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Textarea } from "@/components/ui/textarea";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
+import { createTransaction } from "@/app/utils/action";
+import { parseWithZod } from "@conform-to/zod";
+import { transactionSchema } from "@/app/utils/zodSchema";
 
 export function CreateTransactionSheet(){
 
    const [open, setOpen] = useState(false)
    const [selectedDate, setSelectedDate] = useState(new Date())
+   const [currency, setCurrency]  = useState("INR");
+   const [category, setCategory] = useState("EXPENSE");
+   const [paymentMethod, setPaymentMethod] = useState("CASH");
+   const [amount,setAmount] = useState("");
+   // const [status, setStatus] = useState("PENDING");
+   // const [transactionNumber, setTransactionNumber] = useState(0);
+
+   // form fields
+
+   const [lastResult, action] = useActionState(createTransaction, undefined);
+   const [form,fields] = useForm({
+      lastResult,
+
+      onValidate({formData}){
+         return parseWithZod(formData,{schema: transactionSchema});
+      },
+
+      shouldValidate: "onBlur",
+      shouldRevalidate: "onInput",
+   })
+
 
 
    return(
@@ -52,17 +77,28 @@ export function CreateTransactionSheet(){
                            </div>
                      </div>
                      <Separator className="my-4" />
+                     <ScrollArea className="w-full h-96">
 
                      <Card className="bg-zinc-800 border-zinc-700 shadow-md">
                         <CardContent className="p-3">
-                           <ScrollArea className="w-full h-96">
 
 
                            {/* <div className="divide-y divide-zinc-700"> */}
                               <form
                                  className="divide-y divide-zinc-700"
+                                 action={action}
+                                 id={form.id}
+                                 onSubmit={form.onSubmit}
+                                 noValidate
                               >
                                  {/* <div className="flex flex-col gap-1 w-fit mb-6"> */}
+
+                                 {/* Add this hidden input for the date */}
+                                 <input
+                                    type="hidden"
+                                    name={fields.date.name}
+                                    value={selectedDate.toISOString()}
+                                 />
 
                                  {/* Amount */}
                                  <div className="flex items-start gap-4 mb-6 ml-5 mt-5">
@@ -73,8 +109,14 @@ export function CreateTransactionSheet(){
                                        <Input 
                                           placeholder="Amount"
                                           className="  border-zinc-700 border-spacing-3 text-2xl font-mono mb-1 w-full h-8"
+                                          name={fields.amount.name}
+                                          key={fields.amount.key}
+                                          defaultValue={fields.amount.initialValue}
                                        />
                                        <p className="text-sm text-zinc-400 font-mono">Added about 17 hours ago</p>
+                                       <p className="text-sm text-red-500">
+                                          {fields.amount.errors}
+                                       </p>
 
                                     </div>
                                  </div>
@@ -105,7 +147,13 @@ export function CreateTransactionSheet(){
                                           <Input 
                                              placeholder="# 00"
                                              className="  border-zinc-700 border-spacing-3 text-2xl font-semibold mb-1 w-full h-8"
+                                             name={fields.transactionNumber.name}
+                                             key={fields.transactionNumber.key}
+                                             defaultValue={fields.transactionNumber.initialValue}
                                           />
+                                          <p className="text-sm text-red-500">
+                                             {fields.transactionNumber.errors}
+                                          </p>
                                        </div>
                                     </div>
 
@@ -120,7 +168,13 @@ export function CreateTransactionSheet(){
                                           <Input 
                                              placeholder="Sender Name"
                                              className="  border-zinc-700  border-spacing-3 text-2xl font-mono mb-1 w-full h-8"
+                                             name={fields.fromName.name}
+                                             key={fields.fromName.key}
+                                             defaultValue={fields.fromName.initialValue}
                                           />
+                                          <p className="text-sm text-red-500">
+                                                {fields.fromName.errors}
+                                          </p>
                                        </div>
                                     </div>
 
@@ -135,7 +189,13 @@ export function CreateTransactionSheet(){
                                           <Input 
                                              placeholder="Receiver Name"
                                              className="  border-zinc-700  border-spacing-3 text-2xl font-mono mb-1 w-full h-8"
+                                             name={fields.clientName.name}
+                                             key={fields.clientName.key}
+                                             defaultValue={fields.clientName.initialValue}
                                           />
+                                          <p className="text-sm text-red-500">
+                                             {fields.clientName.errors}
+                                          </p>
                                        </div>
                                     </div>
 
@@ -148,7 +208,9 @@ export function CreateTransactionSheet(){
                                        </Label>
                                        <Select
                                           defaultValue="INR"
-                                          
+                                          name={fields.currency.name}
+                                          key={fields.currency.key}
+                                          onValueChange={(value)=>setCurrency(value)}
                                        >
                                           <SelectTrigger className="border-zinc-700  border-spacing-3 text-sm font-mono mb-1 ml-8 w-full h-8">
                                              <SelectValue/>
@@ -187,10 +249,10 @@ export function CreateTransactionSheet(){
                                                    </PopoverTrigger>
                                                    <PopoverContent>
                                                       <Calendar
-                                                            selected = {selectedDate}
-                                                            onSelect={(date: any)=>setSelectedDate(date || new Date())}
-                                                            mode="single"
-                                                            fromDate={new Date()}
+                                                         selected = {selectedDate}
+                                                         onSelect={(date: any)=>setSelectedDate(date || new Date())}
+                                                         mode="single"
+                                                         fromDate={new Date()}
                                                       />
                                                    </PopoverContent>
                                                 </Popover>
@@ -208,8 +270,15 @@ export function CreateTransactionSheet(){
                                           <Input 
                                              placeholder="Account Name"
                                              className="  border-zinc-700  border-spacing-3 text-2xl font-mono mb-1 w-full h-8"
+                                             name={fields.accountName.name}
+                                             key={fields.accountName.key}
+                                             defaultValue={fields.accountName.initialValue}
                                           />
+                                          <p className="text-sm text-red-500">
+                                             {fields.accountName.errors}
+                                          </p>
                                        </div>
+                                       
                                     </div>
 
                                     {/* Transaction status */}
@@ -220,8 +289,9 @@ export function CreateTransactionSheet(){
                                           Status
                                        </Label>
                                        <Select
-                                          defaultValue="PENDING"
-                                          
+                                          name={fields.status.name}
+                                          key={fields.status.key}
+                                          defaultValue={fields.status.initialValue}
                                        >
                                           <SelectTrigger className="border-zinc-700 border-spacing-3 text-sm font-mono mb-1 ml-8 w-full h-8">
                                              <SelectValue/>
@@ -243,7 +313,9 @@ export function CreateTransactionSheet(){
                                        </Label>
                                        <Select
                                           defaultValue="EXPENSE"
-                                          
+                                          name={fields.category.name}
+                                          key={fields.category.key}
+                                          onValueChange={(value)=>setCategory(value)}
                                        >
                                           <SelectTrigger className="border-zinc-700 border-spacing-3 text-sm font-mono mb-1 ml-8 w-full h-8">
                                              <SelectValue/>
@@ -267,7 +339,9 @@ export function CreateTransactionSheet(){
                                        </Label>
                                        <Select
                                           defaultValue="CASH"
-                                          
+                                          name={fields.paymentMethod.name}
+                                          key={fields.paymentMethod.key}
+                                          onValueChange={(value)=>setPaymentMethod(value)}
                                        >
                                           <SelectTrigger className="border-zinc-700 border-spacing-3 text-sm font-mono mb-1 ml-8 w-full h-8">
                                              <SelectValue/>
@@ -291,21 +365,28 @@ export function CreateTransactionSheet(){
                                           <Textarea 
                                              placeholder="Description"
                                              className="  border-zinc-700  justify-center items-center border-spacing-3 text-2xl font-mono mb-1 w-full h-8"
+                                             name={fields.transactionDescription.name}
+                                             key={fields.transactionDescription.key}
+                                             defaultValue={fields.transactionDescription.initialValue}
                                           />
+                                          <p className="text-red-500 text-sm">
+                                             {fields.transactionDescription.errors}
+                                          </p>
                                        </div>
                                     </div>
 
                                  {/* </div> */}
                                  <SheetFooter className="flex justify-end mt-6">
-                                    <SheetClose asChild>
+                                    {/* <SheetClose asChild> */}
                                        <SubmitButton text="Create Record"/>
-                                    </SheetClose>
+                                    {/* </SheetClose> */}
                                  </SheetFooter>
                               </form>
-                           </ScrollArea>
                            {/* </div> */}
                         </CardContent>
                      </Card>
+                     </ScrollArea>
+
                   </SheetHeader>
                </div>
             </SheetContent>
