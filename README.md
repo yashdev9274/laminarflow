@@ -1,3 +1,5 @@
+![hero](public/github.png)
+
 # LaminarFlow
 
 A comprehensive FinTech platform designed for modern startups and businesses to streamline their financial operations, invoice management, and payment tracking.
