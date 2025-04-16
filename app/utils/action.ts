@@ -3,7 +3,7 @@
 import { redirect } from "next/navigation";
 import { prisma } from "./db";
 import { requireUser } from "./requireAuth"
-import { earlyAccessSchema, invoiceSchema, onboardingUserSchema } from "./zodSchema";
+import { earlyAccessSchema, invoiceSchema, onboardingUserSchema, transactionSchema } from "./zodSchema";
 import {parseWithZod} from "@conform-to/zod"
 import { emailClient } from "./mailtrap";
 import { formatCurrency } from "@/hooks/formatCurrency";
@@ -138,6 +138,33 @@ export async function createEarlyAccessUser(prevState: any, formData: FormData){
 
 // Create new transaction
 
-export async function createTransaction(prevState: any, fromData: FormData){
+export async function createTransaction(prevState: any, formData: FormData){
     
+    const session = await requireUser();
+    const submission = parseWithZod(formData, {
+        schema: transactionSchema,
+    });
+
+    if(submission.status !== "success"){
+        return submission.reply();
+    }
+
+    const data = await prisma.transactions.create({
+        data:{
+            fromName: submission.value.fromName,
+            clientName: submission.value.clientName,
+            transactionNumber: submission.value.transactionNumber,
+            amount: submission.value.amount,
+            currency: submission.value.currency,
+            category: submission.value.category,
+            transactionDescription: submission.value.transactionDescription,
+            accountName: submission.value.accountName,
+            date: submission.value.date,
+            status: submission.value.status,
+            paymentMethod: submission.value.paymentMethod,
+            userId: session.user?.id,
+        }
+    })
+
+    return redirect('/dashboard/transactions');
 }
