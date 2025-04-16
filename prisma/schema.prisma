@@ -28,6 +28,7 @@ model User {
   invoices Invoice[]
   earlyaccess EarlyAccess?
   companies Companies[]
+  transactions Transactions[]
   tasks Tasks[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -143,6 +144,8 @@ model Transactions{
   paymentMethod String
   createdAt DateTime @default(now())
   updateAt  DateTime @updatedAt
+  User User? @relation(fields: [userId], references: [id])
+  userId String?
 }
 
 enum TransactionStatus{
