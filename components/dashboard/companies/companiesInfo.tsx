@@ -16,7 +16,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 
-export default function TransactionInfo() {
+export default function CompaniesInfo() {
   const [step, setStep] = useState(1)
 
   const stepContent = [

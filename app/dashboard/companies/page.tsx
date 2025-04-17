@@ -1,3 +1,4 @@
+import CompaniesInfo from "@/components/dashboard/companies/companiesInfo";
 import CompaniesTable from "@/components/dashboard/companies/CompaniesTable";
 import { CreateCompaniesSheet } from "@/components/dashboard/companies/createCompaniesSheet";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -13,6 +14,7 @@ export default function Companies(){
                      <CardTitle  className="text-lg font-semibold">
                         <div className="flex items-center gap-4">
                            <Building2/> Companies
+                           <CompaniesInfo/>
                         </div>
                      </CardTitle>
                      <CardDescription className="text-sm">
