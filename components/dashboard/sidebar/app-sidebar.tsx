@@ -38,6 +38,7 @@ import {
 import { NavCrm } from "./nav-crm"
 import NavCommand  from "./nav-command"
 import Image from "next/image"
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card"
 
 const data = {
   user: {
@@ -127,38 +128,59 @@ const data = {
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar variant="inset" {...props}>
-      <SidebarHeader>
+      <SidebarHeader className="mt-4">
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton size="lg" asChild>
-              <a href="/dashboard">
-                <div >
-                  {/* <Command className="size-4" /> */}
-                  <Image 
-                    src="/LF-logo.png" 
-                    alt="LaminarFlow logo" 
-                    width={32} 
-                    height={32} 
-                    priority
-                  />
-                </div>
-                <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-semibold">LaminarFlow</span>
-                  <span className="truncate text-xs">Organization</span>
-                </div>
-              </a>
+            <SidebarMenuButton size="lg" asChild >
+              <HoverCard>
+                <HoverCardTrigger asChild>
+                  <a href="/dashboard"  className="flex gap-3">
+                    <div >
+                      {/* <Command className="size-4" /> */}
+                      <Image 
+                        src="/LF-logo.png" 
+                        alt="LaminarFlow logo" 
+                        width={32} 
+                        height={32} 
+                        priority
+                      />
+                    </div>
+                    <div className="grid flex-1 text-left text-sm leading-tight">
+                      <span className="truncate font-semibold">LaminarFlow</span>
+                      <span className="truncate text-xs">Open-source Fintech</span>
+                    </div>
+                  </a>
+                </HoverCardTrigger>
+                <HoverCardContent className="w-[320px] rounded ">
+                  <div className="space-y-3">
+                    <div className="space-y-1">
+                      <h2 className="font-semibold">
+                        Welcome to LaminarFlow
+                      </h2>
+                      <p className="text-muted-foreground text-sm">
+                        LaminarFlow is a modern, powerful, and affordable platform to manage your business's financial workflow
+                      </p>
+                    </div>
+                    {/* <div className="text-muted-foreground flex items-center gap-2 text-xs">
+                      <span>8 min read</span>
+                      <span>·</span>
+                      <span>Updated 2 days ago</span>
+                    </div> */}
+                  </div>
+                </HoverCardContent>
+              </HoverCard>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
-      <SidebarContent>
+      <SidebarContent className="mt-9">
         {/* <NavCommand/> */}
         <NavMain items={data.navMain} />
         <NavCrm items={data.navCrm} />
         {/* <NavProjects projects={data.projects} /> */}
-        <NavSecondary items={data.navSecondary} className="mt-auto" />
+        <NavSecondary items={data.navSecondary} className="mt-auto mb-5" />
       </SidebarContent>
-      <SidebarFooter>
+      <SidebarFooter className="mb-5">
         <NavUser user={data.user} />
       </SidebarFooter>
     </Sidebar>

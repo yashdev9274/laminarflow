@@ -2,7 +2,7 @@ import { prisma } from "@/app/utils/db";
 import { requireUser } from "@/app/utils/requireAuth";
 import { Badge } from "@/components/ui/badge";
 import { Table, TableBody, TableCaption, TableCell, TableHeader, TableRow } from "@/components/ui/table";
-import { Ellipsis } from "lucide-react";
+import { CheckIcon, Ellipsis } from "lucide-react";
 
 async function getData(userId: string){
    const data = await prisma.transactions.findMany({
@@ -57,7 +57,13 @@ export async function TransactionTable(){
                      <TableCell className="text-left">{transactions.accountName}</TableCell>
                      <TableCell className="text-left">{new Intl.DateTimeFormat("en-US",{dateStyle: "long"}).format(transactions.createdAt)}</TableCell>
                      <TableCell className="text-left">{transactions.paymentMethod}</TableCell>
-                     <TableCell className="text-left"><Badge className="rounded">{transactions.status}</Badge></TableCell>
+                     <TableCell className="text-left">
+                        <Badge variant="outline" className="gap-1 rounded">
+                           <CheckIcon className="text-emerald-500" size={12} aria-hidden="true"/>
+                           {transactions.status}
+
+                        </Badge>
+                     </TableCell>
                      <TableCell className="text-left"><Ellipsis/> </TableCell>
                   </TableRow>
                ))}
