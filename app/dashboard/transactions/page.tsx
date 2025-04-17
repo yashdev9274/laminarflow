@@ -1,4 +1,5 @@
 import { CreateTransactionSheet } from "@/components/dashboard/transactions/createTransactionSheet";
+import TransactionInfo from "@/components/dashboard/transactions/transactionInfo";
 import { TransactionTable } from "@/components/dashboard/transactions/TransactionTable";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { BadgeIndianRupee } from "lucide-react";
@@ -12,7 +13,10 @@ export default function Transactions(){
                   <div >
                      <CardTitle className="text-lg font-semibold">
                         <div className="flex items-center gap-4">
-                           <BadgeIndianRupee/> Transactions
+                           <BadgeIndianRupee/> 
+                           Transactions
+                           <TransactionInfo/>
+
                         </div>
                      </CardTitle>
                      <CardDescription className="text-sm">
