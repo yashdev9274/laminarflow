@@ -52,7 +52,7 @@ export default function Hero(){
             </div>
             <div className="grid grid-col mx-auto w-full max-w-4xl">
                 <Balancer className="text-shinyGray mx-auto mt-3 mb-5 text-center text-[15px] leading-tight sm:text-[22px] ">
-                    Manage your finances the way you want with <span className="font-mono">LaminarFlow</span> – a
+                    Manage your business with <span className="font-mono">LaminarFlow</span> – a
                     modern, powerful, and affordable platform to manage your business' financial workflow
                 </Balancer>
                 <RedirectButton text="Join Waitlist" href='/early-access'/>

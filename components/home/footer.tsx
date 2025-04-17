@@ -42,36 +42,39 @@ export default function Footer() {
           <div className="flex justify-center gap-8 text-sm">
             <Link 
               href="/" 
-              className="text-gray-400 hover:text-white transition-colors duration-200"
+              className="text-gray-400 font-mono hover:text-white transition-colors duration-200"
             >
               About
             </Link>
             <Link 
               href="/" 
-              className="text-gray-400 hover:text-white transition-colors duration-200"
+              className="text-gray-400 font-mono hover:text-white transition-colors duration-200"
             >
-              Privacy
+              User-Guide
             </Link>
             <Link 
               href="/" 
-              className="text-gray-400 hover:text-white transition-colors duration-200"
+              className="text-gray-400 font-mono hover:text-white transition-colors duration-200"
             >
-              Terms
+              Use Cases
             </Link>
             <Link 
-              href="/" 
-              className="text-gray-400 hover:text-white transition-colors duration-200"
+              href="https://github.com/yashdev9274/laminarflow?tab=readme-ov-file#contributing" 
+              className="text-gray-400 font-mono hover:text-white transition-colors duration-200"
             >
               Contributors
             </Link>
           </div>
 
-          <div className="text-center md:text-right text-sm text-gray-400">
+          <div className="text-center md:text-right text-sm font-mono text-gray-400">
             LaminarFlow Inc. © 2025
+            <div className="font-mono">
+              Made with ❤️ by Yash
+            </div>
           </div>
         </div>
         
-        <div className="mt-6 text-xs text-center text-gray-400">
+        <div className="mt-6 text-xs font-mono text-center text-gray-400">
             India
         </div>
       </div>
