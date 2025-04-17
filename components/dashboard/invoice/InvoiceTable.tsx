@@ -35,7 +35,7 @@ export async function InvoiceTable() {
     const session = await requireUser();
     const data = await getData(session.user?.id as string);
     return(
-        <div className="overflow-x-auto ml-2 min-h-[450px]">
+        <div className="overflow-x-auto ml-2 min-h-[450px] mt-7">
             <Table className="min-w-full">
                 <TableHeader>
                     <TableRow>
