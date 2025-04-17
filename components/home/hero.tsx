@@ -17,6 +17,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { NavbarDemo } from "../navbar/navbar"
 import IntroBar from "@/app/components/introBar"
+import { TypingText } from "../ui/typing-text"
 
 
 export default function Hero(){
@@ -47,7 +48,8 @@ export default function Hero(){
             <div>
                 <p className="text-center text-sm font-semibold leading-tight tracking-[-0.03em]  text-zinc-400 sm:text-6xl md:px-0">The #1 </p>
                 <p className="text-center text-4xl font-bold leading-tight tracking-[-0.03em]  text-white sm:text-6xl md:px-0"> 
-                    Open-Sourced Fintech 
+                    Open-Sourced <TypingText text="Fintech" cursor cursorClassName="h-9"/>
+
                 </p>
             </div>
             <div className="grid grid-col mx-auto w-full max-w-4xl">
