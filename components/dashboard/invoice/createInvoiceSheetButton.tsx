@@ -61,7 +61,7 @@ export function CreateInvoiceSheet() {
 
         <Sheet>
             <SheetTrigger asChild>
-                <Button variant="secondary" className="w-4 h-7">
+                <Button variant="secondary" className="hover:bg-neutral-900 font-bold py-2 px-4 rounded  w-4 h-6">
                     <PlusIcon/>
                 </Button>
             </SheetTrigger>

@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { ArrowRightIcon } from "lucide-react"
+import { ArrowLeftIcon, ArrowRightIcon, Info, InfoIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -16,29 +16,34 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 
-export default function TransactionInfo() {
+export default function TransactionsInfo() {
   const [step, setStep] = useState(1)
 
   const stepContent = [
     {
-      title: "Welcome to Origin UI",
+      title: "Welcome to Transaction by LaminarFLow",
       description:
-        "Discover a powerful collection of components designed to enhance your development workflow.",
+        "Discover a powerful way of creating transactional details to enhance your financial workflow.",
     },
     {
-      title: "Customizable Components",
+      title: "Customizable",
       description:
-        "Each component is fully customizable and built with modern web standards in mind.",
+        "You can customize any transactional record according to your needs.",
     },
     {
       title: "Ready to Start?",
       description:
-        "Begin building amazing interfaces with our comprehensive component library.",
+        "Begin with clicking on plus sign to generate new transactions.",
     },
     {
-      title: "Get Support",
+      title: "Next Step",
       description:
-        "Access our extensive documentation and community resources to make the most of Origin UI.",
+        "Fill out the details in form and create new record.",
+    },
+    {
+      title: "Edit/Download respective record",
+      description:
+        "You can edit as well as download your transactional data.",
     },
   ]
 
@@ -50,6 +55,12 @@ export default function TransactionInfo() {
     }
   }
 
+  const handleBack = () => {
+    if (step > 1) {
+      setStep(step - 1)
+    }
+  }
+
   return (
     <Dialog
       onOpenChange={(open) => {
@@ -57,9 +68,11 @@ export default function TransactionInfo() {
       }}
     >
       <DialogTrigger asChild>
-        <Button variant="outline" className="rounded-full w-7 h-7 p-0 flex items-center justify-center">?</Button>
+        <Button variant="ghost" className="rounded w-7 h-7 p-0 flex items-center justify-center">
+          <InfoIcon className="size-4" />
+        </Button>
       </DialogTrigger>
-      <DialogContent className="gap-0 p-0 [&>button:last-child]:text-white">
+      <DialogContent className="gap-0 p-0 [&>button:last-child]:text-white rounded">
         <div className="p-2">
           <img
             className="w-full rounded-md"
@@ -69,7 +82,7 @@ export default function TransactionInfo() {
             alt="dialog"
           />
         </div>
-        <div className="space-y-6 px-6 pt-3 pb-6">
+        <div className="space-y-6 px-6 pt-3 pb-6 rounded">
           <DialogHeader>
             <DialogTitle>{stepContent[step - 1].title}</DialogTitle>
             <DialogDescription>
@@ -89,14 +102,31 @@ export default function TransactionInfo() {
               ))}
             </div>
             <DialogFooter>
-              <DialogClose asChild>
-                <Button type="button" variant="ghost">
-                  Skip
+              {step > 1 ? (
+                <Button
+                  className="group rounded"
+                  type="button"
+                  variant="ghost"
+                  onClick={handleBack}
+                >
+                  <ArrowLeftIcon
+                    className="-ms-1 me-1 opacity-60 transition-transform group-hover:-translate-x-0.5"
+                    size={16}
+                    aria-hidden="true"
+                  />
+                  Back
                 </Button>
-              </DialogClose>
+              ) : (
+                <DialogClose asChild>
+                  <Button type="button" variant="ghost" className="rounded">
+                    Skip
+                  </Button>
+                </DialogClose>
+              )}
+              
               {step < totalSteps ? (
                 <Button
-                  className="group"
+                  className="group rounded"
                   type="button"
                   onClick={handleContinue}
                 >

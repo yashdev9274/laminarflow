@@ -28,7 +28,7 @@ export default function CompaniesTable(){
                   <TableCell className="text-right">Edit</TableCell>
                </TableRow>
             </TableBody>
-            <TableCaption className="mt-5"> Record of your transactions.</TableCaption>
+            <TableCaption className="mt-5"> Company's record.</TableCaption>
          </Table>
       </div>
    )
