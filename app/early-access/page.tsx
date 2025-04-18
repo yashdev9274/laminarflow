@@ -14,8 +14,8 @@ import { Input } from "@/components/ui/input"
 import { AnimatedGridPattern } from "@/components/earlyAccess/sqaureBgGrid"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
-import RedirectButton from "../components/redirectButton"
 import { AnimatedNumber } from "@/components/earlyAccess/animated-number"
+import BackRedirectButton from "../components/backRedirectButton"
 
 
 export default function EarlyAccess(){
@@ -55,7 +55,7 @@ export default function EarlyAccess(){
         <div>
             <header className="absolute left-4 top-4 md:left-8 md:top-8">
                     <div className="flex justify-between items-center container">                    
-                        <RedirectButton text="Back" href = "/"/>
+                        <BackRedirectButton text="Back" href = "/"/>
                     </div>
             </header>
         </div>
@@ -78,7 +78,7 @@ export default function EarlyAccess(){
                         <Input 
                             type="text" 
                             placeholder="you@example.com" 
-                            className="placeholder:text-sm md:w-80" 
+                            className="bg-[#1c1c1c] border-[#333] text-white h-8 w-full rounded"
                             name={fields.email.name}
                             key={fields.email.key}
                             defaultValue={fields.email.initialValue}
