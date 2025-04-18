@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { ArrowRightIcon } from "lucide-react"
+import { ArrowLeftIcon, ArrowRightIcon, Info, InfoIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -21,24 +21,29 @@ export default function InvoiceInfo() {
 
   const stepContent = [
     {
-      title: "Welcome to Origin UI",
+      title: "Welcome to Invoices by LaminarFLow",
       description:
-        "Discover a powerful collection of components designed to enhance your development workflow.",
+        "Discover a powerful way of creating invoices to enhance your financial workflow.",
     },
     {
-      title: "Customizable Components",
+      title: "Customizable",
       description:
-        "Each component is fully customizable and built with modern web standards in mind.",
+        "You can customize any invoices and its details according to your needs.",
     },
     {
       title: "Ready to Start?",
       description:
-        "Begin building amazing interfaces with our comprehensive component library.",
+        "Begin with clicking on plus sign to generate invoices.",
     },
     {
-      title: "Get Support",
+      title: "Next Step",
       description:
-        "Access our extensive documentation and community resources to make the most of Origin UI.",
+        "Fill out the details in form and create new record.",
+    },
+    {
+      title: "Edit/Download respective invoices",
+      description:
+        "You can edit as well as download your invoice data.",
     },
   ]
 
@@ -50,6 +55,12 @@ export default function InvoiceInfo() {
     }
   }
 
+  const handleBack = () => {
+    if (step > 1) {
+      setStep(step - 1)
+    }
+  }
+
   return (
     <Dialog
       onOpenChange={(open) => {
@@ -57,7 +68,9 @@ export default function InvoiceInfo() {
       }}
     >
       <DialogTrigger asChild>
-        <Button variant="outline" className="rounded-full w-7 h-7 p-0 flex items-center justify-center">?</Button>
+        <Button variant="ghost" className="rounded w-7 h-7 p-0 flex items-center justify-center">
+          <InfoIcon className="size-4" />
+        </Button>
       </DialogTrigger>
       <DialogContent className="gap-0 p-0 [&>button:last-child]:text-white">
         <div className="p-2">
@@ -89,11 +102,28 @@ export default function InvoiceInfo() {
               ))}
             </div>
             <DialogFooter>
-              <DialogClose asChild>
-                <Button type="button" variant="ghost">
-                  Skip
+              {step > 1 ? (
+                <Button
+                  className="group"
+                  type="button"
+                  variant="ghost"
+                  onClick={handleBack}
+                >
+                  <ArrowLeftIcon
+                    className="-ms-1 me-1 opacity-60 transition-transform group-hover:-translate-x-0.5"
+                    size={16}
+                    aria-hidden="true"
+                  />
+                  Back
                 </Button>
-              </DialogClose>
+              ) : (
+                <DialogClose asChild>
+                  <Button type="button" variant="ghost" className="rounded">
+                    Skip
+                  </Button>
+                </DialogClose>
+              )}
+              
               {step < totalSteps ? (
                 <Button
                   className="group"
