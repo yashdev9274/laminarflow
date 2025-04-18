@@ -1,3 +1,4 @@
+import LogoutComponent from "@/components/dashboard/sidebar/logoutCompnent";
 import { Card, CardContent } from "@/components/ui/card";
 
 export default function UserSettings(){
@@ -9,7 +10,7 @@ export default function UserSettings(){
                 </Card>
                 <div className="col-span-2">
                     <Card>
-                        settings
+                        <LogoutComponent/>
                     </Card>
                 </div>
             </div>
