@@ -6,6 +6,7 @@ import { auth, signIn } from "../utils/auth";
 import { requireUser } from "../utils/requireAuth";
 import { redirect } from "next/navigation";
 import SubmitButton from "../components/submitButton";
+import BackRedirectButton from "../components/backRedirectButton";
 
  export default async function Login() {
     const session = await auth()
@@ -14,7 +15,8 @@ import SubmitButton from "../components/submitButton";
     }
     return(
       <div className="flex h-screen w-full items-center justify-center">
-        <div className="flex h-mid-screen w-full max-w-md flex-col items-center space-y-6"> 
+
+        <div className="flex h-mid-screen w-full max-w-md flex-col items-center space-y-6 mt-5"> 
           <div className="text-center">
             <h1 className="text-xl font-medium text-white">
               {/* <Image
@@ -50,6 +52,14 @@ import SubmitButton from "../components/submitButton";
                 </div>
                 <SubmitButton text="LogIn"/>
               </form>
+              <div className="flex flex-col items-center justify-center mt-3">
+                <div className="flex items-center">
+                  <p className="text-sm text-neutral-500 mb-3">
+                    or
+                  </p>
+                </div>
+                <BackRedirectButton text="Back to homepage" href="/" />
+              </div>
               <div>
                 <p className="text-sm text-gray-500 mt-5 ">
                   Once you login, you will need to verify your email address to access LaminarFLow.
