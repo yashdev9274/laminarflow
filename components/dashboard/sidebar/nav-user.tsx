@@ -4,8 +4,10 @@ import {
   BadgeCheck,
   Bell,
   ChevronsUpDown,
+  CircleHelp,
   CreditCard,
   LogOut,
+  Settings,
   Sparkles,
 } from "lucide-react"
 
@@ -29,6 +31,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar"
+import Link from "next/link"
 
 export function NavUser({
   user,
@@ -91,6 +94,24 @@ export function NavUser({
               <DropdownMenuItem>
                 <BadgeCheck />
                 Dashboard
+              </DropdownMenuItem>
+            </DropdownMenuGroup>
+            <DropdownMenuSeparator />
+            <DropdownMenuGroup>
+              <DropdownMenuItem >
+                {/* <div className="flex items-center gap-2"> */}
+                  <Link href="/dashboard/account">
+                    <Settings/>
+                    User Settings
+                  </Link>
+                {/* </div> */}
+              </DropdownMenuItem>
+            </DropdownMenuGroup>
+            <DropdownMenuSeparator />
+            <DropdownMenuGroup>
+              <DropdownMenuItem>
+                <CircleHelp/>
+                Help Center
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
