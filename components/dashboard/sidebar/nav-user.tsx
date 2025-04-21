@@ -1,4 +1,5 @@
-"use client"
+'use client'
+
 
 import {
   BadgeCheck,
@@ -7,6 +8,7 @@ import {
   CircleHelp,
   CreditCard,
   LogOut,
+  MailOpenIcon,
   Settings,
   Sparkles,
 } from "lucide-react"
@@ -31,18 +33,40 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar"
+import { toast } from "sonner";
 import Link from "next/link"
+import { requireUser } from "@/app/utils/requireAuth"
+import { prisma } from "@/app/utils/db"
+import { redirect } from "next/navigation"
+import { useSession } from "next-auth/react"
 
-export function NavUser({
-  user,
-}: {
-  user: {
-    name: string
-    email: string
-    avatar: string
-  }
-}) {
+
+// async function getUser(userId: string){
+  
+//   const data = await prisma.user.findUnique({
+
+//     where:{
+//       id: userId,
+//     },
+//     select:{
+//       firstName: true,
+//       lastName: true,
+//       address: true,
+//     }
+//   })
+
+//   if(!data?.firstName || !data.lastName || !data.address){
+//     redirect('/onboarding');
+//   }
+// }
+
+export function NavUser() {
   const { isMobile } = useSidebar()
+
+  const {data: session, status}  = useSession();
+  
+  // const session = await requireUser();
+  // const data = await getUser(session.user?.id as string)
 
   return (
     <SidebarMenu>
@@ -54,12 +78,15 @@ export function NavUser({
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
             >
               <Avatar className="h-8 w-8 rounded-lg">
-                <AvatarImage src={user.avatar} alt={user.name} />
-                <AvatarFallback className="rounded-lg">LF</AvatarFallback>
+                <AvatarImage src={session?.user?.image || ''} alt={session?.user?.name || ''} />
+                <AvatarFallback className="rounded-lg">
+                {session?.user?.name?.charAt(0) ||
+                  session?.user?.email?.charAt(0)}
+                </AvatarFallback>
               </Avatar>
               <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-semibold">{user.name}</span>
-                <span className="truncate text-xs">{user.email}</span>
+                <span className="truncate font-semibold">{session?.user?.name || ""}</span>
+                <span className="truncate text-xs">{session?.user?.email || ""}</span>
               </div>
               <ChevronsUpDown className="ml-auto size-4" />
             </SidebarMenuButton>
@@ -73,12 +100,15 @@ export function NavUser({
             <DropdownMenuLabel className="p-0 font-normal">
               <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                 <Avatar className="h-8 w-8 rounded-lg">
-                  <AvatarImage src={user.avatar} alt={user.name} />
-                  <AvatarFallback className="rounded-lg">LF</AvatarFallback>
+                  <AvatarImage src={session?.user?.image || ''} alt={session?.user?.name || ''} />
+                  <AvatarFallback className="rounded-lg">
+                  {session?.user?.name?.charAt(0) ||
+                  session?.user?.email?.charAt(0)}
+                  </AvatarFallback>
                 </Avatar>
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-semibold">{user.name}</span>
-                  <span className="truncate text-xs">{user.email}</span>
+                  <span className="truncate font-semibold">{session?.user?.name || ""}</span>
+                  <span className="truncate text-xs">{session?.user?.email || ""}</span>
                 </div>
               </div>
             </DropdownMenuLabel>
@@ -109,9 +139,14 @@ export function NavUser({
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
-              <DropdownMenuItem>
-                <CircleHelp/>
-                Help Center
+              <DropdownMenuItem
+                onClick={() => {
+                  navigator.clipboard.writeText("yashdev.yvd@gmail.com");
+                  toast.success("yashdev.yvd@gmail.com copied to clipboard");
+                }}
+              >
+                <MailOpenIcon/>
+                Contact Us
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
