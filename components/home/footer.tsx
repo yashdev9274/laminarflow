@@ -47,10 +47,10 @@ export default function Footer() {
               About
             </Link>
             <Link 
-              href="/" 
+              href="/privacy" 
               className="text-gray-400 font-mono hover:text-white transition-colors duration-200"
             >
-              User-Guide
+              Privacy
             </Link>
             <Link 
               href="/" 
