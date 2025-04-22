@@ -7,6 +7,8 @@ import { earlyAccessSchema, invoiceSchema, onboardingUserSchema, transactionSche
 import {parseWithZod} from "@conform-to/zod"
 import { emailClient } from "./mailtrap";
 import { formatCurrency } from "@/hooks/formatCurrency";
+import { request } from "@arcjet/next";
+import aj from "@/lib/arcjet";
 
 export async function onboardUser(prevState: any, formData: FormData){
     const session = await requireUser(); 
@@ -140,31 +142,65 @@ export async function createEarlyAccessUser(prevState: any, formData: FormData){
 
 export async function createTransaction(prevState: any, formData: FormData){
     
-    const session = await requireUser();
-    const submission = parseWithZod(formData, {
-        schema: transactionSchema,
-    });
+    
+        
+        const session = await requireUser();
+        const submission = parseWithZod(formData, {
+            schema: transactionSchema,
+        });
 
-    if(submission.status !== "success"){
-        return submission.reply();
-    }
-
-    const data = await prisma.transactions.create({
-        data:{
-            fromName: submission.value.fromName,
-            clientName: submission.value.clientName,
-            transactionNumber: submission.value.transactionNumber,
-            amount: submission.value.amount,
-            currency: submission.value.currency,
-            category: submission.value.category,
-            transactionDescription: submission.value.transactionDescription,
-            accountName: submission.value.accountName,
-            date: submission.value.date,
-            status: submission.value.status,
-            paymentMethod: submission.value.paymentMethod,
-            userId: session.user?.id,
+        if(submission.status !== "success"){
+            return submission.reply();
         }
-    })
 
-    return redirect('/dashboard/transactions');
+        // get request for arcjet
+        const req = await request();
+
+        // check rate limit
+
+        // const userId = session?.user?.id as string;
+
+        const decision = await aj.protect(req,{
+            requested:1,
+
+        })
+
+        if (decision.isDenied()){
+            if(decision.reason.isRateLimit()){
+                const {remaining,reset} =  decision.reason;
+                console.error({
+                    code: "RATE_LIMIT_EXCEEDED",
+                    details:{
+                        remaining,
+                        resetInSeconds: reset,
+                    }
+                });
+
+                throw new Error("Rate limit exceeded. Please try again later.");
+            }
+            throw new Error("Request blocked.");
+        }
+
+        const data = await prisma.transactions.create({
+            data:{
+                fromName: submission.value.fromName,
+                clientName: submission.value.clientName,
+                transactionNumber: submission.value.transactionNumber,
+                amount: submission.value.amount,
+                currency: submission.value.currency,
+                category: submission.value.category,
+                transactionDescription: submission.value.transactionDescription,
+                accountName: submission.value.accountName,
+                date: submission.value.date,
+                status: submission.value.status,
+                paymentMethod: submission.value.paymentMethod,
+                userId: session.user?.id,
+            }
+        })
+
+        return redirect('/dashboard/transactions');
+
+    
+
+    
 }
