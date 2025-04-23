@@ -35,6 +35,37 @@ export default function PrivacyPage(){
                </p>
             </div>
          )
+      },
+      {
+         title: "1. Information we collect",
+         content: (
+            <div>
+               <h2>We collect personal information in the following ways:</h2>
+               
+               <div className="mt-4 mb-4">
+                  <h4 className="mt-3 font-semibold">Google Account Integration:</h4>
+                  <p className="mb-4 mt-4">When you use Zero with your Google Account:</p>
+                  <ul className="ml-4 list-disc space-y-2">
+                     <li>We request access to your Gmail data only after receiving your explicit consent</li>
+                     <li>We access only the necessary Gmail API scopes required for email functionality</li>
+                     <li>Your Google account credentials are never stored on our servers</li>
+                     <li>We use secure OAuth 2.0 authentication provided by Google</li>
+                     <li>
+                        You can revoke our access to your Google account at any time through your Google Account
+                        settings
+                     </li>
+                  </ul>
+               </div>
+               <div className="mt-4 mb-4">
+                  <h4 className="mt-3 mb-4">Directly from you:</h4>
+                  <ul className="ml-4 list-disc space-y-2">
+                     <li>When you create an account, manage billing, or interact with our support team.</li>
+                     <li>When you submit or view invoices, upload documents, or communicate with clients.</li>
+                  </ul>
+               </div>
+
+            </div>
+         )
       }
    ]
 
@@ -77,9 +108,9 @@ export default function PrivacyPage(){
                               className=" flex flex-col group rounded-xl border border-gray-200  p-6 transition-all border-gray-800/10 bg-black/20 hover:border-gray-700/30 hover:bg-black/30"
                            >
                               <div className="mb-4 flex flex-col">
-                                 <h2 className="text-xl font-semibold tracking-tight text-neutral-100 dark:text-white">
+                                 <h1 className="text-xl font-semibold tracking-tight text-neutral-100 dark:text-white">
                                     {section.title}
-                                 </h2>
+                                 </h1>
                                  <button
                                     onClick={()=> handleCopyLink(sectionId)}
                                     className="text-muted-foreground text-neutral-400 transition-all hover:text-neutral-700 dark:hover:text-white ml-auto"
