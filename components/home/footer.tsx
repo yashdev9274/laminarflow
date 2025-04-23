@@ -53,10 +53,10 @@ export default function Footer() {
               Privacy
             </Link>
             <Link 
-              href="/" 
+              href="/terms" 
               className="text-gray-400 font-mono hover:text-white transition-colors duration-200"
             >
-              Use Cases
+              Terms
             </Link>
             <Link 
               href="https://github.com/yashdev9274/laminarflow?tab=readme-ov-file#contributing" 
