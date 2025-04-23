@@ -45,7 +45,7 @@ export function NavbarDemo() {
   }
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full border">
       <Navbar>
         {/* Desktop Navigation */}
         <NavBody>
