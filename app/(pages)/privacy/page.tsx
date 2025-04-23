@@ -6,10 +6,10 @@ import Footer from "@/components/home/footer";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 import { createSectionId } from "@/lib/utils";
-import { Link2 } from "lucide-react";
+import { Github, Link2, Mail } from "lucide-react";
 import { useRouter } from "next/navigation";
 
-const LAST_UPDATED = ''
+const LAST_UPDATED = 'April 23,2025'
 
 export default function PrivacyPage(){
 
@@ -64,6 +64,51 @@ export default function PrivacyPage(){
                   </ul>
                </div>
 
+            </div>
+         )
+      },
+      {
+         title: "2. How We Use Your Information",
+         content: (
+            <div>
+                  <p >We use your information to:</p>
+               <ul className="ml-4 list-disc space-y-2 mt-2">
+                  <li>Deliver and operate LaminarFlow’s services.</li>
+                  <li>Process invoices, track project milestones, and manage financial workflows.</li>
+                  <li>Send service-related emails and updates.</li>
+               </ul>
+            </div>
+         )
+      },
+      {
+         title:"3. Contact Us",
+         content: (
+            <div className="space-y-3">
+               <p>For any questions about this policy or your personal data, reach out to:</p>
+               <div className="flex flex-col space-y-2">
+                  <a
+                     href="mailto:yashdev.yvd@gmail.com"
+                     className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors"
+                  >
+                     <Mail className="mr-2 h-4 w-4"/>
+                     yashdev.yvd@gmail.com
+                  </a>
+                  <a
+                     href="https://github.com/yashdev9274/laminarflow"
+                     className="inline-flex items-center text-blue-600 hover:text-blue-800"
+                  >
+                     <Github className="mr-2 h-4 w-4" />
+                     Open an issue on GitHub
+                  </a>
+               </div>
+            </div>
+         )
+      },
+      {
+         title:"Updates to this Policy",
+         content: (
+            <div>
+               LaminarFlow is an open-sourced product, and this Privacy Policy may be updated from time to time. We will notify you of any changes by posting the new Privacy Policy on our website. You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.
             </div>
          )
       }
