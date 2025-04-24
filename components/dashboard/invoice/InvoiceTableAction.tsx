@@ -4,6 +4,7 @@ import { DropdownMenu,DropdownMenuTrigger,
     DropdownMenuGroup,
     DropdownMenuItem } from "../../ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function InvoiceTableAction({ status, id }: { status: string; id: string }) {
     return(
@@ -15,8 +16,16 @@ export default function InvoiceTableAction({ status, id }: { status: string; id:
             </DropdownMenuTrigger>
             <DropdownMenuContent align='end'>
                 <DropdownMenuGroup>
-                    <DropdownMenuItem><FolderOpen/> Open</DropdownMenuItem>
-                    <DropdownMenuItem><PenBoxIcon/> Edit</DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <Link href={`/dashboard/invoices/${id}`}>
+                        <FolderOpen  /> Open
+                      </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                        <Link href={`/dashboard/invoices/${id}/edit`}>
+                            <PenBoxIcon/> Edit
+                        </Link>
+                    </DropdownMenuItem>
                     <DropdownMenuItem><Trash2Icon/> Delete</DropdownMenuItem>
                     <DropdownMenuItem><Download/> Download</DropdownMenuItem>
                 </DropdownMenuGroup>
