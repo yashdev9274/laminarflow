@@ -1,4 +1,4 @@
-import { Download, MoreHorizontal, PenBoxIcon, Trash2Icon } from "lucide-react";
+import { Download, FolderOpen, MoreHorizontal, PenBoxIcon, Trash2Icon } from "lucide-react";
 import { DropdownMenu,DropdownMenuTrigger,
     DropdownMenuContent,
     DropdownMenuGroup,
@@ -15,6 +15,7 @@ export default function InvoiceTableAction({ status, id }: { status: string; id:
             </DropdownMenuTrigger>
             <DropdownMenuContent align='end'>
                 <DropdownMenuGroup>
+                    <DropdownMenuItem><FolderOpen/> Open</DropdownMenuItem>
                     <DropdownMenuItem><PenBoxIcon/> Edit</DropdownMenuItem>
                     <DropdownMenuItem><Trash2Icon/> Delete</DropdownMenuItem>
                     <DropdownMenuItem><Download/> Download</DropdownMenuItem>

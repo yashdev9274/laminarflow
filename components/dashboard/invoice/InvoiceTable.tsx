@@ -44,18 +44,18 @@ export async function InvoiceTable() {
                         <th className="text-left">Amount</th>
                         <th className="text-left">Date</th>
                         <th className="text-left">Status</th>
-                        <th className="text-right">Action</th>
+                        <th className="text-left">Action</th>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
                     {data.map((invoice)=>(
                         <TableRow key={invoice.id}>
-                            <TableCell>{invoice.invoiceNumber}</TableCell>
-                            <TableCell>{invoice.clientName}</TableCell>
-                            <TableCell>{formatCurrency({amount: invoice.total, currency: invoice.currency as any})}</TableCell>
-                            <TableCell>{new Intl.DateTimeFormat("en-US",{dateStyle: "long"}).format(invoice.createdAt)}</TableCell>
-                            <TableCell><Badge>{invoice.status}</Badge></TableCell>
-                            <TableCell><InvoiceTableAction status={invoice.status} id={invoice.id}/></TableCell>
+                            <TableCell className="text-left">{invoice.invoiceNumber}</TableCell>
+                            <TableCell className="text-left">{invoice.clientName}</TableCell>
+                            <TableCell className="text-left">{formatCurrency({amount: invoice.total, currency: invoice.currency as any})}</TableCell>
+                            <TableCell className="text-left">{new Intl.DateTimeFormat("en-US",{dateStyle: "long"}).format(invoice.createdAt)}</TableCell>
+                            <TableCell className="text-left"><Badge>{invoice.status}</Badge></TableCell>
+                            <TableCell className="text-left"><InvoiceTableAction status={invoice.status} id={invoice.id}/></TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
