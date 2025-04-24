@@ -23,7 +23,7 @@ import { TypingText } from "../ui/typing-text"
 export default function Hero(){
 
     return(
-        <div className="mt-2">
+        <div className="mt-7">
             <header className="relative top-0 mb-5 ml-10 bg-background/60 backdrop-blur">
                 {/* <div className="flex justify-between items-center container"> */}
                     {/* <Link href='/' className='relative mr-6 flex items-center space-x-2'> */}
