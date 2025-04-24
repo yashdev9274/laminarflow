@@ -3,6 +3,7 @@ import { requireUser } from "@/app/utils/requireAuth";
 import { Badge } from "@/components/ui/badge";
 import { Table, TableBody, TableCaption, TableCell, TableHeader, TableRow } from "@/components/ui/table";
 import { CheckIcon, Ellipsis } from "lucide-react";
+import TransactionTableAction from "./transactionTableAction";
 
 async function getData(userId: string){
    const data = await prisma.transactions.findMany({
@@ -64,7 +65,7 @@ export async function TransactionTable(){
 
                         </Badge>
                      </TableCell>
-                     <TableCell className="text-left"><Ellipsis/> </TableCell>
+                     <TableCell className="text-left"><TransactionTableAction status={transactions.status} id={transactions.id}/> </TableCell>
                   </TableRow>
                ))}
             </TableBody>
