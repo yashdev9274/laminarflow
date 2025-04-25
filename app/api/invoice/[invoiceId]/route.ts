@@ -6,10 +6,10 @@ export async function GET(
   {
     params,
   }: {
-    params: Promise<{ invoiceId: string }>;
+    params: { invoiceId: string };
   }
 ) {
-  const { invoiceId } = await params;
+  const { invoiceId } = params;
 
   const data = await prisma.invoice.findUnique({
     where: {
