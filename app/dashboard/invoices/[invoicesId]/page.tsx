@@ -1,3 +1,7 @@
+import { prisma } from "@/app/utils/db";
+// import InvoicesEditPage from "../../../../components/dashboard/invoice/page";
+import { notFound } from "next/navigation";
+import { requireUser } from "@/app/utils/requireAuth";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -6,13 +10,56 @@ import { Separator } from "@/components/ui/separator";
 import { ChevronLeft, MapPin, Twitter, User2Icon, X } from "lucide-react";
 import Link from "next/link";
 
+async function getData(invoiceId: string, userId: string){
+    if (!invoiceId || !userId) {
+        // console.error("Missing invoiceId or userId:", { invoiceId, userId });
+        return null;
+    }
 
-export default function InvoicesIdPage(){
+    const data = await prisma.invoice.findUnique({
+        where:{
+            id: invoiceId,
+            userId: userId,
+        },
+    });
+
+    // console.log("Fetched Data:", data);
+
+    if(!data){
+        return null;
+    }
+
+    return data;
+}
+
+// The folder name is [invoicesId] so we use that exact name here
+export default async function InvoicesIdPage({
+    params
+}: {
+    params: { invoicesId: string }
+}){
+    // console.log("Raw params:", params);
+    
+    // Directly access the parameter using the name from your folder structure
+    const invoicesId = params.invoicesId;
+    // console.log("invoicesId value:", invoicesId);
+    
+    const session = await requireUser();
+    
+    if (!invoicesId) {
+        // console.error("Invoice ID is undefined");
+        return <div className="text-red-500">Invalid invoice ID.</div>;
+    }
+    
+    const data = await getData(invoicesId, session.user?.id as string);
+    
+    if (!data) {
+        return notFound();
+    }
+
     return(
-        <div className="flex text-gray-300">
-            
+        <div className="flex text-gray-300">    
             {/* Left side */}
-
 
             <div className="w-[410px]  p-6 ml-9 flex flex-col gap-4">
                 <Card >
