@@ -24,7 +24,7 @@ export default function Hero(){
 
     return(
         <div className="mt-7">
-            <header className="relative top-0 mb-5 ml-10 bg-background/60 backdrop-blur">
+            <header className="relative border rounded border-[#565555] bg-neutral-900 top-0 mb-5 ml-10 bg-background/60 backdrop-blur">
                 {/* <div className="flex justify-between items-center container"> */}
                     {/* <Link href='/' className='relative mr-6 flex items-center space-x-2'> */}
                         {/* <span className="text-2xl font-bold px-10 text-white">LF</span> */}
