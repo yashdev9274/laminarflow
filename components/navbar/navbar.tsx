@@ -28,6 +28,10 @@ export function NavbarDemo() {
       link: "#contact",
     },
     {
+      name: "Blog",
+      link: "/blog/laminarflow-launch",
+    },
+    {
       name: "Contribute",
       link: "https://git.new/laminarflow",
     },
