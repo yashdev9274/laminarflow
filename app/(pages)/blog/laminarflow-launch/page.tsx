@@ -11,14 +11,17 @@ import Image from "next/image";
 import LFlogo from "@/public/LF-logo.png";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useRef } from "react";
 
 const PUBLISH_DATE = 'April 23,2025'
 
-export default function PrivacyPage(){
+export default function LaminarFlowLaunchPage(){
 
    const router = useRouter();
+
    const {copiedValue: copiedSection , copyToClipboard}  = useCopyToClipboard();
 
+   const sectionRefs = useRef<{[key: string]: HTMLDivElement | null}>({})
    const handleCopyLink = (sectionId: string) => {
       const url = `${window.location.origin}${window.location.pathname}#${sectionId}`;
       copyToClipboard(url, sectionId);
@@ -161,15 +164,31 @@ export default function PrivacyPage(){
                      
                            {/* Section  */}
                            <div className="space-y-8 p-8">
+
+                              <div className="px-8">
+                                 <div className="relative aspect-video w-full overflow-hidden rou mb-8">
+                                    <Image
+                                       src="/placeholder.svg?height=480&width=800"
+                                       alt="LaminarFlow Logo"
+                                       width={800}
+                                       height={480}
+                                       className="object-cover object-center"
+                                       priority
+                                    />
+                                    <div className="absolute top-4 right-4 bg-gray-900/80 text-white text-xs px-2 py-1 rounded-full">
+                                       NEW
+                                    </div>
+                                 </div>
+                              </div>
                               {sections.map((section)=>{
                                  const sectionId = createSectionId(section.title);
-                                 
-                                 
                                  return(
                                     <div
-                                       key= {section.title}
+                                       key={section.title}
                                        id={sectionId}
-                                       className=" flex flex-col group rounded-xl border border-gray-200  p-6 transition-all border-gray-800/10 bg-black/20"
+                                       // ref={(el) => (sectionRefs.current[sectionId] = el)}
+                                       ref={(el) => { if (el) sectionRefs.current[sectionId] = el; }}
+                                       className="flex flex-col group rounded-xl border border-gray-200 p-6 transition-all border-gray-800/10 bg-black/20"
                                     >
                                        <div className="mb-4 flex flex-col">
                                           <h1 className="text-xl font-semibold tracking-tight text-neutral-100 dark:text-white">

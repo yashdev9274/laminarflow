@@ -44,7 +44,7 @@ export default function PrivacyPage(){
                
                <div className="mt-4 mb-4">
                   <h4 className="mt-3 font-semibold">Google Account Integration:</h4>
-                  <p className="mb-4 mt-4">When you use Zero with your Google Account:</p>
+                  <p className="mb-4 mt-4">When you use LaminarFlow with your Google Account:</p>
                   <ul className="ml-4 list-disc space-y-2">
                      <li>We request access to your Gmail data only after receiving your explicit consent</li>
                      <li>We access only the necessary Gmail API scopes required for email functionality</li>
