@@ -11,7 +11,7 @@ import Image from "next/image";
 import LFlogo from "@/public/LF-logo.png";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const PUBLISH_DATE = 'April 23,2025'
@@ -27,6 +27,38 @@ export default function LaminarFlowLaunchPage(){
       const url = `${window.location.origin}${window.location.pathname}#${sectionId}`;
       copyToClipboard(url, sectionId);
    };
+
+   const scrollToSection = (sectionId: string) =>{
+      const section = document.getElementById(sectionId);
+      if(section){
+         section.scrollIntoView({behavior: "smooth"})
+      }
+   }
+
+   const [activeSection, setActiveSection] = useState<string>("")
+
+   useEffect(()=>{
+      const observer = new IntersectionObserver(
+         (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                setActiveSection(entry.target.id)
+              }
+            })
+          },
+          { rootMargin: "-100px 0px -80% 0px" },
+      )
+
+      Object.values(sectionRefs.current).forEach((ref) => {
+         if (ref) observer.observe(ref)
+       })
+   
+       return () => {
+         Object.values(sectionRefs.current).forEach((ref) => {
+           if (ref) observer.unobserve(ref)
+         })
+       }
+   },[])
 
 
    const sections = [
@@ -142,9 +174,9 @@ export default function LaminarFlowLaunchPage(){
                            <div className="space-y-6 text-center">
                               
                               <div className="flex flex-wrap gap-3">
-                                 <Link href="/blog/laminarflow-launch">
+                                 <Link href="/blog/company">
                                     <span className="inline-flex rounded items-center border bg-white border-[#565555] px-3 py-1 text-sm text-black">
-                                       Company News
+                                       Company
                                     </span>
                                  </Link>
                                  <div className="flex items-center justify-center gap-2">
@@ -222,25 +254,50 @@ export default function LaminarFlowLaunchPage(){
 
                   {/* side-content */}
 
-                  <div className="lg:col-span-1">
+                  <div className="lg:col-span-1 sticky">
                      <div className="sticky top-20 space-y-8">
-                        <Card className="rounded-xl border border-[#565555] bg-neutral-900 p-6 shadow-sm">
+                        <Card className="sticky rounded-xl border border-[#565555] bg-neutral-900 p-6 shadow-sm">
                            <CardTitle className="mb-4 text-lg font-medium">Written by</CardTitle>
                               <CardContent>
                                  <div className="flex items-center gap-3">
                                     <Avatar>
-                                       <AvatarImage src="/placeholder.svg?height=40&width=40" alt="Yash Dewasthale" />
-                                       <AvatarFallback>YD</AvatarFallback>
+                                       {/* <AvatarImage src="/placeholder.svg?height=40&width=40" alt="Yash Dewasthale" /> */}
+                                       <AvatarFallback>
+                                          <AvatarImage src="/placeholder.svg?height=40&width=40" alt="Yash Dewasthale" />
+                                       </AvatarFallback>
                                     </Avatar>
                                     <div className="flex flex-col">
                                        <Link href="https://dub.sh/yashdew"><p className="font-medium">Yash Dewasthale</p></Link>
-                                       <p className=" relative text-sm text-gray-500">Creator of <Link href="https://www.lamflo.xyz"><p className="text-sm text-gray-200">LaminarFlow</p></Link></p>
+                                       <Link href="https://www.lamflo.xyz"><p className="text-sm text-gray-200"> Creator of LaminarFlow</p></Link>
                                     </div>
                                  </div>
                               </CardContent>
                         </Card>
 
                         {/* side-navigation */}
+
+                        <div className="sticky top-20 rounded-xl border border-gray-100 p-6 shadow-sm">
+                           <h3 className="mb-4 text-lg font-medium flex items-center">
+                              <span>On this page</span>
+                           </h3>
+                           <nav
+                              className="space-y-1">
+                              {sections.map((section)=>{
+                                 const sectionId = createSectionId(section.title)
+                                 return(
+                                    <button
+                                       key={section.title}
+                                       onClick={()=> scrollToSection(sectionId)}
+                                       className={`block w-full text-left px-3 py-2 text-black text-sm rounded transition-colors ${activeSection === sectionId ? "bg-gray-100 text-black font-medium"
+                            : "text-white hover:bg-gray-50"} `}
+                                    >
+                                       {section.title}
+
+                                    </button>
+                                 )
+                              })}
+                           </nav>
+                        </div>
                         
                      </div>
                   </div>
