@@ -6,15 +6,16 @@ import Footer from "@/components/home/footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 import { createSectionId } from "@/lib/utils";
-import { Github, Link2, Mail } from "lucide-react";
+import { ArrowRight, Github, Link2, Mail } from "lucide-react";
 import Image from "next/image";
 import LFlogo from "@/public/LF-logo.png";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 
-const PUBLISH_DATE = 'April 23,2025'
+const PUBLISH_DATE = 'April ,2025'
 
 export default function LaminarFlowLaunchPage(){
 
@@ -63,56 +64,58 @@ export default function LaminarFlowLaunchPage(){
 
    const sections = [
       {
-         title: "Our commitment to privacy",
+         title: "",
          content: (
             <div>
                <p>
-                  At LaminarFlow, we respects your privacy and is committed to protecting the personal information you provide when you interact with our platform. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our services, including through our website, web application, support communications, and integrated services.
+                  Since we have first announced LaminarFlow about a month ago, more than 150 users have signed up for waitlist.
                </p>
                <p className="mt-4">
-                  This Privacy Policy also explains your rights regarding your personal information and how you can contact us with questions.
+                  Today we're excited to announce the public launch of LaminarFlow v0.1 + waitlist to help you manage your business faster and easier.
                </p>
             </div>
          )
       },
       {
-         title: "1. Information we collect",
+         title: "What is LaminarFlow?",
          content: (
-            <div>
-               <h2>We collect personal information in the following ways:</h2>
-               
-               <div className="mt-4 mb-4">
-                  <h4 className="mt-3 font-semibold">Google Account Integration:</h4>
-                  <p className="mb-4 mt-4">When you use Zero with your Google Account:</p>
-                  <ul className="ml-4 list-disc space-y-2">
-                     <li>We request access to your Gmail data only after receiving your explicit consent</li>
-                     <li>We access only the necessary Gmail API scopes required for email functionality</li>
-                     <li>Your Google account credentials are never stored on our servers</li>
-                     <li>We use secure OAuth 2.0 authentication provided by Google</li>
-                     <li>
-                        You can revoke our access to your Google account at any time through your Google Account
-                        settings
-                     </li>
-                  </ul>
-               </div>
-               <div className="mt-4 mb-4">
-                  <h4 className="mt-3 mb-4">Directly from you:</h4>
-                  <ul className="ml-4 list-disc space-y-2">
-                     <li>When you create an account, manage billing, or interact with our support team.</li>
-                     <li>When you submit or view invoices, upload documents, or communicate with clients.</li>
-                  </ul>
-               </div>
+            <div>               
+               <div className="mt-4">
+                  {/* <h4 className="mt-3 font-semibold">Google Account Integration:</h4> */}
+                  <p className="mb-4 mt-4 text-sm text-neutral-400">
+                     LaminarFlow is a modern, powerful, and affordable platform
+                     to manage your business's financial workflow.
+                     <p className="mt-3">
+                        We are in world which is growing faster than we can ever imagine, 
+                        and in such world it is very hectic to build business with managing your finances, clients, and projects.
+                        <p>
+                           This is where LaminarFLow comes in.
+                        </p>
+                     </p>
+                  </p>
 
+                  <div className="text-sm">
+                     <h3 className="mb-3">LaminarFlow helps you:</h3>
+                     <ul className="ml-4 list-disc space-y-2">
+                        <li>Track your business's income and expenses.</li>
+                        <li>Monitor and automate payments.</li>
+                        <li>Manage and track your transactions.</li>
+                        <li>Create and customizable professional invoices.</li>
+                        <li>Get a report on your business finances.</li>
+                        <li>Manage your customers/clients.</li>
+                     </ul>
+                  </div>
+               </div>
             </div>
          )
       },
       {
-         title: "2. How We Use Your Information",
+         title: "How does it works?",
          content: (
             <div>
                   <p >We use your information to:</p>
                <ul className="ml-4 list-disc space-y-2 mt-2">
-                  <li>Deliver and operate LaminarFlow’s services.</li>
+                  <li>Deliver and operate LaminarFlow's services.</li>
                   <li>Process invoices, track project milestones, and manage financial workflows.</li>
                   <li>Send service-related emails and updates.</li>
                </ul>
@@ -120,7 +123,7 @@ export default function LaminarFlowLaunchPage(){
          )
       },
       {
-         title:"3. Contact Us",
+         title:"Create Invoices",
          content: (
             <div className="space-y-3">
                <p>For any questions about this policy or your personal data, reach out to:</p>
@@ -144,7 +147,47 @@ export default function LaminarFlowLaunchPage(){
          )
       },
       {
-         title:"Updates to this Policy",
+         title:"Create transactions",
+         content: (
+            <div>
+               LaminarFlow is an open-sourced product, and this Privacy Policy may be updated from time to time. We will notify you of any changes by posting the new Privacy Policy on our website. You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.
+            </div>
+         )
+      },
+      {
+         title:"Export your financial data",
+         content: (
+            <div>
+               LaminarFlow is an open-sourced product, and this Privacy Policy may be updated from time to time. We will notify you of any changes by posting the new Privacy Policy on our website. You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.
+            </div>
+         )
+      },
+      {
+         title:"Your financial analytics",
+         content: (
+            <div>
+               LaminarFlow is an open-sourced product, and this Privacy Policy may be updated from time to time. We will notify you of any changes by posting the new Privacy Policy on our website. You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.
+            </div>
+         )
+      },
+      {
+         title:"Create your client",
+         content: (
+            <div>
+               LaminarFlow is an open-sourced product, and this Privacy Policy may be updated from time to time. We will notify you of any changes by posting the new Privacy Policy on our website. You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.
+            </div>
+         )
+      },
+      {
+         title:"On what LaminarFlow is built upon?",
+         content: (
+            <div>
+               LaminarFlow is an open-sourced product, and this Privacy Policy may be updated from time to time. We will notify you of any changes by posting the new Privacy Policy on our website. You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.
+            </div>
+         )
+      },
+      {
+         title:"Get started today",
          content: (
             <div>
                LaminarFlow is an open-sourced product, and this Privacy Policy may be updated from time to time. We will notify you of any changes by posting the new Privacy Policy on our website. You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.
@@ -157,6 +200,7 @@ export default function LaminarFlowLaunchPage(){
    return(
       <div className="relative flex min-h-screen w-full flex-col overflow-auto bg-black">
 
+         {/* Back button */}
          <div>
             <header className="absolute left-4 top-4 md:left-8 md:top-8">
                   <div className="flex justify-between items-center container">                    
@@ -165,15 +209,15 @@ export default function LaminarFlowLaunchPage(){
             </header>
          </div>
 
-         <div className="container mx-auto max-w-6xl px-4 py-16">
-               <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+         <div className="container mx-auto max-w-6xl px-4 py-8 md:py-16">
+               <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-8">
                   <div className="lg:col-span-2">
                      <Card className="overflow-hidden rounded-xl border-none shadow-md backdrop-blur-lg bg-black/40">
 
-                        <CardHeader className="space-y-4  px-8 py-8 bg-black/60">
+                        <CardHeader className="space-y-4  px-4 py-4 md:px-8 md:py-8 bg-black/60">
                            <div className="space-y-6 text-center">
                               
-                              <div className="flex flex-wrap gap-3">
+                              <div className="flex flex-wrap gap-3 justify-center">
                                  <Link href="/blog/company">
                                     <span className="inline-flex rounded items-center border bg-white border-[#565555] px-3 py-1 text-sm text-black">
                                        Company
@@ -185,21 +229,29 @@ export default function LaminarFlowLaunchPage(){
                                     </p>
                                  </div>
                               </div>
-                              <CardTitle className="text-4xl font-bold tracking-tight text-neutral-100 md:text-4xl dark:text-white">
+                              <CardTitle className="text-3xl md:text-4xl font-bold tracking-tight text-neutral-100 dark:text-white">
                                  Introducing LaminarFlow
                               </CardTitle>
                               
-                              <p className="text-lg text-neutral-500">
-                                 Introducing LaminarFlow.
-                              </p>
+                              <div>
+                                 
+                                 <p className="text-lg text-neutral-500">
+                                    A modern, powerful, and affordable platform
+                                    <p>
+
+                                       to manage your business's financial workflow.
+                                    </p>
+                                 </p>
+                              </div>
                            </div>
                         </CardHeader>
                      
                            {/* Section  */}
-                           <div className="space-y-8 p-8">
+                           <div className="space-y-8 p-4 md:p-8">
 
+                              {/* Image Banner */}
                               <div className="px-8">
-                                 <div className="relative aspect-video w-full overflow-hidden rou mb-8">
+                                 <div className="relative rounded-2xl aspect-video w-full overflow-hidden rou mb-8">
                                     <Image
                                        src="/banner-2.png"
                                        alt="LaminarFlow Logo"
@@ -213,6 +265,9 @@ export default function LaminarFlowLaunchPage(){
                                     </div>
                                  </div>
                               </div>
+
+                              {/* Mapping blog content */}
+
                               {sections.map((section)=>{
                                  const sectionId = createSectionId(section.title);
                                  return(
@@ -254,9 +309,11 @@ export default function LaminarFlowLaunchPage(){
 
                   {/* side-content */}
 
-                  <div className="lg:col-span-1 sticky">
+                  <div className="lg:col-span-1 sticky top-20 space-y-8">
                      <div className="sticky top-20 space-y-8">
-                        <Card className="sticky rounded-xl border border-[#565555] bg-neutral-900 p-6 shadow-sm">
+
+                        {/* Author Card */}
+                        <Card className="rounded-xl border border-[#565555] bg-neutral-900 p-6 shadow-sm">
                            <CardTitle className="mb-4 text-lg font-medium">Written by</CardTitle>
                               <CardContent>
                                  <div className="flex items-center gap-3">
@@ -276,7 +333,7 @@ export default function LaminarFlowLaunchPage(){
 
                         {/* side-navigation */}
 
-                        <div className="sticky top-20 rounded-xl border border-gray-100 p-6 shadow-sm">
+                        <div className="rounded-xl border border-[#565555] p-6 shadow-sm">
                            <h3 className="mb-4 text-lg font-medium flex items-center">
                               <span>On this page</span>
                            </h3>
@@ -289,7 +346,7 @@ export default function LaminarFlowLaunchPage(){
                                        key={section.title}
                                        onClick={()=> scrollToSection(sectionId)}
                                        className={`block w-full text-left px-3 py-2 text-black text-sm rounded transition-colors ${activeSection === sectionId ? "bg-gray-100 text-black font-medium"
-                            : "text-white hover:bg-gray-50"} `}
+                           : "text-white hover:bg-gray-50"} `}
                                     >
                                        {section.title}
 
@@ -297,6 +354,35 @@ export default function LaminarFlowLaunchPage(){
                                  )
                               })}
                            </nav>
+                        </div>
+                        
+                        {/* LF Card */}
+                        <div className="rounded-xl border border-[#565555] p-6 shadow-sm">
+                           <div className="aspect-video relative overflow-hidden rounded-lg mb-4">
+                              <Image
+                              src="/LF-banner.png"
+                              alt="Dub dashboard"
+                              width={300}
+                              height={200}
+                              className="object-cover rounded"
+                              />
+                           </div>
+                           <h3 className="text-xl font-bold mb-2">Try LaminarFlow for free</h3>
+                           <Link
+                              href="/"
+                           >
+                              <Button
+                                 className=" inline-flex items-center group justify-center rounded-full bg-neutral-950 border border-[#565555] px-4 py-2 text-sm font-medium text-neutral-300 transition-colors hover:bg-zinc-800 mt-2"
+
+                              >
+                                 Get started
+                                 <ArrowRight
+                                    className="-ms-1 me-1 opacity-60 transition-transform group-hover:translate-x-0.5"
+                                    size={16}
+                                    aria-hidden="true"
+                                 />
+                              </Button>
+                           </Link>
                         </div>
                         
                      </div>
