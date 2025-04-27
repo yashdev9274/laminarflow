@@ -128,7 +128,7 @@ export default function LaminarFlowLaunchPage(){
          <div>
             <header className="absolute left-4 top-4 md:left-8 md:top-8">
                   <div className="flex justify-between items-center container">                    
-                     <BackRedirectButton text="Back" href = "/"/>
+                     <BackRedirectButton text="Back" href = "/blog/company"/>
                   </div>
             </header>
          </div>
@@ -224,7 +224,7 @@ export default function LaminarFlowLaunchPage(){
 
                   <div className="lg:col-span-1">
                      <div className="sticky top-20 space-y-8">
-                        <Card className="rounded-xl border border-[#565555] p-6 shadow-sm">
+                        <Card className="rounded-xl border border-[#565555] bg-neutral-900 p-6 shadow-sm">
                            <CardTitle className="mb-4 text-lg font-medium">Written by</CardTitle>
                               <CardContent>
                                  <div className="flex items-center gap-3">
@@ -232,8 +232,8 @@ export default function LaminarFlowLaunchPage(){
                                        <AvatarImage src="/placeholder.svg?height=40&width=40" alt="Yash Dewasthale" />
                                        <AvatarFallback>YD</AvatarFallback>
                                     </Avatar>
-                                    <div>
-                                       <p className="font-medium">Yash Dewasthale</p>
+                                    <div className="flex flex-col">
+                                       <Link href="https://dub.sh/yashdew"><p className="font-medium">Yash Dewasthale</p></Link>
                                        <p className=" relative text-sm text-gray-500">Creator of <Link href="https://www.lamflo.xyz"><p className="text-sm text-gray-200">LaminarFlow</p></Link></p>
                                     </div>
                                  </div>
