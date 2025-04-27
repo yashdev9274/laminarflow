@@ -34,7 +34,7 @@ export default function Blogs(){
       {
         id: "1",
         title: "LaminarFlow Launch",
-        image: "/placeholder.svg?height=400&width=600",
+        image: "/banner-2.png",
         categories: {
             id: "company",
             name: "Company",
@@ -42,14 +42,14 @@ export default function Blogs(){
         },
         author: {
           name: "Yash Dewasthale",
-          avatar: "/placeholder.svg?height=40&width=40",
+          avatar: "/pfp.png",
           date: "Apr 23, 2025",
         },
       },
       {
         id: "2",
         title: "How to warm up a new domain",
-        image: "/placeholder.svg?height=400&width=600",
+        image: "/banner-2.png",
         categories: {
             id: "education",
             name: "Education",
@@ -58,7 +58,7 @@ export default function Blogs(){
         label: "Guide",
         author: {
           name: "Yash Dewasthale",
-          avatar: "/placeholder.svg?height=40&width=40",
+          avatar: "/pfp.png",
           date: "Apr 18, 2025",
         },
       },
@@ -86,7 +86,7 @@ export default function Blogs(){
             <div className="flex justify-between items-center mb-16">
                <h1 className="text-5xl font-bold">Blog</h1>
                <button className="flex items-center gap-2 px-4 py-2 rounded-full border border-[#565555] bg-white transition-colors">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="feather feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
                   <span className="text-black">Subscribe</span>
                </button>
             </div>
