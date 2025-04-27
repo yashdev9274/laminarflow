@@ -3,6 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 import CompanyBlogs from "./company/page"
 import BackRedirectButton from "@/app/components/backRedirectButton"
+import Footer from "@/components/home/footer"
 
 interface Author {
    name: string
@@ -71,13 +72,22 @@ export default function Blogs(){
    return(
       <div className="min-h-screen bg-black text-white px-4 py-12 md:px-8 lg:px-12">
          
-         <div className="max-w-7xl mx-auto">
+
+         <div>
+            <header className="absolute left-4 top-4 md:left-8 md:top-8">
+                  <div className="flex justify-between items-center container">                    
+                     <BackRedirectButton text="Back" href = "/blog"/>
+                  </div>
+            </header>
+         </div>
+
+         <div className="max-w-7xl mx-auto py-11">
          {/* Header */}
             <div className="flex justify-between items-center mb-16">
                <h1 className="text-5xl font-bold">Blog</h1>
-               <button className="flex items-center gap-2 px-4 py-2 rounded-full border border-gray-700 hover:bg-gray-900 transition-colors">
-                  <Bell size={16} />
-                  <span>Subscribe</span>
+               <button className="flex items-center gap-2 px-4 py-2 rounded-full border border-[#565555] bg-white transition-colors">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="feather feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                  <span className="text-black">Subscribe</span>
                </button>
             </div>
 
@@ -90,7 +100,7 @@ export default function Blogs(){
                   >
                      <button
                      className={`px-4 py-2 rounded border border-[#565555] text-sm font-medium transition-colors ${
-                        categories.name === "All" ? "bg-white text-black" : "bg-gray-900 text-white hover:bg-gray-800"
+                        categories.name === "All" ? "bg-white text-black" : "bg-neutral-800 text-white hover:bg-black"
                      }`}
                      >
                      {categories.name}
@@ -174,6 +184,8 @@ export default function Blogs(){
                ))}
             </div>
          </div>
+
+         <Footer/>
       </div>
    )
 }

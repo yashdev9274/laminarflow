@@ -1,4 +1,5 @@
 import BackRedirectButton from "@/app/components/backRedirectButton"
+import Footer from "@/components/home/footer"
 import { Bell } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
@@ -77,7 +78,8 @@ export default function Blogs(){
                   </div>
             </header>
          </div>
-         <div className="max-w-7xl mx-auto">
+
+         <div className="max-w-7xl mx-auto py-11">
             {/* Header */}
             <div className="flex justify-between items-center mb-16">
                <h1 className="text-5xl font-bold">Blog</h1>
@@ -96,7 +98,7 @@ export default function Blogs(){
                   >
                      <button
                      className={`px-4 py-2 rounded border border-[#565555] text-sm font-medium transition-colors ${
-                        categories.name === "All" ? "bg-white text-black" : "bg-gray-900 text-white hover:bg-gray-800"
+                        categories.name === "Company" ? "bg-white text-black" : "bg-neutral-800 text-white hover:bg-black"
                      }`}
                      >
                      {categories.name}
@@ -180,6 +182,8 @@ export default function Blogs(){
                ))}
             </div>
          </div>
+
+         <Footer/>
     </div>
    )
 }
