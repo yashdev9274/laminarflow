@@ -201,7 +201,7 @@ export default function LaminarFlowLaunchPage(){
                               <div className="px-8">
                                  <div className="relative aspect-video w-full overflow-hidden rou mb-8">
                                     <Image
-                                       src="/placeholder.svg?height=480&width=800"
+                                       src="/banner-2.png"
                                        alt="LaminarFlow Logo"
                                        width={800}
                                        height={480}
@@ -263,7 +263,7 @@ export default function LaminarFlowLaunchPage(){
                                     <Avatar>
                                        {/* <AvatarImage src="/placeholder.svg?height=40&width=40" alt="Yash Dewasthale" /> */}
                                        <AvatarFallback>
-                                          <AvatarImage src="/placeholder.svg?height=40&width=40" alt="Yash Dewasthale" />
+                                          <AvatarImage src="/pfp.png" alt="Yash Dewasthale" />
                                        </AvatarFallback>
                                     </Avatar>
                                     <div className="flex flex-col">

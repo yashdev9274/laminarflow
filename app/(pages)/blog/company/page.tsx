@@ -33,7 +33,7 @@ export default function Blogs(){
       {
         id: "1",
         title: "LaminarFlow Launch",
-        image: "/placeholder.svg?height=400&width=600",
+        image: "/banner-2.png",
         categories: {
             id: "company",
             name: "Company",
@@ -41,14 +41,14 @@ export default function Blogs(){
         },
         author: {
           name: "Yash Dewasthale",
-          avatar: "/placeholder.svg?height=40&width=40",
+          avatar: "/pfp.png",
           date: "Apr 23, 2025",
         },
       },
       {
         id: "2",
         title: "How to warm up a new domain",
-        image: "/placeholder.svg?height=400&width=600",
+        image: "/banner-2.png",
         categories: {
             id: "education",
             name: "Education",
@@ -57,7 +57,7 @@ export default function Blogs(){
         label: "Guide",
         author: {
           name: "Yash Dewasthale",
-          avatar: "/placeholder.svg?height=40&width=40",
+          avatar: "/pfp.png",
           date: "Apr 18, 2025",
         },
       },
