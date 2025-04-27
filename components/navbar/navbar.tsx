@@ -29,7 +29,7 @@ export function NavbarDemo() {
     },
     {
       name: "Blog",
-      link: "/blog/laminarflow-launch",
+      link: "/blog",
     },
     {
       name: "Contribute",

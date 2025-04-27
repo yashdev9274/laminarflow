@@ -3,7 +3,7 @@
 import BackRedirectButton from "@/app/components/backRedirectButton";
 import { SectionCards } from "@/components/home/demo/sectionCards";
 import Footer from "@/components/home/footer";
-import { Card, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 import { createSectionId } from "@/lib/utils";
 import { Github, Link2, Mail } from "lucide-react";
@@ -12,6 +12,7 @@ import LFlogo from "@/public/LF-logo.png";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useRef } from "react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const PUBLISH_DATE = 'April 23,2025'
 
@@ -127,7 +128,7 @@ export default function LaminarFlowLaunchPage(){
          <div>
             <header className="absolute left-4 top-4 md:left-8 md:top-8">
                   <div className="flex justify-between items-center container">                    
-                     <BackRedirectButton text="Back" href = "/"/>
+                     <BackRedirectButton text="Back" href = "/blog/company"/>
                   </div>
             </header>
          </div>
@@ -191,23 +192,25 @@ export default function LaminarFlowLaunchPage(){
                                        className="flex flex-col group rounded-xl border border-gray-200 p-6 transition-all border-gray-800/10 bg-black/20"
                                     >
                                        <div className="mb-4 flex flex-col">
-                                          <h1 className="text-xl font-semibold tracking-tight text-neutral-100 dark:text-white">
-                                             {section.title}
-                                          </h1>
-                                          <button
-                                             onClick={()=> handleCopyLink(sectionId)}
-                                             className="text-muted-foreground text-neutral-400 transition-all hover:text-neutral-700 dark:hover:text-white ml-auto"
-                                             aria-label={`Copy link to ${section.title} section`}
-                                          >
-                                             <Link2
-                                                className={`h-4 w-4 ${copiedSection === sectionId ? 'text-red-600 dark:text-black' : ''}`}
-                                             />
-                                          </button>      
-                                          <div
-                                             className="prose prose-sm prose-invert prose-a:text-neutral-100 hover:prose-a:text-blue-200 max-w-none text-neutral-300 "
-                                          >
-                                             {section.content}
-                                          </div>                        
+                                          {/* <div className="flex items-center"> */}
+                                             <h1 className="text-xl font-semibold tracking-tight text-neutral-100 dark:text-white">
+                                                {section.title}
+                                             </h1>
+                                             <button
+                                                onClick={()=> handleCopyLink(sectionId)}
+                                                className="text-muted-foreground text-neutral-400 transition-all hover:text-neutral-700 dark:hover:text-white ml-auto"
+                                                aria-label={`Copy link to ${section.title} section`}
+                                             >
+                                                <Link2
+                                                   className={`h-4 w-4 ${copiedSection === sectionId ? 'text-red-600 dark:text-black' : ''}`}
+                                                />
+                                             </button>      
+                                             <div
+                                                className="prose prose-lg max-w-none text-neutral-300 "
+                                             >
+                                                {section.content}
+                                             </div>                        
+                                          {/* </div> */}
                                        </div>
                                     </div>
                                  )
@@ -215,6 +218,31 @@ export default function LaminarFlowLaunchPage(){
                               <div className="mt-12 flex flex-wrap items-center justify-center gap-4"></div>
                            </div>
                      </Card>
+                  </div>
+
+                  {/* side-content */}
+
+                  <div className="lg:col-span-1">
+                     <div className="sticky top-20 space-y-8">
+                        <Card className="rounded-xl border border-[#565555] bg-neutral-900 p-6 shadow-sm">
+                           <CardTitle className="mb-4 text-lg font-medium">Written by</CardTitle>
+                              <CardContent>
+                                 <div className="flex items-center gap-3">
+                                    <Avatar>
+                                       <AvatarImage src="/placeholder.svg?height=40&width=40" alt="Yash Dewasthale" />
+                                       <AvatarFallback>YD</AvatarFallback>
+                                    </Avatar>
+                                    <div className="flex flex-col">
+                                       <Link href="https://dub.sh/yashdew"><p className="font-medium">Yash Dewasthale</p></Link>
+                                       <p className=" relative text-sm text-gray-500">Creator of <Link href="https://www.lamflo.xyz"><p className="text-sm text-gray-200">LaminarFlow</p></Link></p>
+                                    </div>
+                                 </div>
+                              </CardContent>
+                        </Card>
+
+                        {/* side-navigation */}
+                        
+                     </div>
                   </div>
                </div>
 
