@@ -40,3 +40,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# public asset
+/public/asset/*
+/public/asset/LF-main.mp4

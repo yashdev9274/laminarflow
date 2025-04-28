@@ -6,7 +6,7 @@ import Footer from "@/components/home/footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 import { createSectionId } from "@/lib/utils";
-import { ArrowRight, Github, Link2, Mail } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Github, Link2, Mail } from "lucide-react";
 import Image from "next/image";
 import LFlogo from "@/public/LF-logo.png";
 import { useRouter } from "next/navigation";
@@ -15,7 +15,7 @@ import { useEffect, useRef, useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 
-const PUBLISH_DATE = 'April ,2025'
+const PUBLISH_DATE = 'May 1,2025'
 
 export default function LaminarFlowLaunchPage(){
 
@@ -82,7 +82,7 @@ export default function LaminarFlowLaunchPage(){
             <div>               
                <div className="mt-4">
                   {/* <h4 className="mt-3 font-semibold">Google Account Integration:</h4> */}
-                  <p className="mb-4 mt-4 text-sm text-neutral-400">
+                  <p className="mb-4 mt-4 text-mid text-neutral-400">
                      LaminarFlow is a modern, powerful, and affordable platform
                      to manage your business's financial workflow.
                      <p className="mt-3">
@@ -113,8 +113,18 @@ export default function LaminarFlowLaunchPage(){
          title: "How does it works?",
          content: (
             <div>
-                  <p >We use your information to:</p>
-               <ul className="ml-4 list-disc space-y-2 mt-2">
+               <div className="w-full mt-4 max-w-2xl rounded-lg overflow-hidden shadow-lg bg-black">
+                  <video
+                     className="w-full h-auto"
+                     controls
+                      // Optional: thumbnail before play
+                  >
+                     <source src="/asset/LF-main.mp4" type="video/mp4" />
+                     Your browser does not support the video tag.
+                  </video>
+               </div>
+               <p className="mb-4 mt-4 text-mid text-neutral-300">We use your information to:</p>
+               <ul className="ml-4 list-disc space-y-2 mt-2 text-mid">
                   <li>Deliver and operate LaminarFlow's services.</li>
                   <li>Create and manage payments, transactions.</li>
                   <li>Process invoices, track project milestones, and manage financial workflows.</li>
@@ -127,23 +137,26 @@ export default function LaminarFlowLaunchPage(){
          title:"Create Invoices",
          content: (
             <div className="space-y-3">
-               <p>For any questions about this policy or your personal data, reach out to:</p>
-               <div className="flex flex-col space-y-2">
-                  <a
-                     href="mailto:yashdev.yvd@gmail.com"
-                     className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors"
+               <span className="mb-4 mt-4 text-mid text-neutral-400">
+                  You can easily create invoices for your business, and track them:
+                  <ul className="ml-4 list-disc text-mid space-y-2 mt-2">
+                     <li> Go to Invoices</li>
+                     <li> Click on plus icon</li>
+                     <li> Fill out all the details and create new record</li>
+                     <li> In order to pay respective invoice click action button and pay with DoDoPayments</li>
+                  </ul>
+               </span>
+               <div className="w-full mt-4 max-w-2xl rounded-lg overflow-hidden shadow-lg bg-black">
+                  <video
+                     className="w-full h-auto"
+                     controls
+                      // Optional: thumbnail before play
                   >
-                     <Mail className="mr-2 h-4 w-4"/>
-                     yashdev.yvd@gmail.com
-                  </a>
-                  <a
-                     href="https://github.com/yashdev9274/laminarflow"
-                     className="inline-flex items-center text-blue-600 hover:text-blue-800"
-                  >
-                     <Github className="mr-2 h-4 w-4" />
-                     Open an issue on GitHub
-                  </a>
+                     <source src="/asset/LF-invoice.mp4" type="video/mp4" />
+                     Your browser does not support the video tag.
+                  </video>
                </div>
+               
             </div>
          )
       },
@@ -151,7 +164,26 @@ export default function LaminarFlowLaunchPage(){
          title:"Create transactions",
          content: (
             <div>
-               LaminarFlow is an open-sourced product, and this Privacy Policy may be updated from time to time. We will notify you of any changes by posting the new Privacy Policy on our website. You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.
+               <span className="mb-4 mt-4 text-mid text-neutral-400">
+                  You can easily create transactions for your business, and track them:
+                  <ul className="ml-4 list-disc text-mid space-y-2 mt-2">
+                     <li> Go to Transactions</li>
+                     <li> Click on plus icon</li>
+                     <li> Fill out all the details and create new record</li>
+                     <li> In order to pay respective transactions click action button and pay with DoDoPayments</li>
+                  </ul>
+               </span>
+               <div className="w-full mt-8 max-w-2xl rounded-lg overflow-hidden shadow-lg bg-black">
+                  <video
+                     className="w-full h-auto"
+                     controls
+                      // Optional: thumbnail before play
+                  >
+                     <source src="/asset/LF-transactions.mp4" type="video/mp4" />
+                     Your browser does not support the video tag.
+                  </video>
+               </div>
+               
             </div>
          )
       },
@@ -159,7 +191,15 @@ export default function LaminarFlowLaunchPage(){
          title:"Export your financial data",
          content: (
             <div>
-               LaminarFlow is an open-sourced product, and this Privacy Policy may be updated from time to time. We will notify you of any changes by posting the new Privacy Policy on our website. You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.
+               <span className="mb-4 mt-4 text-mid text-neutral-400">
+                  You can easily export financial data and report your business:
+                  <ul className="ml-4 list-disc text-mid space-y-2 mt-2">
+                     <li> Go to table action</li>
+                     <li> Click on download</li>
+                     <li> You'll be redirected to export page</li>
+                     <li> Now you can download your data in pdf</li>
+                  </ul>
+               </span>
             </div>
          )
       },
@@ -175,7 +215,24 @@ export default function LaminarFlowLaunchPage(){
          title:"Create your client",
          content: (
             <div>
-               LaminarFlow is an open-sourced product, and this Privacy Policy may be updated from time to time. We will notify you of any changes by posting the new Privacy Policy on our website. You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.
+               <span className="mb-4 mt-4 text-mid text-neutral-400">
+                  You can also create your client's details:
+                  <ul className="ml-4 list-disc text-mid space-y-2 mt-2">
+                     <li> Go to Companies section</li>
+                     <li> Click on plus icon</li>
+                     <li> Fill out all the details and create new record</li>
+                  </ul>
+               </span>
+               <div className="w-full mt-8 max-w-2xl rounded-lg overflow-hidden shadow-lg bg-black">
+                  <video
+                     className="w-full h-auto"
+                     controls
+                      // Optional: thumbnail before play
+                  >
+                     <source src="/asset/LF-companies.mp4" type="video/mp4" />
+                     Your browser does not support the video tag.
+                  </video>
+               </div>
             </div>
          )
       },
@@ -183,7 +240,20 @@ export default function LaminarFlowLaunchPage(){
          title:"On what LaminarFlow is built upon?",
          content: (
             <div>
-               LaminarFlow is an open-sourced product, and this Privacy Policy may be updated from time to time. We will notify you of any changes by posting the new Privacy Policy on our website. You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.
+               <span className="mb-4 mt-4 text-mid text-neutral-400">
+                  LaminarFlow is built upon modern tools and technologies to provide you with the best experience:
+                  <ul className="ml-4 list-disc text-mid space-y-2 mt-2">
+                     <li> Next.js</li>
+                     <li>TypeScript</li>
+                     <li>Tailwind CSS</li>
+                     <li>ShadcnUI</li>
+                     <li>Auth.js</li>
+                     <li>Prisma</li>
+                     <li>PostgreSQL</li>
+                     <li>Neon</li>
+                     <li>Resend</li>
+                  </ul>
+               </span>
             </div>
          )
       },
@@ -191,7 +261,25 @@ export default function LaminarFlowLaunchPage(){
          title:"Get started today",
          content: (
             <div>
-               LaminarFlow is an open-sourced product, and this Privacy Policy may be updated from time to time. We will notify you of any changes by posting the new Privacy Policy on our website. You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.
+               <span className="mb-4 mt-4 text-mid text-neutral-400">
+                  Join us now:
+                  <div className="mt-5">
+                     <Link
+                        href="/"
+                     >
+                        <Button
+                           className=" inline-flex items-center group justify-center rounded-full bg-neutral-950 border border-[#565555] px-4 py-2 text-sm font-medium text-neutral-300 transition-colors hover:bg-zinc-800 mt-2"
+                        >
+                           Get started
+                           <ArrowUpRight
+                              className="-ms-1 me-1 opacity-60 transition-transform group-hover:translate-x-0.5"
+                              size={16}
+                              aria-hidden="true"
+                           />
+                        </Button>
+                     </Link>
+                  </div>
+               </span>
             </div>
          )
       }
@@ -347,7 +435,7 @@ export default function LaminarFlowLaunchPage(){
                                        key={section.title}
                                        onClick={()=> scrollToSection(sectionId)}
                                        className={`block w-full text-left px-3 py-2 text-black text-sm rounded transition-colors ${activeSection === sectionId ? "bg-gray-100 text-black font-medium"
-                           : "text-white hover:bg-gray-50"} `}
+                           : "text-white hover:bg-gray-50 hover:text-black"} `}
                                     >
                                        {section.title}
 
