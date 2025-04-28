@@ -114,14 +114,14 @@ export default function LaminarFlowLaunchPage(){
          content: (
             <div>
                <div className="w-full mt-4 max-w-2xl rounded-lg overflow-hidden shadow-lg bg-black">
-                  <video
-                     className="w-full h-auto"
-                     controls
-                      // Optional: thumbnail before play
-                  >
-                     <source src="/asset/LF-main.mp4" type="video/mp4" />
-                     Your browser does not support the video tag.
-                  </video>
+               <iframe
+                  className="w-full aspect-video"
+                  src="https://cap.link/sk4tch3rqvnpdwc"
+                  title="How does it work?"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+               ></iframe>
                </div>
                <p className="mb-4 mt-4 text-mid text-neutral-300">We use your information to:</p>
                <ul className="ml-4 list-disc space-y-2 mt-2 text-mid">
@@ -146,15 +146,15 @@ export default function LaminarFlowLaunchPage(){
                      <li> In order to pay respective invoice click action button and pay with DoDoPayments</li>
                   </ul>
                </span>
-               <div className="w-full mt-4 max-w-2xl rounded-lg overflow-hidden shadow-lg bg-black">
-                  <video
-                     className="w-full h-auto"
-                     controls
-                      // Optional: thumbnail before play
-                  >
-                     <source src="/asset/LF-invoice.mp4" type="video/mp4" />
-                     Your browser does not support the video tag.
-                  </video>
+               <div className="w-full mt-8 max-w-2xl rounded-lg overflow-hidden shadow-lg bg-black">
+                  <iframe
+                     className="w-full aspect-video"
+                     src="https://cap.link/webhty92jdm77bs"
+                     title="How does it work?"
+                     frameBorder="0"
+                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                     allowFullScreen
+                  ></iframe>
                </div>
                
             </div>
@@ -174,14 +174,14 @@ export default function LaminarFlowLaunchPage(){
                   </ul>
                </span>
                <div className="w-full mt-8 max-w-2xl rounded-lg overflow-hidden shadow-lg bg-black">
-                  <video
-                     className="w-full h-auto"
-                     controls
-                      // Optional: thumbnail before play
-                  >
-                     <source src="/asset/LF-transactions.mp4" type="video/mp4" />
-                     Your browser does not support the video tag.
-                  </video>
+                  <iframe
+                     className="w-full aspect-video"
+                     src="https://cap.link/q5nnp3gbpkxxq0v"
+                     title="How does it work?"
+                     frameBorder="0"
+                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                     allowFullScreen
+                  ></iframe>
                </div>
                
             </div>
@@ -224,14 +224,14 @@ export default function LaminarFlowLaunchPage(){
                   </ul>
                </span>
                <div className="w-full mt-8 max-w-2xl rounded-lg overflow-hidden shadow-lg bg-black">
-                  <video
-                     className="w-full h-auto"
-                     controls
-                      // Optional: thumbnail before play
-                  >
-                     <source src="/asset/LF-companies.mp4" type="video/mp4" />
-                     Your browser does not support the video tag.
-                  </video>
+                  <iframe
+                     className="w-full aspect-video"
+                     src="https://cap.link/fyavbvyrfqz0gy0"
+                     title="How does it work?"
+                     frameBorder="0"
+                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                     allowFullScreen
+                  ></iframe>
                </div>
             </div>
          )
@@ -252,6 +252,8 @@ export default function LaminarFlowLaunchPage(){
                      <li>PostgreSQL</li>
                      <li>Neon</li>
                      <li>Resend</li>
+                     <li>Arcjet</li>
+                     <li>DoDoPayment + Stripe</li>
                   </ul>
                </span>
             </div>
