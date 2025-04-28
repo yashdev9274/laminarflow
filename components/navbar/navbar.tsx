@@ -11,9 +11,14 @@ import {
   MobileNavToggle,
   MobileNavMenu,
 } from "@/components/navbar/resizeableNavbar";
+import { useSession } from "next-auth/react";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 
 export function NavbarDemo() {
+
+  const { data: session } = useSession();
+
   const navItems = [
     {
       name: "Features",
@@ -21,11 +26,11 @@ export function NavbarDemo() {
     },
     {
       name: "Pricing",
-      link: "#pricing",
+      link: "/pricing",
     },
     {
       name: "Contact",
-      link: "#contact",
+      link: "mailto:yashdev.yvd@gmail.com",
     },
     {
       name: "Blog",
@@ -56,7 +61,14 @@ export function NavbarDemo() {
           <NavbarLogo />
           <NavItems items={navItems} />
           <div className="flex items-center gap-4">
-            <NavbarButton className="bg-hidden text-white" variant="secondary">Login</NavbarButton>
+            <NavbarButton className="bg-hidden text-white" variant="secondary">
+              {/* <Link
+                href={session?'/dashboard':"/login"}
+              >
+                {session?'Login':'Get Started'}
+              </Link> */}
+              Login
+            </NavbarButton>
             <NavbarButton variant="primary" className="rounded bg-white text-black font-bold" href = "https://cal.link/LF-Founder-chat">Book a call</NavbarButton>
             {/* <RedirectButton text="Contact for Demo" href = "https://cal.link/LF-Founder-chat" className="align-right rounded" /> */}
           </div>
@@ -92,6 +104,11 @@ export function NavbarDemo() {
                 variant="primary"
                 className="w-full"
               >
+                {/* <Link
+                  href={session?'/dashboard':"/login"}
+                >
+                  {session?'Login':'Get Started'}
+                </Link> */}
                 Login
               </NavbarButton>
               <NavbarButton
