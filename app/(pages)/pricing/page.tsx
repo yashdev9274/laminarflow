@@ -1,6 +1,7 @@
 'use client'
 
 import BackRedirectButton from "@/app/components/backRedirectButton";
+import FAQ from "@/components/home/faq";
 import Footer from "@/components/home/footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
@@ -245,6 +246,8 @@ export default function PricingPage(){
                      </div>
                   </Card>
                </div>
+
+               <FAQ/>
 
                <Footer/>
             </section>
