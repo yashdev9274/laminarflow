@@ -1,4 +1,4 @@
-import { Download, FolderOpen, MoreHorizontal, PenBoxIcon, Trash2Icon } from "lucide-react";
+import { CreditCard, Download, FolderOpen, MoreHorizontal, PenBoxIcon, Trash2Icon } from "lucide-react";
 import { DropdownMenu,DropdownMenuTrigger,
     DropdownMenuContent,
     DropdownMenuGroup,
@@ -26,7 +26,12 @@ export default function TransactionTableAction({ status, id }: { status: string;
                             <PenBoxIcon/> Edit
                         </Link>
                     </DropdownMenuItem>
-                    <DropdownMenuItem><Trash2Icon/> Delete</DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                        <Link href="https://test.checkout.dodopayments.com/buy/pdt_8hDaIWhwG9i2oHdoGWkVE?quantity=1">
+                            <CreditCard />
+                            Pay with DoDo
+                        </Link>
+                    </DropdownMenuItem>
                     <DropdownMenuItem><Download/> Download</DropdownMenuItem>
                 </DropdownMenuGroup>
             </DropdownMenuContent>

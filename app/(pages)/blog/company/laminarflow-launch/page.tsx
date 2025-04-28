@@ -116,6 +116,7 @@ export default function LaminarFlowLaunchPage(){
                   <p >We use your information to:</p>
                <ul className="ml-4 list-disc space-y-2 mt-2">
                   <li>Deliver and operate LaminarFlow's services.</li>
+                  <li>Create and manage payments, transactions.</li>
                   <li>Process invoices, track project milestones, and manage financial workflows.</li>
                   <li>Send service-related emails and updates.</li>
                </ul>

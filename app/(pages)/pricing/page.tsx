@@ -142,9 +142,15 @@ export default function PricingPage(){
                            </li>
                         </ul>
                         <Button className="w-full border rounded-xl border-[#2B2B2B] bg-black hover:bg-[#121212] text-white font-mono">
-                           <Link href="/">
-                              Get Started
-                           </Link>
+                           {isYearly ? (
+                              <Link href="https://test.checkout.dodopayments.com/buy/pdt_EtovdKYpIfuXmBHxk5DFH?quantity=1&redirect_url=https://www.lamflo.xyz">
+                                 Get Started
+                              </Link>
+                           ) : (
+                              <Link href="https://test.checkout.dodopayments.com/buy/pdt_Qhf4pPY3ZLOCRgqXg80Wx?quantity=1&redirect_url=https://www.lamflo.xyz">
+                                 Get Started
+                              </Link>
+                           )}
                         </Button>
                      </div>
                   </Card>
@@ -197,9 +203,15 @@ export default function PricingPage(){
                            </li>
                         </ul>
                         <Button className="w-full border rounded-xl border-white bg-black hover:bg-[#121212] text-white font-mono">
-                           <Link href="/">
-                              Get Started
-                           </Link>
+                           {isYearly ? (
+                              <Link href="https://test.checkout.dodopayments.com/buy/pdt_EtovdKYpIfuXmBHxk5DFH?quantity=1&redirect_url=https://www.lamflo.xyz">
+                                 Get Started
+                              </Link>
+                           ) : (
+                              <Link href="https://test.checkout.dodopayments.com/buy/pdt_Qhf4pPY3ZLOCRgqXg80Wx?quantity=1&redirect_url=https://www.lamflo.xyz">
+                                 Get Started
+                              </Link>
+                           )}
                         </Button>
                      </div>
                   </Card>
