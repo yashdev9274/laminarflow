@@ -7,6 +7,7 @@ import {
   ChevronsUpDown,
   CircleHelp,
   CreditCard,
+  Home,
   LogOut,
   MailOpenIcon,
   Settings,
@@ -114,21 +115,25 @@ export function NavUser() {
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
-              <DropdownMenuItem>
-                <Sparkles />
-                Upgrade to Pro
+              <DropdownMenuItem asChild>
+                <Link href="/pricing">
+                  <Sparkles />
+                  Upgrade to Pro
+                </Link>
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
-              <DropdownMenuItem>
-                <BadgeCheck />
-                Dashboard
+              <DropdownMenuItem asChild>
+                <Link href="/">
+                  <Home />
+                  Home
+                </Link>
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
-              <DropdownMenuItem >
+              <DropdownMenuItem asChild>
                 {/* <div className="flex items-center gap-2"> */}
                   <Link href="/dashboard/account">
                     <Settings/>

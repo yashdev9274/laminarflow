@@ -76,7 +76,7 @@ export default function TransactionsInfo() {
         <div className="p-2">
           <img
             className="w-full rounded-md"
-            src="/dialog-content.png"
+            src="/LF-transactions.png"
             width={382}
             height={216}
             alt="dialog"
