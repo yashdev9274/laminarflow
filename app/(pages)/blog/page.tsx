@@ -43,7 +43,7 @@ export default function Blogs(){
         author: {
           name: "Yash Dewasthale",
           avatar: "/pfp.png",
-          date: "Apr 23, 2025",
+          date: "May 1, 2025",
         },
       },
       {
@@ -65,9 +65,9 @@ export default function Blogs(){
     ];
 
     const categories =[
-      {id: "blog", name:"All", href:"/"},
+      {id: "", name:"All", href:"/"},
       {id: "company", name:"Company", href:"/blog/company"},
-      {id: "education", name:"Education", href:"/blog/education"},
+      {id: "", name:"Education", href:"/blog/"},
     ]
    return(
       <div className="min-h-screen bg-black text-white px-4 py-12 md:px-8 lg:px-12">
@@ -76,7 +76,7 @@ export default function Blogs(){
          <div>
             <header className="absolute left-4 top-4 md:left-8 md:top-8">
                   <div className="flex justify-between items-center container">                    
-                     <BackRedirectButton text="Back" href = "/blog"/>
+                     <BackRedirectButton text="Back" href = "/"/>
                   </div>
             </header>
          </div>
@@ -93,6 +93,7 @@ export default function Blogs(){
 
             {/* Categories */}
             <div className="flex flex-wrap gap-3 mb-12">
+
                {categories.map((categories) => (
                   
                   <Link
@@ -122,15 +123,7 @@ export default function Blogs(){
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                      />
 
-                     {post.id === "resend-acquires-mergent" && (
-                        <div className="absolute inset-0 flex items-center justify-center z-20">
-                        <div className="flex items-center gap-4">
-                           <span className="text-4xl font-bold">Resend</span>
-                           <span className="text-4xl font-bold">+</span>
-                           <span className="text-4xl font-bold">Mergent</span>
-                        </div>
-                        </div>
-                     )}
+                     
 
                      {post.label && (
                         <div className="absolute top-4 right-4 z-20">
@@ -138,7 +131,7 @@ export default function Blogs(){
                         </div>
                      )}
 
-                     {post.id === "how-to-warm-up-domain" && (
+                     {/* {post.id === "how-to-warm-up-domain" && (
                         <div className="absolute inset-0 flex items-center justify-center z-20">
                         <div className="w-24 h-24 rounded-2xl bg-gray-800/80 flex items-center justify-center">
                            <div className="w-16 h-16 rounded-xl bg-gray-700/80 flex items-center justify-center">
@@ -161,7 +154,7 @@ export default function Blogs(){
                            </div>
                         </div>
                         </div>
-                     )}
+                     )} */}
                   </div>
 
                   <h2 className="text-2xl font-bold mb-3">{post.title}</h2>
