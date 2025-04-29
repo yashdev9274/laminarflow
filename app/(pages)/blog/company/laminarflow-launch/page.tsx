@@ -265,9 +265,19 @@ export default function LaminarFlowLaunchPage(){
             <div>
                <span className="mb-4 mt-4 text-mid text-neutral-400">
                   Join us now:
+
+                  <div className="mt-3">
+                     Feel free to contact me in case you need help 
+                     <div className="mt-3">
+                        We're excited to see how good you'll manage your finances with <Link href="https://www.lamflo.xyz" className="underline">lamflo.xyz</Link>.
+                     </div>
+                     <div className="mt-3">
+                        You can follow us <Link href="https://x.com/dew_yashtwt" className="underline">@dew_yashtwt on X</Link> to get updates.
+                     </div>
+                  </div>
                   <div className="mt-5">
                      <Link
-                        href="/"
+                        href="https://www.lamflo.xyz"
                      >
                         <Button
                            className=" inline-flex items-center group justify-center rounded-full bg-neutral-950 border border-[#565555] px-4 py-2 text-sm font-medium text-neutral-300 transition-colors hover:bg-zinc-800 mt-2"
@@ -321,7 +331,7 @@ export default function LaminarFlowLaunchPage(){
                                  </div>
                               </div>
                               <CardTitle className="text-3xl md:text-4xl font-bold tracking-tight text-neutral-100 dark:text-white">
-                                 Introducing LaminarFlow
+                                 Introducing LaminarFlow "v0.1"
                               </CardTitle>
                               
                               <div>
@@ -411,7 +421,7 @@ export default function LaminarFlowLaunchPage(){
                                     <Avatar>
                                        {/* <AvatarImage src="/placeholder.svg?height=40&width=40" alt="Yash Dewasthale" /> */}
                                        <AvatarFallback>
-                                          <AvatarImage src="/pfp.png" alt="Yash Dewasthale" />
+                                          <AvatarImage src="/pfp.png" alt="pfp" />
                                        </AvatarFallback>
                                     </Avatar>
                                     <div className="flex flex-col">
@@ -460,7 +470,7 @@ export default function LaminarFlowLaunchPage(){
                            </div>
                            <h3 className="text-xl font-bold mb-2">Try LaminarFlow for free</h3>
                            <Link
-                              href="/"
+                              href="https://www.lamflo.xyz"
                            >
                               <Button
                                  className=" inline-flex items-center group justify-center rounded-full bg-neutral-950 border border-[#565555] px-4 py-2 text-sm font-medium text-neutral-300 transition-colors hover:bg-zinc-800 mt-2"
