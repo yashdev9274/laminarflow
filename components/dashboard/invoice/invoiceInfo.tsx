@@ -75,10 +75,10 @@ export default function InvoiceInfo() {
       <DialogContent className="gap-0 p-0 [&>button:last-child]:text-white">
         <div className="p-2">
           <img
-            className="w-full rounded-md"
-            src="/dialog-content.png"
-            width={382}
-            height={216}
+            className="w-full rounded"
+            src="/LF-invoices2.png"
+            width={100}
+            height={80}
             alt="dialog"
           />
         </div>

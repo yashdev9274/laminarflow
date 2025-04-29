@@ -76,7 +76,7 @@ export default function CompaniesInfo() {
         <div className="p-2">
           <img
             className="w-full rounded-md"
-            src="/dialog-content.png"
+            src="/LF-companies.png"
             width={382}
             height={216}
             alt="dialog"

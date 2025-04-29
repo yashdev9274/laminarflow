@@ -1,4 +1,6 @@
 import { Table, TableBody, TableCaption, TableCell, TableHeader, TableRow } from "@/components/ui/table";
+import CompaniesTableAction from "./companiesTableAction";
+import Companies from "@/app/dashboard/companies/page";
 
 export default function CompaniesTable(){
    return(
