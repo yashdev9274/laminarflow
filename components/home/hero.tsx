@@ -45,7 +45,7 @@ export default function Hero(){
                 <NavbarDemo/>
             </header>
 
-            <IntroBar text="🪙 Introducing LaminarFlow" href="/"/>
+            <IntroBar text="LaminarFlow v0.1 Public Launch" href="/"/>
             <div>
                 <p className="text-center text-sm font-semibold leading-tight tracking-[-0.03em]  text-zinc-400 sm:text-6xl md:px-0">The #1 </p>
                 <p className="text-center text-4xl font-bold leading-tight tracking-[-0.03em]  text-white sm:text-6xl md:px-0"> 
