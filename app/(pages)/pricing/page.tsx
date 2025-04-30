@@ -67,23 +67,43 @@ export default function PricingPage(){
                         <ul className="space-y-3 mb-6">
                            <li className="flex items-start">
                            <CheckCircle2 className="h-5 w-5 text-blue-500 mr-2 flex-shrink-0" />
-                           <span>Unlimited members</span>
+                           <span>10 invoice generation per month</span>
                            </li>
                            <li className="flex items-start">
                            <CheckCircle2 className="h-5 w-5 text-blue-500 mr-2 flex-shrink-0" />
-                           <span>2 teams</span>
+                           <span>1 User</span>
+                           </li>
+                           <li className="flex items-start">
+                           <CheckCircle2 className="h-5 w-5 text-blue-500 mr-2 flex-shrink-0" />
+                           <span>Track your transactions</span>
+                           </li>
+                           <li className="flex items-start">
+                           <CheckCircle2 className="h-5 w-5 text-blue-500 mr-2 flex-shrink-0" />
+                           <span>Financial dashboard</span>
+                           </li>
+                           <li className="flex items-start">
+                           <CheckCircle2 className="h-5 w-5 text-blue-500 mr-2 flex-shrink-0" />
+                           <span>Fintech CRM</span>
+                           </li>
+                           <li className="flex items-start">
+                           <CheckCircle2 className="h-5 w-5 text-blue-500 mr-2 flex-shrink-0" />
+                           <span>Create and Manage your customers</span>
+                           </li>
+                           <li className="flex items-start">
+                           <CheckCircle2 className="h-5 w-5 text-blue-500 mr-2 flex-shrink-0" />
+                           <span>Customer Support</span>
                            </li>
                            <li className="flex items-start">
                            <CheckCircle2 className="h-5 w-5 text-neutral-500 mr-2 flex-shrink-0" />
-                           <span>250 issues</span>
+                           <span>Track your transactions</span>
                            </li>
                            <li className="flex items-start">
-                           <CheckCircle2 className="h-5 w-5 text-blue-500 mr-2 flex-shrink-0" />
-                           <span>Slack and GitHub</span>
+                           <CheckCircle2 className="h-5 w-5 text-neutral-500 mr-2 flex-shrink-0" />
+                           <span>Pay your invoices with stripe</span>
                            </li>
                            <li className="flex items-start">
-                           <CheckCircle2 className="h-5 w-5 text-blue-500 mr-2 flex-shrink-0" />
-                           <span>API access</span>
+                           <CheckCircle2 className="h-5 w-5 text-neutral-500 mr-2 flex-shrink-0" />
+                           <span>Branded invoices and transactional receipts</span>
                            </li>
                         </ul>
                         <Button className="w-full border rounded-xl border-[#2B2B2B] bg-black hover:bg-[#121212] text-white font-mono">
@@ -122,23 +142,43 @@ export default function PricingPage(){
                         <ul className="space-y-3 mb-6">
                            <li className="flex items-start">
                            <CheckCircle2 className="h-5 w-5 text-blue-500 mr-2 flex-shrink-0" />
-                           <span>Unlimited members</span>
+                           <span>30 invoice generation per month</span>
                            </li>
                            <li className="flex items-start">
                            <CheckCircle2 className="h-5 w-5 text-blue-500 mr-2 flex-shrink-0" />
-                           <span>2 teams</span>
-                           </li>
-                           <li className="flex items-start">
-                           <CheckCircle2 className="h-5 w-5 text-neutral-500 mr-2 flex-shrink-0" />
-                           <span>250 issues</span>
+                           <span>Pay your invoices with stripe</span>
                            </li>
                            <li className="flex items-start">
                            <CheckCircle2 className="h-5 w-5 text-blue-500 mr-2 flex-shrink-0" />
-                           <span>Slack and GitHub</span>
+                           <span>1 User</span>
                            </li>
                            <li className="flex items-start">
                            <CheckCircle2 className="h-5 w-5 text-blue-500 mr-2 flex-shrink-0" />
-                           <span>API access</span>
+                           <span>Track your transactions</span>
+                           </li>
+                           <li className="flex items-start">
+                           <CheckCircle2 className="h-5 w-5 text-blue-500 mr-2 flex-shrink-0" />
+                           <span>Download transactional receipts</span>
+                           </li>
+                           <li className="flex items-start">
+                           <CheckCircle2 className="h-5 w-5 text-blue-500 mr-2 flex-shrink-0" />
+                           <span>Branded invoices and transactional receipts</span>
+                           </li>
+                           <li className="flex items-start">
+                           <CheckCircle2 className="h-5 w-5 text-blue-500 mr-2 flex-shrink-0" />
+                           <span>Financial dashboard</span>
+                           </li>
+                           <li className="flex items-start">
+                           <CheckCircle2 className="h-5 w-5 text-blue-500 mr-2 flex-shrink-0" />
+                           <span>Fintech CRM</span>
+                           </li>
+                           <li className="flex items-start">
+                           <CheckCircle2 className="h-5 w-5 text-blue-500 mr-2 flex-shrink-0" />
+                           <span>Create and Manage your customers</span>
+                           </li>
+                           <li className="flex items-start">
+                           <CheckCircle2 className="h-5 w-5 text-blue-500 mr-2 flex-shrink-0" />
+                           <span>Customer Support</span>
                            </li>
                         </ul>
                         <Button className="w-full border rounded-xl border-[#2B2B2B] bg-black hover:bg-[#121212] text-white font-mono">
@@ -183,23 +223,43 @@ export default function PricingPage(){
                         <ul className="space-y-3 mb-6">
                            <li className="flex items-start">
                            <CheckCircle2 className="h-5 w-5 text-blue-500 mr-2 flex-shrink-0" />
-                           <span>Unlimited members</span>
+                           <span>50 invoice generation per month</span>
                            </li>
                            <li className="flex items-start">
                            <CheckCircle2 className="h-5 w-5 text-blue-500 mr-2 flex-shrink-0" />
-                           <span>2 teams</span>
-                           </li>
-                           <li className="flex items-start">
-                           <CheckCircle2 className="h-5 w-5 text-neutral-500 mr-2 flex-shrink-0" />
-                           <span>250 issues</span>
+                           <span>Pay your invoices with stripe</span>
                            </li>
                            <li className="flex items-start">
                            <CheckCircle2 className="h-5 w-5 text-blue-500 mr-2 flex-shrink-0" />
-                           <span>Slack and GitHub</span>
+                           <span>1 User</span>
                            </li>
                            <li className="flex items-start">
                            <CheckCircle2 className="h-5 w-5 text-blue-500 mr-2 flex-shrink-0" />
-                           <span>API access</span>
+                           <span>Track your transactions</span>
+                           </li>
+                           <li className="flex items-start">
+                           <CheckCircle2 className="h-5 w-5 text-blue-500 mr-2 flex-shrink-0" />
+                           <span>Download transactional receipts</span>
+                           </li>
+                           <li className="flex items-start">
+                           <CheckCircle2 className="h-5 w-5 text-blue-500 mr-2 flex-shrink-0" />
+                           <span>Branded invoices and transactional receipts</span>
+                           </li>
+                           <li className="flex items-start">
+                           <CheckCircle2 className="h-5 w-5 text-blue-500 mr-2 flex-shrink-0" />
+                           <span>Financial dashboard</span>
+                           </li>
+                           <li className="flex items-start">
+                           <CheckCircle2 className="h-5 w-5 text-blue-500 mr-2 flex-shrink-0" />
+                           <span>Fintech CRM</span>
+                           </li>
+                           <li className="flex items-start">
+                           <CheckCircle2 className="h-5 w-5 text-blue-500 mr-2 flex-shrink-0" />
+                           <span>Create and Manage your customers</span>
+                           </li>
+                           <li className="flex items-start">
+                           <CheckCircle2 className="h-5 w-5 text-blue-500 mr-2 flex-shrink-0" />
+                           <span>Customer Support</span>
                            </li>
                         </ul>
                         <Button className="w-full border rounded-xl border-white bg-black hover:bg-[#121212] text-white font-mono">
@@ -228,26 +288,46 @@ export default function PricingPage(){
                         <div className="py-3 border-t border-gray-800 text-sm text-[#878787]">Annual billed only</div>
                      </CardHeader>
                      <div className="px-6 pb-6">
-                        <ul className="space-y-3 mb-6">
+                     <ul className="space-y-3 mb-6">
                            <li className="flex items-start">
                            <CheckCircle2 className="h-5 w-5 text-blue-500 mr-2 flex-shrink-0" />
-                           <span>Unlimited members</span>
+                           <span>Unlimited invoice generation per month</span>
                            </li>
                            <li className="flex items-start">
                            <CheckCircle2 className="h-5 w-5 text-blue-500 mr-2 flex-shrink-0" />
-                           <span>2 teams</span>
-                           </li>
-                           <li className="flex items-start">
-                           <CheckCircle2 className="h-5 w-5 text-neutral-500 mr-2 flex-shrink-0" />
-                           <span>250 issues</span>
+                           <span>Pay your invoices with stripe</span>
                            </li>
                            <li className="flex items-start">
                            <CheckCircle2 className="h-5 w-5 text-blue-500 mr-2 flex-shrink-0" />
-                           <span>Slack and GitHub</span>
+                           <span>1 User</span>
                            </li>
                            <li className="flex items-start">
                            <CheckCircle2 className="h-5 w-5 text-blue-500 mr-2 flex-shrink-0" />
-                           <span>API access</span>
+                           <span>Track your transactions</span>
+                           </li>
+                           <li className="flex items-start">
+                           <CheckCircle2 className="h-5 w-5 text-blue-500 mr-2 flex-shrink-0" />
+                           <span>Download transactional receipts</span>
+                           </li>
+                           <li className="flex items-start">
+                           <CheckCircle2 className="h-5 w-5 text-blue-500 mr-2 flex-shrink-0" />
+                           <span>Branded invoices and transactional receipts</span>
+                           </li>
+                           <li className="flex items-start">
+                           <CheckCircle2 className="h-5 w-5 text-blue-500 mr-2 flex-shrink-0" />
+                           <span>Financial dashboard</span>
+                           </li>
+                           <li className="flex items-start">
+                           <CheckCircle2 className="h-5 w-5 text-blue-500 mr-2 flex-shrink-0" />
+                           <span>Fintech CRM</span>
+                           </li>
+                           <li className="flex items-start">
+                           <CheckCircle2 className="h-5 w-5 text-blue-500 mr-2 flex-shrink-0" />
+                           <span>Create and Manage your customers</span>
+                           </li>
+                           <li className="flex items-start">
+                           <CheckCircle2 className="h-5 w-5 text-blue-500 mr-2 flex-shrink-0" />
+                           <span>Customer Support</span>
                            </li>
                         </ul>
                         <Button className="w-full border rounded-xl border-[#2B2B2B] bg-black hover:bg-[#121212] text-white font-mono">

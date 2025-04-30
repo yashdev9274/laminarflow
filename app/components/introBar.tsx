@@ -5,6 +5,7 @@ import { ArrowRightIcon } from "@radix-ui/react-icons";
 import { cn } from "@/lib/utils";
 import { AnimatedShinyText } from "@/components/magicui/animated-shiny-text";
 import Link from "next/link";
+import { Rocket } from "lucide-react";
 
 
 interface iAppProps{
@@ -22,8 +23,9 @@ export default function IntroBar({text, href, className=""}: iAppProps){
             )}
          >
             <Link href={href}>
-               <AnimatedShinyText className="inline-flex items-center justify-center px-4 py-1 transition ease-out hover:text-neutral-700 hover:duration-300 hover:dark:text-neutral-400">
+               <AnimatedShinyText className="inline-flex items-center justify-center px-4 py-1 gap-2 transition ease-out hover:text-neutral-700 hover:duration-300 hover:dark:text-neutral-400">
                {/* <span> Introducing LaminarFlow</span> */}
+                  <Rocket className="w-5 h-5"/> 
                   {text}
                   <ArrowRightIcon className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
                </AnimatedShinyText>
