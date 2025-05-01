@@ -9,19 +9,19 @@ import data from "./data.json"
 
 export default function Demo() {
   return (
-   <section className="container mx-auto mt-3 hidden md:block">
-    <SidebarProvider className="flex flex-1">
+  <section className="container mx-auto mt-3 px-4 sm:px-6 lg:px-5 ">
+    <SidebarProvider className="flex flex-1 flex-col sm:flex-row">
       <SidebarInset>
         <SiteHeader />
         <div className="flex flex-1 flex-col">
           <div className="flex flex-1 flex-col gap-2">
-            <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
+            <div className="flex flex-wrap sm:grid-cols-2 md:grid-cols-2 gap-4 py-4 md:gap-6 md:py-6">
               <SectionCards />
-              <div className="px-4 lg:px-6">
+            </div>
+            <div className="px-4 lg:px-6">
                 <ChartAreaInteractive />
               </div>
               {/* <DataTable data={data} /> */}
-            </div>
           </div>
         </div>
       </SidebarInset>
