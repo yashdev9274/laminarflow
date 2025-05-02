@@ -28,9 +28,9 @@ export default function InvoiceTableAction({ status, id }: { status: string; id:
                     </DropdownMenuItem>
                     <DropdownMenuItem><Trash2Icon/> Delete</DropdownMenuItem>
                     <DropdownMenuItem asChild>
-                        <Link href="https://test.checkout.dodopayments.com/buy/pdt_8hDaIWhwG9i2oHdoGWkVE?quantity=1">
+                        <Link href="">
                             <CreditCard />
-                            Pay with DoDo
+                            Pay with Stripe
                         </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem><Download/> Download</DropdownMenuItem>
