@@ -19,7 +19,8 @@ import {
   Building2, 
   CircleCheckBig,
   Settings,
-  Search
+  Search,
+  MessageCircle
 } from "lucide-react"
 
 import { NavMain } from "@/components/dashboard/sidebar/nav-main"
@@ -106,9 +107,9 @@ const data = {
       icon: Settings,
     },
     {
-      title: "Contact",
+      title: "Feedback",
       url: "https://dub.sh/yashdew",
-      icon: Send,
+      icon: MessageCircle,
     },
   ],
   projects: [
