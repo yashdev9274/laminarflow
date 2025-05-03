@@ -40,6 +40,7 @@ import { requireUser } from "@/app/utils/requireAuth"
 import { prisma } from "@/app/utils/db"
 import { redirect } from "next/navigation"
 import { useSession } from "next-auth/react"
+import { BPUDialogButton } from "../billPlanUpgrade"
 
 
 // async function getUser(userId: string){
@@ -116,10 +117,9 @@ export function NavUser() {
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
               <DropdownMenuItem asChild>
-                <Link href="/pricing">
-                  <Sparkles />
-                  Upgrade to Pro
-                </Link>
+                {/* <Link href="/"> */}
+                  <BPUDialogButton/>
+                {/* </Link> */}
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
