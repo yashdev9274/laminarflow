@@ -14,6 +14,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import RotatingText from "@/components/blog/rotating-text";
 
 const PUBLISH_DATE = 'May 1,2025'
 
@@ -331,7 +332,22 @@ export default function LaminarFlowLaunchPage(){
                                  </div>
                               </div>
                               <CardTitle className="text-3xl md:text-4xl font-bold tracking-tight text-neutral-100 dark:text-white">
-                                 Introducing LaminarFlow "v0.1"
+                                 {/* Introducing LaminarFlow "v0.1" */}
+                                 <div className="flex flex-wrap gap-2 justify-center">
+                                    Introducing
+                                    <RotatingText
+                                       texts={['LaminarFlow', 'OpenSourced Fintech', 'v0.1 + Waitlist', 'lamflo.xyz', 'Public Launch!']}
+                                       mainClassName="px-2 sm:px-2 md:px-3 bg-zinc-300 text-black overflow-hidden sm:py-1 md:py-2 justify-center rounded-lg h-11"
+                                       staggerFrom={"last"}
+                                       initial={{ y: "100%" }}
+                                       animate={{ y: 0 }}
+                                       exit={{ y: "-120%" }}
+                                       staggerDuration={0.025}
+                                       splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+                                       transition={{ type: "spring", damping: 30, stiffness: 400 }}
+                                       rotationInterval={2000}
+                                    />
+                                 </div>
                               </CardTitle>
                               
                               <div>
