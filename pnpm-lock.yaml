@@ -2966,6 +2966,9 @@ packages:
   point-utilities@0.0.2:
     resolution: {integrity: sha512-jNUr+ijPk0cWw39gtJG0O8HNPL2EVC7e2ilC1NUlJw1QVTgC8NIMS/8AmG9IJfvfmJx+IlT8KNJzf/Jb035STQ==}
 
+  point-utilities@0.1.0:
+    resolution: {integrity: sha512-vLuthhYO+b6trGuN4UeAfTWTJ/mq87/HthpG6jYIMU3a7kS6ZhOY2Oc/F9neUIa6NuCKz/qjJhoQkPwksOaUVw==}
+
   possible-typed-array-names@1.1.0:
     resolution: {integrity: sha512-/+5VFTchJDoVj3bhoqi6UeymcD00DAwb1nJwamzPvHEszJ4FpF6SNNbUbOS8yI56qHzdV8eK0qEfOSiodkTdxg==}
     engines: {node: '>= 0.4'}
@@ -5963,7 +5966,7 @@ snapshots:
 
   interval-utilities@0.0.1:
     dependencies:
-      point-utilities: 0.0.2
+      point-utilities: 0.1.0
 
   is-arguments@1.2.0:
     dependencies:
@@ -6408,6 +6411,8 @@ snapshots:
   pirates@4.0.6: {}
 
   point-utilities@0.0.2: {}
+
+  point-utilities@0.1.0: {}
 
   possible-typed-array-names@1.1.0: {}
 
