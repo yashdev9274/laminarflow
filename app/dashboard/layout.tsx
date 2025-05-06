@@ -33,7 +33,7 @@ export default async function DashboardLayout({children}:{children: ReactNode}){
 
     return(
         <>
-            <SidebarProvider> 
+            <SidebarProvider className=" relative py-5"> 
                 <AppSidebar/>
                 <SidebarInset>
                     <header className="flex h-16 shrink-0 items-center gap-2">
