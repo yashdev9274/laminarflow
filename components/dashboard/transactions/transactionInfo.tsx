@@ -24,26 +24,35 @@ export default function TransactionsInfo() {
       title: "Welcome to Transaction by LaminarFLow",
       description:
         "Discover a powerful way of creating transactional details to enhance your financial workflow.",
+      image: "/LF-transactions.png",
     },
     {
       title: "Customizable",
       description:
         "You can customize any transactional record according to your needs.",
+      image: "/LF-customize.png",
+      
     },
     {
       title: "Ready to Start?",
       description:
         "Begin with clicking on plus sign to generate new transactions.",
+      image: "/LF-ReadyToStart.png",
+
     },
     {
       title: "Next Step",
       description:
         "Fill out the details in form and create new record.",
+      image: "/LF-NextStep.png",
+
     },
     {
       title: "Edit/Download respective record",
       description:
         "You can edit as well as download your transactional data.",
+      image: "/LF-EditDownload.png",
+
     },
   ]
 
@@ -76,7 +85,7 @@ export default function TransactionsInfo() {
         <div className="p-2">
           <img
             className="w-full rounded-md"
-            src="/LF-transactions.png"
+            src={stepContent[step-1].image}
             width={382}
             height={216}
             alt="dialog"

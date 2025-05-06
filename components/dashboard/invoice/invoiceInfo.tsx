@@ -24,26 +24,31 @@ export default function InvoiceInfo() {
       title: "Welcome to Invoices by LaminarFLow",
       description:
         "Discover a powerful way of creating invoices to enhance your financial workflow.",
+      image: "/LF-invoices2.png",
     },
     {
       title: "Customizable",
       description:
         "You can customize any invoices and its details according to your needs.",
+      image: "/LF-customize.png",
     },
     {
       title: "Ready to Start?",
       description:
         "Begin with clicking on plus sign to generate invoices.",
+      image: "/LF-ReadyToStart.png",
     },
     {
       title: "Next Step",
       description:
         "Fill out the details in form and create new record.",
+      image: "/LF-NextStep.png",
     },
     {
       title: "Edit/Download respective invoices",
       description:
         "You can edit as well as download your invoice data.",
+      image: "/LF-EditDownload.png",
     },
   ]
 
@@ -76,7 +81,7 @@ export default function InvoiceInfo() {
         <div className="p-2">
           <img
             className="w-full rounded"
-            src="/LF-invoices2.png"
+            src={stepContent[step-1].image}
             width={100}
             height={80}
             alt="dialog"
