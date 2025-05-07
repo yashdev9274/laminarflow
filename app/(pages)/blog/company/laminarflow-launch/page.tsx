@@ -16,7 +16,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import RotatingText from "@/components/blog/rotating-text";
 
-const PUBLISH_DATE = 'May 1,2025'
+const PUBLISH_DATE = 'May 7,2025'
 
 export default function LaminarFlowLaunchPage(){
 
