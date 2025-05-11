@@ -1,14 +1,38 @@
+'use client';
+
 import CompaniesInfo from "@/components/dashboard/companies/companiesInfo";
 import CompaniesTable from "@/components/dashboard/companies/CompaniesTable";
 import { CreateCompaniesSheet } from "@/components/dashboard/companies/createCompaniesSheet";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Building2 } from "lucide-react";
+import { Building2, Filter, SortAsc } from "lucide-react";
+import { useState } from "react";
+// import { Company } from "@/components/dashboard/companies/CompaniesTable";
+
+interface Company {
+   id: string
+   name: string
+   logo: string
+   domain: string
+   createdBy: string
+   accountOwner: string
+   creationDate: string
+   employees: number
+   linkedin: string
+   address: string
+}
 
 export default function Companies(){
+   const [selectedRows, setSelectedRows] = useState<string[]>([]);
+
+   const handleCompanyClick = (company: Company) => {
+      // Define what happens when a company is clicked
+   };
+
    return(
       <div className="flex flex-col gap-4 p-4 pt-0">
-         <Card>
-            <CardHeader>
+         <Card className="border-0 shadow-none bg-background">
+            <CardHeader className="px-2 pt-0 pb-2">
                <div className="flex items-center justify-between ml-2">
                   <div>
                      <CardTitle  className="text-lg font-semibold">
@@ -20,11 +44,30 @@ export default function Companies(){
                      <CardDescription className="text-sm">
                      </CardDescription>
                   </div>
-                  <CreateCompaniesSheet/>
+                  {/* <CreateCompaniesSheet/> */}
+
+                  <div className="flex items-center gap-2">
+                     <Button variant="outline" size="sm">
+                        <Filter className="h-4 w-4 mr-2" />
+                        Filter
+                     </Button>
+                     <Button variant="outline" size="sm">
+                        <SortAsc className="h-4 w-4 mr-2" />
+                        Sort
+                     </Button>
+                     <Button variant="outline" size="sm">
+                        Options
+                     </Button>
+                     <CreateCompaniesSheet />
+                  </div>
                </div>
             </CardHeader>
             <CardContent>
-               <CompaniesTable/>
+               <CompaniesTable 
+                  selectedRows={selectedRows} 
+                  setSelectedRows={setSelectedRows} 
+                  onCompanyClick={handleCompanyClick}
+               />
             </CardContent>
          </Card>
       </div>
