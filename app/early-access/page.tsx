@@ -1,6 +1,6 @@
 'use client'
 
-import { useActionState, useEffect, useState } from "react"
+import React, { useActionState, useEffect, useState } from "react"
 import { createEarlyAccessUser } from "@/app/utils/action"
 import { z } from "zod"
 import { useForm } from "@conform-to/react"
@@ -16,6 +16,8 @@ import { cn } from "@/lib/utils"
 import Link from "next/link"
 import { AnimatedNumber } from "@/components/earlyAccess/animated-number"
 import BackRedirectButton from "../components/backRedirectButton"
+import { useLogSnag } from "@logsnag/next"
+import WaitlistSubmitButton from "../components/waitlistSubmitButton"
 
 
 export default function EarlyAccess(){
@@ -32,7 +34,38 @@ export default function EarlyAccess(){
         shouldValidate: "onBlur",
         shouldRevalidate: "onInput",
 
-    })
+    });
+
+    // LogSnag
+
+    const {track} = useLogSnag();
+
+    const handleSuccess = ()=>{
+        // event.preventDefault();
+
+        // const formData = new FormData();
+        // formData.append("email", fields.email.initialValue || "");
+
+        try {
+            // action(formData); // Call the action with formData
+    
+            // If we reach here, it means the action was successful
+            track({
+                channel: "early-user",
+                event: "User signed up for Early Access",
+                user_id: fields.email.initialValue || "",
+                description: "User signed up for Early Access",
+                icon: "🚀",
+                notify: true,
+                tags: {
+                    email: fields.email.initialValue || "",
+                },
+            });
+        } catch (error) {
+            console.error("Error during signup:", error);
+            // Handle the error (e.g., show a message to the user)
+        }
+    }
 
     // const [earlyAccessCount, setEarlyAccessCount] = useState(0)
 
@@ -83,7 +116,14 @@ export default function EarlyAccess(){
                             key={fields.email.key}
                             defaultValue={fields.email.initialValue}
                         />
-                        <SubmitButton text="Join Waiting List" />
+                        <WaitlistSubmitButton
+                             text="Join Waiting List"
+                             dataChannel="early-user"
+                             dataEvent="User signed up for Early Access"
+                             dataUserId={fields.email.initialValue || ""}
+                             dataDescription="User signed up for Early Access"
+                             dataIcon="🚀"
+                        />
                     </form>
                 </div>
                 <div className="text-center text-white mt-4">
