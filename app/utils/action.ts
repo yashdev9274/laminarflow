@@ -9,6 +9,7 @@ import { emailClient } from "./mailtrap";
 import { formatCurrency } from "@/hooks/formatCurrency";
 import { request } from "@arcjet/next";
 import aj from "@/lib/arcjet";
+import { useLogSnag } from "@logsnag/next";
 
 export async function onboardUser(prevState: any, formData: FormData){
     const session = await requireUser(); 
@@ -110,6 +111,12 @@ export async function createEarlyAccessUser(prevState: any, formData: FormData){
             email: submission.value.email
         }
     })
+
+    
+
+    return redirect('/');
+
+
 
 }
 

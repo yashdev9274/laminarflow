@@ -4,6 +4,7 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 import { Analytics } from '@vercel/analytics/next';
 import { SessionProvider } from "next-auth/react"
+import { LogSnagProvider } from '@logsnag/next';
 
 
 const geistSans = Geist({
@@ -28,6 +29,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <LogSnagProvider token="92958e368425914e0120036bf8c3bb23" project="lamflo"/>
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
