@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { SheetClose, SheetFooter } from "@/components/ui/sheet";
+import { Textarea } from "@/components/ui/textarea";
 import { Building2 } from "lucide-react";
 import { Check, Edit2 } from "lucide-react"
 
@@ -25,7 +26,7 @@ export function HomeTabContent(){
                   </div>
                   <div className="flex-1">
                      <Input 
-                        placeholder="Company Name"
+                        placeholder="LaminarFlow"
                         className="border-zinc-700 border-spacing-3 text-sm font-semibold mb-1 w-[400px]"
                      />
                      <p className="text-sm text-zinc-400">Added about 17 hours ago</p>
@@ -58,38 +59,13 @@ export function HomeTabContent(){
                      </div>
                      <div className="flex-1">
                         <Input 
-                           placeholder="Street 123..."
+                           placeholder="India..."
                            className="  border-zinc-700 border-spacing-3 text-2xl font-semibold mb-1 w-full"
                         />
                      </div>
                   </div>
 
-                  {/* domain name */}
-                  <div className="flex items-center p-4">
-                     <div className="w-32 text-sm text-zinc-400 flex items-center gap-2">
-                     <svg 
-                        width="24px" 
-                        height="24px" 
-                        strokeWidth="1.5" 
-                        viewBox="0 0 24 24" 
-                        fill="none" 
-                        xmlns="http://www.w3.org/2000/svg" 
-                        color="#000000"
-                     >
-                        <path d="M14 11.9976C14 9.5059 11.683 7 8.85714 7C8.52241 7 7.41904 7.00001 7.14286 7.00001C4.30254 7.00001 2 9.23752 2 11.9976C2 14.376 3.70973 16.3664 6 16.8714C6.36756 16.9525 6.75006 16.9952 7.14286 16.9952" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path><path d="M10 11.9976C10 14.4893 12.317 16.9952 15.1429 16.9952C15.4776 16.9952 16.581 16.9952 16.8571 16.9952C19.6975 16.9952 22 14.7577 22 11.9976C22 9.6192 20.2903 7.62884 18 7.12383C17.6324 7.04278 17.2499 6.99999 16.8571 6.99999" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
-                     </svg>
-                        Body
-                     </div>
-
-                     <div className="flex-1">
-                        <Input 
-                           placeholder="example.com"
-                           className=" border-zinc-700 border-spacing-3 text-2xl font-semibold mb-1 w-full"
-                        />
-                     </div>
-                  </div>
-
-                  {/* Employees */}
+                  {/* account owner */}
 
                   <div className="flex items-center p-4">
                      <div className="w-32 text-sm text-zinc-400 flex items-center gap-2">
@@ -105,13 +81,16 @@ export function HomeTabContent(){
                            <line x1="6" x2="6" y1="3" y2="15" />
                            <circle cx="18" cy="6" r="3" />
                            <circle cx="6" cy="18" r="3" />
-                           <path d="M1 20V19C1 15.134 4.13401 12 8 12V12C11.866 12 15 15.134 15 19V20" stroke="#000000" strokeWidth="1.5" strokeLinecap="round"></path><path d="M13 14V14C13 11.2386 15.2386 9 18 9V9C20.7614 9 23 11.2386 23 14V14.5" stroke="#000000" strokeWidth="1.5" strokeLinecap="round"></path><path d="M8 12C10.2091 12 12 10.2091 12 8C12 5.79086 10.2091 4 8 4C5.79086 4 4 5.79086 4 8C4 10.2091 5.79086 12 8 12Z" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path><path d="M18 9C19.6569 9 21 7.65685 21 6C21 4.34315 19.6569 3 18 3C16.3431 3 15 4.34315 15 6C15 7.65685 16.3431 9 18 9Z" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
+                           <path d="M5 20V19C5 15.134 8.13401 12 12 12V12C15.866 12 19 15.134 19 19V20" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path><path d="M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12Z" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
                         </svg>
-                        Address
+                        Domain
                      </div>
-                     <div className="flex-1">
+                     <div className="flex-1 flex items-center gap-2">
+                        {/* <Avatar className="h-6 w-6 bg-violet-600">
+                          <AvatarFallback>Y</AvatarFallback>
+                        </Avatar> */}
                         <Input 
-                           placeholder="50"
+                           placeholder="lamflo.xyz"
                            className=" border-zinc-700 border-spacing-3 text-2xl font-semibold mb-1 w-full"
                         />
                      </div>
@@ -135,15 +114,73 @@ export function HomeTabContent(){
                            <circle cx="6" cy="18" r="3" />
                            <path d="M5 20V19C5 15.134 8.13401 12 12 12V12C15.866 12 19 15.134 19 19V20" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path><path d="M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12Z" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
                         </svg>
-                        Created by
+                        Acc. Owner
                      </div>
                      <div className="flex-1 flex items-center gap-2">
-                        <Avatar className="h-6 w-6 bg-violet-600">
+                        {/* <Avatar className="h-6 w-6 bg-violet-600">
                           <AvatarFallback>Y</AvatarFallback>
-                        </Avatar>
-                        <span>Yash Dewasthale</span>
+                        </Avatar> */}
+                        <Input 
+                           placeholder="Yash Dewasthale"
+                           className=" border-zinc-700 border-spacing-3 text-2xl font-semibold mb-1 w-full"
+                        />
                      </div>
                   </div>
+
+                  {/* Employees */}
+
+                  <div className="flex items-center p-4">
+                     <div className="w-32 text-sm text-zinc-400 flex items-center gap-2">
+                        <svg 
+                           width="24px" 
+                           height="24px" 
+                           strokeWidth="1.5" 
+                           viewBox="0 0 24 24" 
+                           fill="none" 
+                           xmlns="http://www.w3.org/2000/svg" 
+                           color="#767676"
+                        >
+                           <line x1="6" x2="6" y1="3" y2="15" />
+                           <circle cx="18" cy="6" r="3" />
+                           <circle cx="6" cy="18" r="3" />
+                           <path d="M1 20V19C1 15.134 4.13401 12 8 12V12C11.866 12 15 15.134 15 19V20" stroke="#000000" strokeWidth="1.5" strokeLinecap="round"></path><path d="M13 14V14C13 11.2386 15.2386 9 18 9V9C20.7614 9 23 11.2386 23 14V14.5" stroke="#000000" strokeWidth="1.5" strokeLinecap="round"></path><path d="M8 12C10.2091 12 12 10.2091 12 8C12 5.79086 10.2091 4 8 4C5.79086 4 4 5.79086 4 8C4 10.2091 5.79086 12 8 12Z" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path><path d="M18 9C19.6569 9 21 7.65685 21 6C21 4.34315 19.6569 3 18 3C16.3431 3 15 4.34315 15 6C15 7.65685 16.3431 9 18 9Z" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
+                        </svg>
+                        Employees
+                     </div>
+                     <div className="flex-1">
+                        <Input 
+                           placeholder="50"
+                           className=" border-zinc-700 border-spacing-3 text-2xl font-semibold mb-1 w-full"
+                        />
+                     </div>
+                  </div>
+
+                  {/* domain name */}
+                  <div className="flex items-center p-4">
+                     <div className="w-32 text-sm text-zinc-400 flex items-center gap-2">
+                     <svg 
+                        width="24px" 
+                        height="24px" 
+                        strokeWidth="1.5" 
+                        viewBox="0 0 24 24" 
+                        fill="none" 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        color="#000000"
+                     >
+                        <path d="M14 11.9976C14 9.5059 11.683 7 8.85714 7C8.52241 7 7.41904 7.00001 7.14286 7.00001C4.30254 7.00001 2 9.23752 2 11.9976C2 14.376 3.70973 16.3664 6 16.8714C6.36756 16.9525 6.75006 16.9952 7.14286 16.9952" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path><path d="M10 11.9976C10 14.4893 12.317 16.9952 15.1429 16.9952C15.4776 16.9952 16.581 16.9952 16.8571 16.9952C19.6975 16.9952 22 14.7577 22 11.9976C22 9.6192 20.2903 7.62884 18 7.12383C17.6324 7.04278 17.2499 6.99999 16.8571 6.99999" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
+                     </svg>
+                        Description
+                     </div>
+
+                     <div className="flex-1">
+                        <Textarea
+                           placeholder="LaminarFlow is a..."
+                           className=" border-zinc-700 border-spacing-3 text-2xl font-semibold mb-1 w-full"
+                        />
+                     </div>
+                  </div>
+
+                  
                      <SheetFooter className="flex justify-end mt-6 mb-5 mr-5">
                         <SheetClose asChild>
                            <SubmitButton text="Create Record"/>
