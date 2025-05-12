@@ -43,3 +43,15 @@ export const transactionSchema = z.object({
     status: z.enum(["PENDING", "COMPLETED", "FAILED"]).default("PENDING"),
     paymentMethod: z.string().min(1,"Payment Method is required"),
 });
+
+// company schema
+
+export const companySchema = z.object({
+    name: z.string().min(2, "Company Name is required"),
+    domainName: z.string().min(2, "Domain Name is required"),
+    accountOwner: z.string().min(2, "Account Owner is required"),
+    employees: z.number().min(1, "Employees are required"),
+    address: z.string().min(2, "Address is required"),
+    total: z.number().min(1, "Total is required"),
+    description: z.string().min(2, "Description is required"),
+})
