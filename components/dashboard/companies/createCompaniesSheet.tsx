@@ -20,7 +20,7 @@ export function CreateCompaniesSheet(){
       <div className="flex items-center justify-center w-11">
          <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
-               <Button variant="secondary" className=" hover:bg-neutral-900 font-bold py-2 px-4 rounded  w-4 h-6">
+               <Button variant="outline" className=" hover:bg-neutral-900 font-bold py-2 px-4 rounded  w-4 h-6">
                   <PlusIcon/>
                </Button>
             </SheetTrigger>

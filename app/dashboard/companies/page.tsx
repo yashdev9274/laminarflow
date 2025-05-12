@@ -62,7 +62,7 @@ export default function Companies(){
                   </div>
                </div>
             </CardHeader>
-            <CardContent>
+            <CardContent className="mt-5">
                <CompaniesTable 
                   selectedRows={selectedRows} 
                   setSelectedRows={setSelectedRows} 

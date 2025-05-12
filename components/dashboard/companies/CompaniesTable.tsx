@@ -116,7 +116,7 @@ export default function CompaniesTable({ selectedRows=[], setSelectedRows, onCom
                               onCheckedChange={toggleSelectAll}
                             />
                         </TableHead>
-                        <th className="text-left">Serial No.</th>
+                        {/* <th className="text-left">Serial No.</th> */}
                         <th className="text-left">Name</th>
                         <th className="text-left">Domain Name</th>
                         <th className="text-left">Account Owner</th>
@@ -138,15 +138,23 @@ export default function CompaniesTable({ selectedRows=[], setSelectedRows, onCom
                               onCheckedChange={() => toggleSelectRow(company.id)}
                            />
                         </TableCell>
-                        <TableCell className="text-left">1</TableCell>
-                        <TableCell className="text-left">Air Bnb</TableCell>
+                        {/* <TableCell className="text-left">1</TableCell> */}
+                        <TableCell className="text-left font-medium">
+                           <div
+                              onClick={()=>onCompanyClick(company)}
+                           >
+                              <span>
+                                 {company.name}
+                              </span>
+                           </div>
+                        </TableCell>
                         <TableCell className="text-left">
-                           <span>{company.domain}</span>
+                           <span className="px-2 py-1 bg-muted rounded-md text-sm">{company.domain}</span>
                         </TableCell>
                         <TableCell className="text-left">Yash</TableCell>
-                        <TableCell className="text-left">12/12/2021</TableCell>
-                        <TableCell className="text-left">5,000</TableCell>
-                        <TableCell className="text-left">888 Brannan St</TableCell>
+                        <TableCell className="text-left">{company.creationDate}</TableCell>
+                        <TableCell className="text-left">{company.employees}</TableCell>
+                        <TableCell className="text-left">{company.address}</TableCell>
                         <TableCell className="text-right">Edit</TableCell>
                     </TableRow>
                   ))}
