@@ -3,7 +3,7 @@
 import { redirect } from "next/navigation";
 import { prisma } from "./db";
 import { requireUser } from "./requireAuth"
-import { earlyAccessSchema, invoiceSchema, onboardingUserSchema, transactionSchema } from "./zodSchema";
+import { companySchema, earlyAccessSchema, invoiceSchema, onboardingUserSchema, transactionSchema } from "./zodSchema";
 import {parseWithZod} from "@conform-to/zod"
 import { emailClient } from "./mailtrap";
 import { formatCurrency } from "@/hooks/formatCurrency";
@@ -210,4 +210,31 @@ export async function createTransaction(prevState: any, formData: FormData){
     
 
     
+}
+
+export async function createCompany(prevState: any, formData: FormData){
+
+    const session = await requireUser();
+
+    const submission = parseWithZod(formData,{
+        schema: companySchema,
+    })
+
+    if(submission.status !== "success"){
+        return submission.reply();
+    }
+
+    const data = await prisma.companies.create({
+        data:{
+            name: submission.value.name,
+            domainName: submission.value.domainName,
+            accountOwner: submission.value.accountOwner,
+            employees: submission.value.employees,
+            address: submission.value.address,
+            total: submission.value.total,
+            description: submission.value.description,
+            userId: session.user?.id,
+        }
+    })
+
 }

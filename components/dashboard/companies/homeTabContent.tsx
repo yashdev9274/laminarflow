@@ -15,7 +15,7 @@ export function HomeTabContent(){
       <div className="p-6">
          
 
-         <Card className="bg-zinc-800 border-zinc-700 shadow-md">
+         <Card className="bg-[#1B1B1B] bg-opacity-50 backdrop-blur-md border  shadow-md">
             <CardContent className="p-0">
                <form className="divide-y divide-zinc-700">
 
