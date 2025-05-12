@@ -162,6 +162,7 @@ model Companies{
   employees Int
   address String
   total Int
+  description String
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

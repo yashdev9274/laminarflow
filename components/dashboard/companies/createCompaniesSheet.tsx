@@ -24,9 +24,9 @@ export function CreateCompaniesSheet(){
                   <PlusIcon/>
                </Button>
             </SheetTrigger>
-            <SheetContent className="w-full sm:max-w-md md:max-w-lg lg:max-w-xl p-0 bg-zinc-900 text-zinc-100 border-zinc-800">
+            <SheetContent className="w-full sm:max-w-md md:max-w-lg lg:max-w-xl p-0 bg-[#171717] text-zinc-100 border-zinc-800">
                <div className="flex flex-col h-full">
-                  <SheetHeader className="flex items-center justify-between p-4 border-b border-zinc-800">
+                  <SheetHeader className="flex items-center justify-between p-4 border-b border-[#1E1E1E]">
                      
                      <div className="flex items-center gap-2">
                         <Button
