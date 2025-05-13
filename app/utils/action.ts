@@ -231,6 +231,7 @@ export async function createCompany(prevState: any, formData: FormData){
             accountOwner: submission.value.accountOwner,
             employees: submission.value.employees,
             address: submission.value.address,
+            date: submission.value.date,
             total: submission.value.total,
             description: submission.value.description,
             userId: session.user?.id,
