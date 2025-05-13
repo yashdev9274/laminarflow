@@ -1,4 +1,7 @@
+'use client'
+
 import SubmitButton from "@/app/components/submitButton";
+import { createCompany } from "@/app/utils/action";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
@@ -6,18 +9,51 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { SheetClose, SheetFooter } from "@/components/ui/sheet";
 import { Textarea } from "@/components/ui/textarea";
-import { Building2 } from "lucide-react";
+import { Building2, MailIcon, MapPinned } from "lucide-react";
 import { Check, Edit2 } from "lucide-react"
+import { useActionState, useState } from "react";
+import { useForm } from "@conform-to/react"
+import { parseWithZod } from "@conform-to/zod"
+import { companySchema } from "@/app/utils/zodSchema"
+import DomainInput from "../domainInput";
+
 
 
 export function HomeTabContent(){
+
+   const [lastResult,action] = useActionState(createCompany, undefined);
+
+   const[form,fields] = useForm({
+      lastResult,
+
+      onValidate({formData}){
+         return parseWithZod(formData,{schema: companySchema})
+      },
+
+      shouldValidate: "onBlur",
+      shouldRevalidate: "onInput",
+   })
+
+   const [selectedDate, setSelectedDate] = useState(new Date())
+
    return(
       <div className="p-6">
          
 
          <Card className="bg-[#1B1B1B] bg-opacity-50 backdrop-blur-md border  shadow-md">
             <CardContent className="p-0">
-               <form className="divide-y divide-zinc-700">
+               <form 
+                  className="flex flex-col"
+                  action={action}
+                  id={form.id}
+                  onSubmit={form.onSubmit}
+               >
+
+                  <input
+                     type="hidden"
+                     name={fields.date.name}
+                     value={selectedDate.toISOString()}
+                  />
 
 
                <div className="flex items-start gap-4 mb-6 ml-5 mt-5">
@@ -57,11 +93,14 @@ export function HomeTabContent(){
                         </svg>
                         Address
                      </div>
-                     <div className="flex-1">
+                     <div className="relative">
                         <Input 
                            placeholder="India..."
-                           className="  border-zinc-700 border-spacing-3 text-2xl font-semibold mb-1 w-full"
+                           className=" peer pe-9 border-zinc-700 border-spacing-3 text-2xl font-semibold mb-1 w-full"
                         />
+                        <div className="text-muted-foreground/80 pointer-events-none absolute inset-y-0 end-0 flex items-center justify-center pe-3 peer-disabled:opacity-50">
+                           <MapPinned size={16} aria-hidden="true" />
+                        </div>
                      </div>
                   </div>
 
@@ -89,10 +128,7 @@ export function HomeTabContent(){
                         {/* <Avatar className="h-6 w-6 bg-violet-600">
                           <AvatarFallback>Y</AvatarFallback>
                         </Avatar> */}
-                        <Input 
-                           placeholder="lamflo.xyz"
-                           className=" border-zinc-700 border-spacing-3 text-2xl font-semibold mb-1 w-full"
-                        />
+                        <DomainInput/>
                      </div>
                   </div>
 

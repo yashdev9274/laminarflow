@@ -88,7 +88,7 @@ export default function EarlyAccess(){
         <div>
             <header className="absolute left-4 top-4 md:left-8 md:top-8">
                     <div className="flex justify-between items-center container">                    
-                        <BackRedirectButton text="Back" href = "/"/>
+                        <BackRedirectButton text="Return Home" href = "/"/>
                     </div>
             </header>
         </div>

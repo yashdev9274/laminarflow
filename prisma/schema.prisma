@@ -163,6 +163,7 @@ model Companies{
   address String
   total Int
   description String
+  date DateTime
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
