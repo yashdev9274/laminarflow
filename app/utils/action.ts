@@ -238,4 +238,6 @@ export async function createCompany(prevState: any, formData: FormData){
         }
     })
 
+    return redirect("/dashboard/companies")
+
 }
