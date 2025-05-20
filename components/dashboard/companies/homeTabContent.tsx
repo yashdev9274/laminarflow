@@ -64,6 +64,9 @@ export function HomeTabContent(){
                      <Input 
                         placeholder="LaminarFlow"
                         className="border-zinc-700 border-spacing-3 text-sm font-semibold mb-1 w-[400px]"
+                        name = {fields.name.name}
+                        key={fields.name.key}
+                        defaultValue={fields.name.initialValue}
                      />
                      <p className="text-sm text-zinc-400">Added about 17 hours ago</p>
                   </div>
@@ -97,6 +100,9 @@ export function HomeTabContent(){
                         <Input 
                            placeholder="India..."
                            className=" peer pe-9 border-zinc-700 border-spacing-3 text-2xl font-semibold mb-1 w-full"
+                           name={fields.address.name}
+                           key={fields.address.key}
+                           defaultValue={fields.address.initialValue}
                         />
                         <div className="text-muted-foreground/80 pointer-events-none absolute inset-y-0 end-0 flex items-center justify-center pe-3 peer-disabled:opacity-50">
                            <MapPinned size={16} aria-hidden="true" />
@@ -128,7 +134,22 @@ export function HomeTabContent(){
                         {/* <Avatar className="h-6 w-6 bg-violet-600">
                           <AvatarFallback>Y</AvatarFallback>
                         </Avatar> */}
-                        <DomainInput/>
+                        {/* <DomainInput/> */}
+                        <div className="*:not-first:mt-2">
+                           <div className="flex rounded-md shadow-xs">
+                           <span className="border-input bg-background text-muted-foreground -z-10 inline-flex items-center rounded-s-md border px-3 text-sm border-zinc-700 border-spacing-3 font-semibold ">
+                              https://
+                           </span>
+                           <Input
+                              className="-ms-px rounded-s-none shadow-none border-zinc-700 border-spacing-3 text-2xl font-semibold w-full"
+                              placeholder="google.com"
+                              type="text"
+                              name={fields.domain.name}
+                              key={fields.domain.key}
+                              defaultValue={fields.domain.initialValue}
+                           />
+                           </div>
+                        </div>
                      </div>
                   </div>
 
