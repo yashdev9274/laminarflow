@@ -1,4 +1,4 @@
-'use client'
+// 'use client'
 
 import SubmitButton from "@/app/components/submitButton";
 import { createCompany } from "@/app/utils/action";

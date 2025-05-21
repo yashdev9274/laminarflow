@@ -1,7 +1,8 @@
-'use client';
+// 'use client';
 
 import CompaniesInfo from "@/components/dashboard/companies/companiesInfo";
-import CompaniesTable from "@/components/dashboard/companies/CompaniesTable";
+import { CompaniesTable } from "@/components/dashboard/companies/CompaniesTable";
+// import CompaniesTable from "@/components/dashboard/companies/CompaniesTable";
 import { CreateCompaniesSheet } from "@/components/dashboard/companies/createCompaniesSheet";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -9,25 +10,10 @@ import { Building2, Filter, SortAsc } from "lucide-react";
 import { useState } from "react";
 // import { Company } from "@/components/dashboard/companies/CompaniesTable";
 
-interface Company {
-   id: string
-   name: string
-   logo: string
-   domain: string
-   createdBy: string
-   accountOwner: string
-   creationDate: string
-   employees: number
-   linkedin: string
-   address: string
-}
+
 
 export default function Companies(){
-   const [selectedRows, setSelectedRows] = useState<string[]>([]);
-
-   const handleCompanyClick = (company: Company) => {
-      // Define what happens when a company is clicked
-   };
+   
 
    return(
       <div className="flex flex-col gap-4 p-4 pt-0">
@@ -63,11 +49,7 @@ export default function Companies(){
                </div>
             </CardHeader>
             <CardContent className="mt-5">
-               <CompaniesTable 
-                  selectedRows={selectedRows} 
-                  setSelectedRows={setSelectedRows} 
-                  onCompanyClick={handleCompanyClick}
-               />
+               <CompaniesTable />
             </CardContent>
          </Card>
       </div>
