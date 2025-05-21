@@ -2,5 +2,13 @@
    "cSpell.words": [
       "Fintech",
       "Waitlist"
+   ],
+   "spellright.language": [
+      "en"
+   ],
+   "spellright.documentTypes": [
+      "markdown",
+      "latex",
+      "plaintext"
    ]
 }

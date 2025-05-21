@@ -1,4 +1,4 @@
-'use client'
+// 'use client'
 
 import SubmitButton from "@/app/components/submitButton";
 import { createCompany } from "@/app/utils/action";
@@ -47,6 +47,7 @@ export function HomeTabContent(){
                   action={action}
                   id={form.id}
                   onSubmit={form.onSubmit}
+                  noValidate
                >
 
                   <input
@@ -144,9 +145,9 @@ export function HomeTabContent(){
                               className="-ms-px rounded-s-none shadow-none border-zinc-700 border-spacing-3 text-2xl font-semibold w-full"
                               placeholder="google.com"
                               type="text"
-                              name={fields.domain.name}
-                              key={fields.domain.key}
-                              defaultValue={fields.domain.initialValue}
+                              name={fields.domainName.name}
+                              key={fields.domainName.key}
+                              defaultValue={fields.domainName.initialValue}
                            />
                            </div>
                         </div>
@@ -180,6 +181,9 @@ export function HomeTabContent(){
                         <Input 
                            placeholder="Yash Dewasthale"
                            className=" border-zinc-700 border-spacing-3 text-2xl font-semibold mb-1 w-full"
+                           name={fields.accountOwner.name}
+                           key={fields.accountOwner.key}
+                           defaultValue={fields.accountOwner.initialValue}
                         />
                      </div>
                   </div>
@@ -208,7 +212,34 @@ export function HomeTabContent(){
                         <Input 
                            placeholder="50"
                            className=" border-zinc-700 border-spacing-3 text-2xl font-semibold mb-1 w-full"
+                           name={fields.employees.name}
+                           key={fields.employees.key}
+                           defaultValue={fields.employees.initialValue}
                         />
+                     </div>
+                  </div>
+
+                  {/* Total */}
+
+                  <div className="flex items-center p-4">
+                     <div className="w-32 text-sm text-zinc-400 flex items-center gap-2">
+                        {/* You can use an icon here if you want */}
+                        Total
+                     </div>
+                     <div className="flex-1">
+                        <Input
+                           placeholder="1000"
+                           className="border-zinc-700 border-spacing-3 text-2xl font-semibold mb-1 w-full"
+                           name={fields.total.name}
+                           key={fields.total.key}
+                           defaultValue={fields.total.initialValue}
+                           type="number"
+                           min={1}
+                        />
+                        {/* Optionally show errors */}
+                        {fields.total.errors && (
+                           <p className="text-sm text-red-500">{fields.total.errors}</p>
+                        )}
                      </div>
                   </div>
 
@@ -233,6 +264,9 @@ export function HomeTabContent(){
                         <Textarea
                            placeholder="LaminarFlow is a..."
                            className=" border-zinc-700 border-spacing-3 text-2xl font-semibold mb-1 w-full"
+                           name={fields.description.name}
+                           key={fields.description.key}
+                           defaultValue={fields.description.initialValue}
                         />
                      </div>
                   </div>

@@ -51,6 +51,7 @@ export const companySchema = z.object({
     domainName: z.string().min(2, "Domain Name is required"),
     accountOwner: z.string().min(2, "Account Owner is required"),
     employees: z.number().min(1, "Employees are required"),
+    // total: z.number().min(1,"Total is required"),
     address: z.string().min(2, "Address is required"),
     date: z.string().min(1,"Date is required"),
     total: z.number().min(1, "Total is required"),
