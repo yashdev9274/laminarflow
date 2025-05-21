@@ -1,23 +1,10 @@
 "use client"
 
 import Balancer from "react-wrap-balancer"
-import { Card, CardContent } from "../ui/card"
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "../ui/form"
-import { z } from "zod"
-import { Input } from "../ui/input"
-import { Button } from "../ui/button"
-import { useActionState, useEffect, useState } from "react"
-import { createEarlyAccessUser } from "@/app/utils/action"
-import { useForm } from "@conform-to/react"
-import { earlyAccessSchema } from "@/app/utils/zodSchema"
-import { parseWithZod } from "@conform-to/zod"
-import SubmitButton from "@/app/components/submitButton"
-import RedirectButton from "@/app/components/redirectButton"
-import Image from "next/image"
-import Link from "next/link"
 import { NavbarDemo } from "../navbar/navbar"
 import IntroBar from "@/app/components/introBar"
 import { TypingText } from "../ui/typing-text"
+import Waitlist from "./waitlist"
 
 
 export default function Hero(){
@@ -58,7 +45,8 @@ export default function Hero(){
                     Manage your business with <span className="font-mono">LaminarFlow</span> – a
                     modern, powerful, and affordable platform to manage your business' financial workflow
                 </Balancer>
-                <RedirectButton text="Join Waitlist" href='/early-access'/>
+                {/* <RedirectButton text="Join Waitlist" href='/early-access'/> */}
+                <Waitlist/>
             </div>
             
         </div>
