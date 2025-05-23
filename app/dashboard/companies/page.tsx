@@ -2,6 +2,7 @@
 
 import CompaniesInfo from "@/components/dashboard/companies/companiesInfo";
 import { CompaniesTable } from "@/components/dashboard/companies/CompaniesTable";
+import { CompaniesTableWrapper } from "@/components/dashboard/companies/companiesTableWrapper";
 // import CompaniesTable from "@/components/dashboard/companies/CompaniesTable";
 import { CreateCompaniesSheet } from "@/components/dashboard/companies/createCompaniesSheet";
 import { Button } from "@/components/ui/button";
@@ -33,23 +34,13 @@ export default function Companies(){
                   {/* <CreateCompaniesSheet/> */}
 
                   <div className="flex items-center gap-2">
-                     <Button variant="outline" size="sm">
-                        <Filter className="h-4 w-4 mr-2" />
-                        Filter
-                     </Button>
-                     <Button variant="outline" size="sm">
-                        <SortAsc className="h-4 w-4 mr-2" />
-                        Sort
-                     </Button>
-                     <Button variant="outline" size="sm">
-                        Options
-                     </Button>
+                     
                      <CreateCompaniesSheet />
                   </div>
                </div>
             </CardHeader>
             <CardContent className="mt-5">
-               <CompaniesTable />
+               <CompaniesTableWrapper/>
             </CardContent>
          </Card>
       </div>

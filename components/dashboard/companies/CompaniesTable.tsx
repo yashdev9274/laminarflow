@@ -5,20 +5,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { prisma } from "@/app/utils/db";
 import { requireUser } from "@/app/utils/requireAuth";
 
-// Define the Company type
-// interface Company {
-//    id: string; // Example property
-//    name: string; // Example property
-//    logo: string
-//    domain: string
-//    createdBy: string
-//    accountOwner: string
-//    creationDate: string
-//    employees: number
-//    linkedin: string
-//    address: string
-//     // Add other properties as needed
-// }
+
 
 // interface CompaniesTableProps {
 //     selectedRows: string[];
@@ -48,68 +35,6 @@ async function getData(userId: string){
 
 export async function CompaniesTable() {
    
-   // const companies: Company[] = [
-   //    {
-   //      id: "1",
-   //      name: "Airbnb",
-   //      logo: "A",
-   //      domain: "airbnb.com",
-   //      createdBy: "System",
-   //      accountOwner: "",
-   //      creationDate: "less than a minute ago",
-   //      employees: 5000,
-   //      linkedin: "",
-   //      address: "888 Brannan St, San Francisco",
-   //    },
-   //    {
-   //      id: "2",
-   //      name: "Qonto",
-   //      logo: "Q",
-   //      domain: "qonto.com",
-   //      createdBy: "System",
-   //      accountOwner: "",
-   //      creationDate: "less than a minute ago",
-   //      employees: 800,
-   //      linkedin: "",
-   //      address: "18 rue de navarrin, Paris, France",
-   //    },
-   //    {
-   //      id: "3",
-   //      name: "Stripe",
-   //      logo: "S",
-   //      domain: "stripe.com",
-   //      createdBy: "System",
-   //      accountOwner: "",
-   //      creationDate: "less than a minute ago",
-   //      employees: 8000,
-   //      linkedin: "",
-   //      address: "Eutaw Street, Dublin, Ireland",
-   //    },
-   //    {
-   //      id: "4",
-   //      name: "Figma",
-   //      logo: "F",
-   //      domain: "figma.com",
-   //      createdBy: "System",
-   //      accountOwner: "",
-   //      creationDate: "less than a minute ago",
-   //      employees: 800,
-   //      linkedin: "",
-   //      address: "760 Market St, Floor 10, San Francisco",
-   //    },
-   //    {
-   //      id: "5",
-   //      name: "Notion",
-   //      logo: "N",
-   //      domain: "notion.com",
-   //      createdBy: "System",
-   //      accountOwner: "",
-   //      creationDate: "less than a minute ago",
-   //      employees: 400,
-   //      linkedin: "",
-   //      address: "2300 Harrison St, San Francisco",
-   //    },
-   //  ]
 
    // const toggleSelectAll = ()=>{
    //    if(selectedRows.length === Companies.length){
@@ -180,7 +105,7 @@ export async function CompaniesTable() {
                         <TableCell className="text-left">{new Intl.DateTimeFormat("en-US",{dateStyle: "long"}).format(companies.createdAt)}</TableCell>
                         <TableCell className="text-left">{companies.employees}</TableCell>
                         <TableCell className="text-left">{companies.address}</TableCell>
-                        <TableCell className="text-right">Edit</TableCell>
+                        <TableCell className="text-right"><CompaniesTableAction status={companies.name} id={companies.id}/></TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
