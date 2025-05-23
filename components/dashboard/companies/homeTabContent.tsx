@@ -76,25 +76,7 @@ export function HomeTabContent(){
                   {/* address */}
                   <div className="flex items-center p-4">
                      <div className="w-32 text-sm text-zinc-400 flex items-center gap-2">
-                        <svg 
-                           width="24px" 
-                           height="24px" 
-                           strokeWidth="1.5" 
-                           viewBox="0 0 24 24" 
-                           fill="none" 
-                           xmlns="http://www.w3.org/2000/svg" 
-                           color="#767676"
-                        >
-                           <line x1="6" x2="6" y1="3" y2="15" />
-                           <circle cx="18" cy="6" r="3" />
-                           <circle cx="6" cy="18" r="3" />
-                           <path d="M9 19L3.78974 20.7368C3.40122 20.8663 3 20.5771 3 20.1675L3 5.43246C3 5.1742 3.16526 4.94491 3.41026 4.86325L9 3M9 19L15 21M9 19L9 3M15 21L20.5897 19.1368C20.8347 19.0551 21 18.8258 21 18.5675L21 3.83246C21 3.42292 20.5988 3.13374 20.2103 3.26325L15 5M15 21L15 5M15 5L9 3" 
-                                 stroke="#000000" 
-                                 strokeWidth="1.5" 
-                                 strokeLinecap="round" 
-                                 strokeLinejoin="round">
-                           </path>
-                        </svg>
+                     <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24"><mask id="lineMdMapMarkerAltFilledLoop0"><g fill="none" fillOpacity={0} stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}><path fill="#fff" d="M12 20.5C12 20.5 11 19 11 18C11 17.5 11.5 17 12 17C12.5 17 13 17.5 13 18C13 19 12 20.5 12 20.5z"><animate fill="freeze" attributeName="d" dur="0.2s" keyTimes="0;0.7;1" values="M12 20.5C12 20.5 11 19 11 18C11 17.5 11.5 17 12 17C12.5 17 13 17.5 13 18C13 19 12 20.5 12 20.5z;M12 20.5C12 20.5 5 13 5 8C5 4.5 8 1 12 1C16 1 19 4.5 19 8C19 13 12 20.5 12 20.5z;M12 20.5C12 20.5 6 13.5 6 9C6 5.68629 8.68629 3 12 3C15.3137 3 18 5.68629 18 9C18 13.5 12 20.5 12 20.5z"></animate><animate fill="freeze" attributeName="fill-opacity" begin="0.25s" dur="0.25s" values="0;1"></animate><animateTransform attributeName="transform" dur="1.5s" keyTimes="0;0.3;0.4;0.54;0.6;0.68;0.7;1" repeatCount="indefinite" type="rotate" values="0 12 20.5;0 12 20.5;-8 12 20.5;0 12 20.5;5 12 20.5;-2 12 20.5;0 12 20.5;0 12 20.5"></animateTransform></path><circle cx={12} cy={9} r={2.5} fill="#000" stroke="none"><animate fill="freeze" attributeName="fill-opacity" begin="0.5s" dur="0.25s" values="0;1"></animate></circle></g></mask><rect width={24} height={24} fill="#fff" mask="url(#lineMdMapMarkerAltFilledLoop0)"></rect></svg>
                         Address
                      </div>
                      <div className="relative">
@@ -115,20 +97,7 @@ export function HomeTabContent(){
 
                   <div className="flex items-center p-4">
                      <div className="w-32 text-sm text-zinc-400 flex items-center gap-2">
-                        <svg 
-                           width="24px" 
-                           height="24px" 
-                           strokeWidth="1.5" 
-                           viewBox="0 0 24 24" 
-                           fill="none" 
-                           xmlns="http://www.w3.org/2000/svg" 
-                           color="#767676"
-                        >
-                           <line x1="6" x2="6" y1="3" y2="15" />
-                           <circle cx="18" cy="6" r="3" />
-                           <circle cx="6" cy="18" r="3" />
-                           <path d="M5 20V19C5 15.134 8.13401 12 12 12V12C15.866 12 19 15.134 19 19V20" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path><path d="M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12Z" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
-                        </svg>
+                     <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24"><path fill="none" stroke="#fff" strokeDasharray={28} strokeDashoffset={28} strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 6l2 -2c1 -1 3 -1 4 0l1 1c1 1 1 3 0 4l-5 5c-1 1 -3 1 -4 0M11 18l-2 2c-1 1 -3 1 -4 0l-1 -1c-1 -1 -1 -3 0 -4l5 -5c1 -1 3 -1 4 0"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="28;0"></animate></path></svg>
                         Domain
                      </div>
                      <div className="flex-1 flex items-center gap-2">
@@ -158,20 +127,7 @@ export function HomeTabContent(){
 
                   <div className="flex items-center p-4">
                      <div className="w-32 text-sm text-zinc-400 flex items-center gap-2">
-                        <svg 
-                           width="24px" 
-                           height="24px" 
-                           strokeWidth="1.5" 
-                           viewBox="0 0 24 24" 
-                           fill="none" 
-                           xmlns="http://www.w3.org/2000/svg" 
-                           color="#767676"
-                        >
-                           <line x1="6" x2="6" y1="3" y2="15" />
-                           <circle cx="18" cy="6" r="3" />
-                           <circle cx="6" cy="18" r="3" />
-                           <path d="M5 20V19C5 15.134 8.13401 12 12 12V12C15.866 12 19 15.134 19 19V20" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path><path d="M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12Z" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
-                        </svg>
+                     <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24"><g fill="#fff" fillOpacity={0} stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}><path strokeDasharray={20} strokeDashoffset={20} d="M12 5c1.66 0 3 1.34 3 3c0 1.66 -1.34 3 -3 3c-1.66 0 -3 -1.34 -3 -3c0 -1.66 1.34 -3 3 -3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.24s" values="20;0"></animate></path><path strokeDasharray={36} strokeDashoffset={36} d="M12 14c4 0 7 2 7 3v2h-14v-2c0 -1 3 -3 7 -3Z"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.3s" dur="0.3s" values="36;0"></animate></path><animate fill="freeze" attributeName="fill-opacity" begin="0.66s" dur="0.3s" values="0;1"></animate></g></svg>
                         Acc. Owner
                      </div>
                      <div className="flex-1 flex items-center gap-2">
@@ -192,20 +148,7 @@ export function HomeTabContent(){
 
                   <div className="flex items-center p-4">
                      <div className="w-32 text-sm text-zinc-400 flex items-center gap-2">
-                        <svg 
-                           width="24px" 
-                           height="24px" 
-                           strokeWidth="1.5" 
-                           viewBox="0 0 24 24" 
-                           fill="none" 
-                           xmlns="http://www.w3.org/2000/svg" 
-                           color="#767676"
-                        >
-                           <line x1="6" x2="6" y1="3" y2="15" />
-                           <circle cx="18" cy="6" r="3" />
-                           <circle cx="6" cy="18" r="3" />
-                           <path d="M1 20V19C1 15.134 4.13401 12 8 12V12C11.866 12 15 15.134 15 19V20" stroke="#000000" strokeWidth="1.5" strokeLinecap="round"></path><path d="M13 14V14C13 11.2386 15.2386 9 18 9V9C20.7614 9 23 11.2386 23 14V14.5" stroke="#000000" strokeWidth="1.5" strokeLinecap="round"></path><path d="M8 12C10.2091 12 12 10.2091 12 8C12 5.79086 10.2091 4 8 4C5.79086 4 4 5.79086 4 8C4 10.2091 5.79086 12 8 12Z" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path><path d="M18 9C19.6569 9 21 7.65685 21 6C21 4.34315 19.6569 3 18 3C16.3431 3 15 4.34315 15 6C15 7.65685 16.3431 9 18 9Z" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
-                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="#fff" fill-opacity="0" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="20" stroke-dashoffset="20" d="M12 5c1.66 0 3 1.34 3 3c0 1.66 -1.34 3 -3 3c-1.66 0 -3 -1.34 -3 -3c0 -1.66 1.34 -3 3 -3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.24s" values="20;0"/></path><path stroke-dasharray="36" stroke-dashoffset="36" d="M12 14c4 0 7 2 7 3v2h-14v-2c0 -1 3 -3 7 -3Z"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.3s" dur="0.3s" values="36;0"/></path><animate fill="freeze" attributeName="fill-opacity" begin="0.66s" dur="0.3s" values="0;1"/></g></svg>
                         Employees
                      </div>
                      <div className="flex-1">
@@ -246,17 +189,7 @@ export function HomeTabContent(){
                   {/* domain name */}
                   <div className="flex items-center p-4">
                      <div className="w-32 text-sm text-zinc-400 flex items-center gap-2">
-                     <svg 
-                        width="24px" 
-                        height="24px" 
-                        strokeWidth="1.5" 
-                        viewBox="0 0 24 24" 
-                        fill="none" 
-                        xmlns="http://www.w3.org/2000/svg" 
-                        color="#000000"
-                     >
-                        <path d="M14 11.9976C14 9.5059 11.683 7 8.85714 7C8.52241 7 7.41904 7.00001 7.14286 7.00001C4.30254 7.00001 2 9.23752 2 11.9976C2 14.376 3.70973 16.3664 6 16.8714C6.36756 16.9525 6.75006 16.9952 7.14286 16.9952" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path><path d="M10 11.9976C10 14.4893 12.317 16.9952 15.1429 16.9952C15.4776 16.9952 16.581 16.9952 16.8571 16.9952C19.6975 16.9952 22 14.7577 22 11.9976C22 9.6192 20.2903 7.62884 18 7.12383C17.6324 7.04278 17.2499 6.99999 16.8571 6.99999" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
-                     </svg>
+                     <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24"><g fill="none" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}><path strokeDasharray={56} strokeDashoffset={56} d="M3 21l2 -6l11 -11c1 -1 3 -1 4 0c1 1 1 3 0 4l-11 11l-6 2"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.36s" values="56;0"></animate></path><path strokeDasharray={8} strokeDashoffset={8} d="M15 5l4 4"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.36s" dur="0.12s" values="8;0"></animate></path><path strokeDasharray={6} strokeDashoffset={6} strokeWidth={1} d="M6 15l3 3"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.36s" dur="0.12s" values="6;0"></animate></path></g></svg>
                         Description
                      </div>
 
