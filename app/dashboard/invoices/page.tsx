@@ -11,6 +11,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { DashboardBlocks } from "@/components/dashboard/analytics/dashboardBlocks";
 import { Separator } from "@/components/ui/separator";
 import ExportButton from "@/app/components/exportButton";
+import LFAgentButton from "../../../components/dashboard/invoice/LFAgentButton";
+// import LFAgentButton from @/app/components/dashboard/invoice/LFAgentButton";
 
 
 
@@ -52,7 +54,10 @@ export default async function InvoicePage(){
                                 You can track your invoices here
                             </CardDescription>
                         </div>
-                        <CreateInvoiceSheet/>
+                        <div className="flex items-center gap-2">
+                            <LFAgentButton/>
+                            <CreateInvoiceSheet/>
+                        </div>
                     </div>
                 </CardHeader>
                 <Separator/>
