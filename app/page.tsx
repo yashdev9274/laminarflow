@@ -9,6 +9,7 @@ import FAQ from "@/components/home/faq";
 import Demo from "@/components/home/demo/demo";
 import { Features } from "@/components/home/feature";
 import NewNavbar from "@/components/navbar/newNavbar";
+import LogoTicker from "@/components/home/LogoTicker";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
       <div className="relative mx-auto flex flex-col max-w-7xl px-4 md:px-6 mb-9">
         <NewNavbar/>
         <Hero/>
+        <LogoTicker/>
         <div className="w-full">
           <section className="flex flex-col gap-4 p-4 pt-0 mt-10 mb-9 w-full md:w-5/6 mx-auto">
             <Card>
