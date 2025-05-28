@@ -44,3 +44,24 @@ next-env.d.ts
 # public asset
 /public/asset/*
 /public/asset/LF-main.mp4
+   !public/asset/1.jpg
+   !public/asset/2.png
+   !public/asset/3.png
+   !public/asset/acme-corp.svg
+   !public/asset/apex.svg
+   !public/asset/celestial.svg
+   !public/asset/echo-valley.svg
+   !public/asset/mouse-pointer.svg
+   !public/asset/outside.svg
+   !public/asset/pulse.svg
+   !public/asset/quantum.svg
+   !public/asset/twice.svg
+
+
+
+!public/asset/images*
+
+
+
+
+
