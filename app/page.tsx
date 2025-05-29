@@ -7,9 +7,10 @@ import Hero from "@/components/home/hero";
 import Footer from "@/components/home/footer";
 import FAQ from "@/components/home/faq";
 import Demo from "@/components/home/demo/demo";
-import { Features } from "@/components/home/feature";
 import NewNavbar from "@/components/navbar/newNavbar";
 import LogoTicker from "@/components/home/LogoTicker";
+import {Features} from "@/components/home/featureSection";
+import { CTA } from "@/components/home/cta";
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
         <NewNavbar/>
         <Hero/>
         <LogoTicker/>
+        <Features/>
         <div className="w-full">
           <section className="flex flex-col gap-4 p-4 pt-0 mt-10 mb-9 w-full md:w-5/6 mx-auto">
             <Card>
@@ -28,8 +30,9 @@ export default function Home() {
             </Card>
           </section>
         </div>
-        <Features/>
+        {/* <Features/> */}
         <FAQ/>
+        <CTA/>
         <Footer/>
       </div>
     </div>
