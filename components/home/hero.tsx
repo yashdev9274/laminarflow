@@ -14,9 +14,9 @@ import Pointer from "./pointer"
 export default function Hero(){
 
     return(
-        <section className="py-24 ">
+        <section className="py-24 mb-5 ">
 
-            <div className="container relative">
+            <div className="container relative mt-5">
                 
                 <div className="absolute -left-32 top-16 hidden lg:block">
                     <Image
@@ -45,7 +45,7 @@ export default function Hero(){
             
                 <div className="container">
                     <p className="text-center text-sm font-semibold leading-tight tracking-[-0.03em]  text-zinc-400 sm:text-6xl md:px-0">The #1 </p>
-                    <p className="text-center text-4xl font-bold leading-tight tracking-[-0.03em]  text-white sm:text-6xl md:px-0"> 
+                    <p className="text-center text-4xl font-bold tracking-tighter bg-white bg-[radial-gradient(100%_100%_at_top_left, white, white, rgb(74,32,138), rgb(255,255,255,0.5))] text-transparent bg-clip-text  text-white sm:text-6xl md:px-0"> 
                         Open-Sourced <TypingText text="Fintech" cursor cursorClassName="h-9"/>
 
                     </p>
