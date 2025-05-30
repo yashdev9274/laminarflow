@@ -11,6 +11,7 @@ import NewNavbar from "@/components/navbar/newNavbar";
 import LogoTicker from "@/components/home/LogoTicker";
 import {Features} from "@/components/home/featureSection";
 import { CTA } from "@/components/home/cta";
+import FeatureSection1  from "@/components/home/featureSection1";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
         <NewNavbar/>
         <Hero/>
         <LogoTicker/>
+        <FeatureSection1/>
         <Features/>
         <div className="w-full">
           <section className="flex flex-col gap-4 p-4 pt-0 mt-10 mb-9 w-full md:w-5/6 mx-auto">

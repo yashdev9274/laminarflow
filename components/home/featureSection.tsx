@@ -2,7 +2,7 @@
 
 import {DotLottieCommonPlayer, DotLottiePlayer} from "@dotlottie/react-player"
 import Image from "next/image";
-import productImage1 from "@/public/asset/images/m1.png"
+import productImage2 from "@/public/asset/images/m2.png"
 import { ComponentPropsWithoutRef, useEffect, useRef, useState } from "react";
 import { animate, motion,useMotionTemplate, useMotionValue, ValueAnimationTransition } from "framer-motion";
 
@@ -17,7 +17,7 @@ const tabs = [
    },
    {
      icon: "/asset/images/click.lottie",
-     title: "Invoices",
+     title: "Finances",
      isNew: false,
      backgroundPositionX: 98,
      backgroundPositionY: 100,
@@ -25,7 +25,7 @@ const tabs = [
    },
    {
      icon: "/asset/images/stars.lottie",
-     title: "Transactions",
+     title: "AIAgent",
      isNew: true,
      backgroundPositionX: 100,
      backgroundPositionY: 27,
@@ -171,7 +171,7 @@ const tabs = [
                   style={{
                     backgroundPosition,
                     backgroundSize,
-                    backgroundImage: `url(${productImage1.src})`,
+                    backgroundImage: `url(${productImage2.src})`,
                   }}
                 >   
 
