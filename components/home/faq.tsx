@@ -51,7 +51,7 @@ export default function FAQ(){
                             How do I get started?
                         </AccordionTrigger>
                         <AccordionContent className="text-sm md:text-base text-muted-foreground">
-                            Simply sign up for an account, complete your business profile, and you can start managing your finances right away.
+                            Simply create your account, complete your business profile, and you can start managing your finances right away.
                         </AccordionContent>
                     </AccordionItem>
 
