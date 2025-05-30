@@ -112,7 +112,7 @@ export default function Waitlist(){
                         <Input 
                             type="text" 
                             placeholder="you@example.com" 
-                            className="bg-[#1c1c1c] border-[#333] text-white h-8 w-full rounded"
+                            className="bg-[#1c1c1c] border-[#333] text-white h-9 w-full rounded"
                             name={fields.email.name}
                             key={fields.email.key}
                             defaultValue={fields.email.initialValue}

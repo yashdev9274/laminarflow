@@ -12,6 +12,8 @@ import LogoTicker from "@/components/home/LogoTicker";
 import {Features} from "@/components/home/featureSection";
 import { CTA } from "@/components/home/cta";
 import FeatureSection1  from "@/components/home/featureSection1";
+import TransactionCheckout from "@/components/home/TransactionCheckout";
+import FAQ2 from "@/components/home/faq2";
 
 export default function Home() {
   return (
@@ -25,15 +27,18 @@ export default function Home() {
         <LogoTicker/>
         <FeatureSection1/>
         <Features/>
-        <div className="w-full">
+        <TransactionCheckout/>
+        {/* Demo Dashboard */}
+        {/* <div className="w-full">
           <section className="flex flex-col gap-4 p-4 pt-0 mt-10 mb-9 w-full md:w-5/6 mx-auto">
             <Card>
               <Demo/>
             </Card>
           </section>
-        </div>
+        </div> */}
         {/* <Features/> */}
-        <FAQ/>
+        {/* <FAQ/> */}
+        <FAQ2/>
         <CTA/>
         <Footer/>
       </div>
