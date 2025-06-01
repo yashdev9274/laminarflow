@@ -51,7 +51,7 @@ export async function DashboardBlocks() {
 
   return (
     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 md:gap-8 ml-5 mr-5 mb-5 mt-5">
-      <Card>
+      <Card className="rounded-xl rounded-tl-none">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle className="text-sm font-medium">Total Revenue</CardTitle>
           <DollarSign className="size-4 text-muted-foreground" />
@@ -75,7 +75,7 @@ export async function DashboardBlocks() {
         </CardHeader>
         <CardContent>
           <h2 className="text-2xl font-bold">+{data.length}</h2>
-          <p className="text-xs text-muted-foreground">Total Invoices Isued!</p>
+          <p className="text-xs text-muted-foreground">Total Invoices Issued!</p>
         </CardContent>
       </Card>
       <Card>
