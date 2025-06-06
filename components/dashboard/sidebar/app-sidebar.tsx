@@ -20,7 +20,8 @@ import {
   CircleCheckBig,
   Settings,
   Search,
-  MessageCircle
+  MessageCircle,
+  FileTextIcon
 } from "lucide-react"
 
 import { NavMain } from "@/components/dashboard/sidebar/nav-main"
@@ -40,6 +41,8 @@ import { NavCrm } from "./nav-crm"
 import NavCommand  from "./nav-command"
 import Image from "next/image"
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card"
+import { NavAgents } from "./nav-agent"
+// import { NavAgent } from "./nav-agent"
 
 const data = {
   user: {
@@ -124,6 +127,28 @@ const data = {
       icon: PieChart,
     },
   ],
+
+  navAgents: [
+    {
+      title: "Automation",
+      url: "#",
+      icon: Bot,
+      isActive: true,
+      items: [
+        {
+          title: "InvoiceAgent",
+          url: "/dashboard/agents/invoice",
+          icon: FileTextIcon  
+        },
+        {
+          title: "TransactionAgent",
+          url: "/dashboard/agents/transaction",
+          icon: BadgeIndianRupee
+        },
+      ],
+    },
+    
+  ],
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
@@ -174,11 +199,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
-      <SidebarContent className="mt-9">
+      <SidebarContent className="mt-5">
         {/* <NavCommand/> */}
         <NavMain items={data.navMain} />
         <NavCrm items={data.navCrm} />
         {/* <NavProjects projects={data.projects} /> */}
+        <NavAgents items={data.navAgents} />
         <NavSecondary items={data.navSecondary} className="mt-auto mb-5" />
       </SidebarContent>
       <SidebarFooter className="mb-5">

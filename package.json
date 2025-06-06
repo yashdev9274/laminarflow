@@ -52,6 +52,7 @@
     "date-fns": "^4.1.0",
     "framer-motion": "^12.6.0",
     "hono": "^4.7.11",
+    "langbase": "^1.1.62",
     "lucide-react": "^0.475.0",
     "mailtrap": "^4.0.0",
     "motion": "^12.6.2",
