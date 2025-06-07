@@ -191,3 +191,13 @@ enum TaskStatus{
   InProgress
   Done
 }
+
+model InvoiceAnalysis {
+  id             String   @id @default(uuid())
+  invoiceId      String
+  analysis       String
+  paymentReminder String?
+  createdAt      DateTime @default(now())
+  // If you want a relation to Invoice:
+  // invoice        Invoice  @relation(fields: [invoiceId], references: [id])
+}
