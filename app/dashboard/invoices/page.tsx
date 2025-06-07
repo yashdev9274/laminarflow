@@ -39,9 +39,32 @@ export default async function InvoicePage(){
             {/* <div className="flex justify-end">
                 <ExportButton />
             </div> */}
-            <Card>
-                <CardHeader className="mb-2">
+
+            <div>
+                <div className="mb-2">
                     <div className="flex items-center justify-between ml-2">
+                        <div>
+                            <div className="text-lg font-semibold"> 
+                                <div className="flex items-center gap-4">
+                                    <ReceiptIndianRupee/>
+                                        Invoices
+                                    <InvoiceInfo/>
+                                </div>
+                            </div>
+                            <div className="text-sm">
+                                You can track your invoices here
+                            </div>
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <LFAgentButton/>
+                            <CreateInvoiceSheet/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {/* <Card> */}
+                {/* <CardHeader className="mb-2"> */}
+                    {/* <div className="flex items-center justify-between ml-2">
                         <div>
                             <CardTitle className="text-lg font-semibold"> 
                                 <div className="flex items-center gap-4">
@@ -58,9 +81,9 @@ export default async function InvoicePage(){
                             <LFAgentButton/>
                             <CreateInvoiceSheet/>
                         </div>
-                    </div>
-                </CardHeader>
-                <Separator/>
+                    </div> */}
+                {/* </CardHeader> */}
+                {/* <Separator/> */}
                 {/* Remove commented fragment start */}
                     {data.length < 1 ? (
                         <DashboardEmptyState
@@ -72,15 +95,15 @@ export default async function InvoicePage(){
                     ) : (
                         <Suspense fallback={<Skeleton className="w-full h-full flex-1" />}>
                             <DashboardBlocks/>
-                            <Separator/>
-                            <CardContent>
+                            {/* <Separator/> */}
+                            {/* <CardContent> */}
                                 <InvoiceTable/>
-                            </CardContent>
+                            {/* </CardContent> */}
                         </Suspense> // Close Suspense here
                     )}
                 {/* Remove commented fragment end */}
                 
-            </Card>
+            {/* </Card> */}
             
         </div>
     )

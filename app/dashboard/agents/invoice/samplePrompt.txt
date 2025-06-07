@@ -1,0 +1,27 @@
+INVOICE #INV-2023-1234
+Date: 2023-10-15
+Due Date: 2023-11-15
+
+From:
+Acme Corporation
+123 Business St, Business City, BC 12345
+Phone: (555) 123-4567
+Email: billing@acmecorp.com
+
+To:
+John Smith Enterprises
+456 Client Ave, Client City, CC 67890
+Phone: (555) 987-6543
+Email: accounts@johnsmith.com
+
+Items:
+1. Web Development Services - 40 hours @ $75/hour = $3,000
+2. Server Hosting (Monthly) - 1 unit @ $150 = $150
+3. SSL Certificate (Annual) - 1 unit @ $100 = $100
+
+Subtotal: $3,250
+Tax (8%): $260
+Total: $3,510
+
+Payment Terms: Net 30
+Payment Method: Bank Transfer
