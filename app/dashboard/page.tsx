@@ -1,6 +1,4 @@
 import { DashboardBlocks } from "@/components/dashboard/analytics/dashboardBlocks";
-import SubmitButton from "../components/submitButton"
-import { signOut } from "../utils/auth"
 import { prisma } from "../utils/db";
 import { requireUser } from "../utils/requireAuth"
 import { Skeleton } from "@/components/ui/skeleton";
@@ -8,6 +6,7 @@ import { Suspense } from "react";
 import { DashboardEmptyState } from "@/components/dashboard/emptyStates/dashboardEmptystate";
 import { InvoiceAnalyticGraph } from "@/components/dashboard/analytics/invoiceAnalyticGraph";
 import { RecentInvoices } from "@/components/dashboard/analytics/recentInvoices";
+import DashboardCreateButton from "@/components/dashboard/createButtonsDashboard";
 
 
 async function getData(userId: string) {
@@ -31,6 +30,8 @@ export default async function Dashboard() {
     const data = await getData(session.user?.id as string)
     return (
         <>
+        <DashboardCreateButton/>
+
         {data.length < 1 ? (
             <DashboardEmptyState
                 title="No invoices found"
@@ -40,6 +41,7 @@ export default async function Dashboard() {
             />
         ) : (
             <Suspense fallback={<Skeleton className="w-full h-full flex-1" />}>
+            {/* <DashboardCreateButton/> */}
             <DashboardBlocks/>
             <div className="grid gap-4 lg:grid-cols-3 md:gap-8">
                 <InvoiceAnalyticGraph/>
