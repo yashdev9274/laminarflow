@@ -56,7 +56,7 @@ export default async function InvoicePage(){
                             </div>
                         </div>
                         <div className="flex items-center gap-2">
-                            <LFAgentButton/>
+                            {/* <LFAgentButton/> */}
                             <CreateInvoiceSheet/>
                         </div>
                     </div>
