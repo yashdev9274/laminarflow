@@ -15,7 +15,9 @@ export default function CreateButton({text, href, className="", children}: iAppP
    return(
       <div className="flex justify-center items-center">
          <Link href={href}>
-            <Button variant="secondary" className="hover:bg-neutral-900 font-bold py-2 px-4 rounded-xl">
+            <Button 
+               asChild
+               variant="secondary" className="hover:bg-neutral-900 font-bold py-2 px-4 rounded-xl">
                <div className="flex items-center">
                   {children}
                   {text}

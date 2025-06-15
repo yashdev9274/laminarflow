@@ -1,5 +1,9 @@
 import { prisma } from "@/app/utils/db";
 import { requireUser } from "@/app/utils/requireAuth";
+import { AnalyticsIcon } from "@/components/icons/analyticsIcon";
+import { CardIcon } from "@/components/icons/cardIcon";
+import { DollarSignIcon } from "@/components/icons/dollarsignIcon";
+import { User } from "@/components/icons/user";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { formatCurrency } from "@/hooks/formatCurrency";
 import { TransactionStatus } from "@prisma/client";
@@ -55,7 +59,7 @@ export async function TransactionsStatsBlocks() {
       <Card>
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle className="text-sm font-medium">Total Expenditure</CardTitle>
-          <DollarSign className="size-4 text-muted-foreground" />
+          <DollarSignIcon className="text-blue-700" />
         </CardHeader>
         <CardContent>
           <h2 className="text-2xl font-bold">
@@ -72,7 +76,7 @@ export async function TransactionsStatsBlocks() {
           <CardTitle className="text-sm font-medium">
             Total Transactions Created
           </CardTitle>
-          <Users className="size-4 text-muted-foreground" />
+          <User size={18} className="text-blue-700" />
         </CardHeader>
         <CardContent>
           <h2 className="text-2xl font-bold">+{data.length}</h2>
@@ -82,7 +86,7 @@ export async function TransactionsStatsBlocks() {
       <Card>
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle className="text-sm font-medium">Completed Transactions</CardTitle>
-          <CreditCard className="size-4 text-muted-foreground" />
+          <CardIcon className="text-blue-700" />
         </CardHeader>
         <CardContent>
           <h2 className="text-2xl font-bold">+{paidTransactions.length}</h2>
@@ -96,7 +100,7 @@ export async function TransactionsStatsBlocks() {
           <CardTitle className="text-sm font-medium">
             Pending Transactions
           </CardTitle>
-          <Activity className="size-4 text-muted-foreground" />
+          <AnalyticsIcon className="text-blue-700"  />
         </CardHeader>
         <CardContent>
           <h2 className="text-2xl font-bold">+{pendingTransactions.length}</h2>
