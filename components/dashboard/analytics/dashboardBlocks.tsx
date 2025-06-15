@@ -1,8 +1,10 @@
 import { prisma } from "@/app/utils/db";
 import { requireUser } from "@/app/utils/requireAuth";
+import { AnalyticsIcon } from "@/components/icons/analyticsIcon";
+import { User } from "@/components/icons/user";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { formatCurrency } from "@/hooks/formatCurrency";
-import { Activity, CreditCard, DollarSign, Users } from "lucide-react";
+import { Activity, CreditCard, DollarSign } from "lucide-react";
 
 
 async function getData(userId: string) {
@@ -71,7 +73,7 @@ export async function DashboardBlocks() {
           <CardTitle className="text-sm font-medium">
             Total Invoices Issued
           </CardTitle>
-          <Users className="size-4 text-muted-foreground" />
+          <User size={18} className="text-blue-700" />
         </CardHeader>
         <CardContent>
           <h2 className="text-2xl font-bold">+{data.length}</h2>
@@ -95,7 +97,7 @@ export async function DashboardBlocks() {
           <CardTitle className="text-sm font-medium">
             Pending Invoices
           </CardTitle>
-          <Activity className="size-4 text-muted-foreground" />
+          <AnalyticsIcon className="text-blue-700"  />
         </CardHeader>
         <CardContent>
           <h2 className="text-2xl font-bold">+{openInvoices.length}</h2>
