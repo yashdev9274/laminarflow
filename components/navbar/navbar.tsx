@@ -60,7 +60,7 @@ export function NavbarDemo() {
         <NavBody>
           <NavbarLogo />
           <NavItems items={navItems} />
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 ml-5">
             <NavbarButton className="bg-hidden text-white" variant="secondary">
               {/* <Link
                 href={session?'/dashboard':"/login"}
