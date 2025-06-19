@@ -8,6 +8,9 @@ import { Prisma } from "@prisma/client";
 import { requireUser } from "@/app/utils/requireAuth";
 import { formatCurrency } from "@/hooks/formatCurrency";
 import { Badge } from "../../ui/badge";
+import { SandClockIcon } from "@/components/icons/sandClockIcon";
+import { XCircle } from "lucide-react";
+import { CheckIcon } from "@/components/icons/checkIcon";
 
 async function getData(userId: string){
     const data = await prisma.invoice.findMany({
@@ -29,6 +32,35 @@ async function getData(userId: string){
     })
     return data;
 }
+
+
+const getInvoicesStatusBadge = (status: string) => {
+    switch (status.toLowerCase()) {
+        case "pending":
+            return (
+                <Badge variant="outline" className="gap-1 rounded bg-yellow-100 text-yellow-800 border-yellow-300 px-2 py-1">
+                    <SandClockIcon size={18} aria-hidden="true" className="text-yellow-600"/>
+                    {status}
+                </Badge>
+            );
+        
+        case "failed":
+            return (
+                <Badge variant="outline" className="gap-1 rounded bg-red-100 text-red-800 border-red-300 px-2 py-1">
+                    <XCircle size={18} aria-hidden="true" className="text-red-600"/>
+                    {status}
+                </Badge>
+            );
+        default:
+            return (
+                <Badge variant="outline" className="gap-1 bg-green-100 text-green-800 border-green-300 px-2 py-1 rounded">
+                    <CheckIcon className="text-emerald-500" size={18}/>
+                    {status}
+                </Badge>
+            );
+    }
+};
+
 
 export async function InvoiceTable() {
 
@@ -54,7 +86,9 @@ export async function InvoiceTable() {
                             <TableCell className="text-left">{invoice.clientName}</TableCell>
                             <TableCell className="text-left">{formatCurrency({amount: invoice.total, currency: invoice.currency as any})}</TableCell>
                             <TableCell className="text-left">{new Intl.DateTimeFormat("en-US",{dateStyle: "long"}).format(invoice.createdAt)}</TableCell>
-                            <TableCell className="text-left"><Badge>{invoice.status}</Badge></TableCell>
+                            <TableCell className="text-left">
+                                {getInvoicesStatusBadge(invoice.status)}
+                            </TableCell>
                             <TableCell className="text-left"><InvoiceTableAction status={invoice.status} id={invoice.id}/></TableCell>
                         </TableRow>
                     ))}
