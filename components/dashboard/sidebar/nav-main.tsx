@@ -19,18 +19,26 @@ import {
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar"
 
+type AnimatedIcon = React.FC<{
+  width?: number;
+  height?: number;
+  strokeWidth?: number;
+  stroke?: string;
+  size?: number;
+}>;
+
 export function NavMain({
   items,
 }: {
   items: {
     title: string
     url: string
-    icon: LucideIcon
+    icon: AnimatedIcon
     isActive?: boolean
     items?: {
       title: string
       url: string
-      icon: LucideIcon
+      icon: AnimatedIcon
     }[]
   }[]
 }) {

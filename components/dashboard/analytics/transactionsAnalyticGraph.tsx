@@ -58,16 +58,16 @@ import { Graph } from "@/components/ui/graph";
    return transformedData;
  }
  
- export async function InvoiceAnalyticGraph() {
+ export async function TransactionalAnalyticGraph() {
    const session = await requireUser();
    const data = await getInvoices(session.user?.id as string);
  
    return (
      <Card className="lg:col-span-2 mt-5 ml-5 mr-5 mb-5">
        <CardHeader>
-         <CardTitle>Paid Invoices</CardTitle>
+         <CardTitle>Successful Transactions</CardTitle>
          <CardDescription>
-           Invoices which have been pending in the last 30 days.
+           Transaction done in the last 30 days.
          </CardDescription>
        </CardHeader>
        <CardContent>

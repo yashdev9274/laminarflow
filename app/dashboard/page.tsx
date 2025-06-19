@@ -7,6 +7,8 @@ import { DashboardEmptyState } from "@/components/dashboard/emptyStates/dashboar
 import { InvoiceAnalyticGraph } from "@/components/dashboard/analytics/invoiceAnalyticGraph";
 import { RecentInvoices } from "@/components/dashboard/analytics/recentInvoices";
 import DashboardCreateButton from "@/components/dashboard/createButtonsDashboard";
+import { TransactionalAnalyticGraph } from "@/components/dashboard/analytics/transactionsAnalyticGraph";
+import { RecentTransactions } from "@/components/dashboard/analytics/recentTransactions";
 
 
 async function getData(userId: string) {
@@ -46,6 +48,10 @@ export default async function Dashboard() {
             <div className="grid gap-4 lg:grid-cols-3 md:gap-8">
                 <InvoiceAnalyticGraph/>
                 <RecentInvoices/>
+            </div>
+            <div className="grid gap-4 lg:grid-cols-3 md:gap-8">
+                <TransactionalAnalyticGraph/>
+                <RecentTransactions/>
             </div>
             </Suspense>
         )}
