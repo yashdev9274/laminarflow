@@ -7,6 +7,7 @@ import TransactionTableAction from "./transactionTableAction";
 import { SmartphoneNfc } from "@/components/icons/smartphonenfc";
 import { CheckIcon } from "@/components/icons/checkIcon";
 import { SandClockIcon } from "@/components/icons/sandClockIcon";
+import { WalletIcon } from "@/components/icons/walletIcon";
 
 async function getData(userId: string){
    const data = await prisma.transactions.findMany({
@@ -50,7 +51,7 @@ const getPaymentMethodBadge = (method: string) => {
         case "cash":
             return (
                 <Badge variant="outline" className="gap-1 rounded bg-blue-100 text-blue-800 border-blue-300 px-2 py-1">
-                  <Wallet size={18} className="text-green-600"/>
+                  <WalletIcon size={18} className="text-green-600"/>
                     {method}
                 </Badge>
             );
