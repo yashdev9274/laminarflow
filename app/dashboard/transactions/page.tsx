@@ -10,6 +10,9 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { BadgeIndianRupee } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { Suspense } from "react";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { LinkIcon } from "@/components/icons/linkIcon";
 
 async function getData(userId: string){
    const data = await prisma.transactions.findMany({
@@ -33,20 +36,26 @@ export default async function Transactions(){
          <div>
             <div>
                <div className="flex items-center justify-between ml-2">
-                  <div >
+                  <div>
                      <div className="text-lg font-semibold mt-5">
                         <div className="flex items-center gap-4">
                            <BadgeIndianRupee/> 
                            Transactions
                            <TransactionInfo/>
-
                         </div>
                      </div>
                      <div className="text-sm mt-3">
                         Get real-time updates on your transactions.
                      </div>
                   </div>
-                  <CreateTransactionSheet/>
+                  <div className="flex items-center gap-2">
+                     <Link href="/dashboard/payment-provider">
+                        <Button variant="secondary" className="hover:bg-neutral-900 font-bold py-2 px-3 h-7 rounded">
+                           <LinkIcon text="Payment Provider" />
+                        </Button>
+                     </Link>
+                     <CreateTransactionSheet/>
+                  </div>
                </div>
             </div>
             {/* <Separator className="mt-5"/> */}
