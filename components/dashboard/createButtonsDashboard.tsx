@@ -8,28 +8,28 @@ export default function DashboardCreateButton(){
    return(
       <div className="grid gap-0 md:grid-cols-2 lg:grid-cols-4 mb-5 mt-5">
          <CreateButton
-            text="CreateInvoice"
+            text="Create Invoice"
             href='/dashboard/invoices'
          >
             <ReceiptIndianRupee className="mr-2"/>
          </CreateButton>
 
          <CreateButton
-            text="Transactions"
+            text="Create Transactions"
             href='/dashboard/transactions'
          >
             <BadgeIndianRupee className="mr-2"/>
          </CreateButton>
 
          <CreateButton
-            text="Clients"
+            text="Create Clients"
             href='/dashboard/companies'
          >
             <Building2 className="mr-2"/>
          </CreateButton>
 
          <CreateButton
-            text="Task"
+            text="Create Task"
             href='/dashboard/'
          >
             <CircleCheckBig className="mr-2"/>

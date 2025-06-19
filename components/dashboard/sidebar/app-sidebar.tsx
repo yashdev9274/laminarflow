@@ -42,6 +42,7 @@ import NavCommand  from "./nav-command"
 import Image from "next/image"
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card"
 import { NavAgents } from "./nav-agent"
+import { WalletIcon } from "@/components/icons/walletIcon"
 // import { NavAgent } from "./nav-agent"
 
 const data = {
@@ -53,8 +54,8 @@ const data = {
   navMain: [
     {
       title: "Finance",
-      url: "#",
-      icon: Wallet,
+      url: "/dashboard",
+      icon: WalletIcon,
       isActive: true,
       items: [
         {
@@ -85,7 +86,7 @@ const data = {
   navCrm: [
     {
       title: "Workspace",
-      url: "#",
+      url: "/dashboard/companies",
       icon: BriefcaseBusiness,
       isActive: true,
       items: [
@@ -98,6 +99,28 @@ const data = {
           title: "Tasks",
           url: "/dashboard",
           icon: CircleCheckBig  
+        },
+      ],
+    },
+    
+  ],
+
+  navAgents: [
+    {
+      title: "Automation",
+      url: "/dashboard/agents/invoice",
+      icon: Bot,
+      isActive: true,
+      items: [
+        {
+          title: "InvoiceAgent",
+          url: "/dashboard/agents/invoice",
+          icon: FileTextIcon  
+        },
+        {
+          title: "TransactionAgent",
+          url: "/dashboard/agents/transaction",
+          icon: BadgeIndianRupee
         },
       ],
     },
@@ -128,39 +151,19 @@ const data = {
     },
   ],
 
-  navAgents: [
-    {
-      title: "Automation",
-      url: "#",
-      icon: Bot,
-      isActive: true,
-      items: [
-        {
-          title: "InvoiceAgent",
-          url: "/dashboard/agents/invoice",
-          icon: FileTextIcon  
-        },
-        {
-          title: "TransactionAgent",
-          url: "/dashboard/agents/transaction",
-          icon: BadgeIndianRupee
-        },
-      ],
-    },
-    
-  ],
+  
 }
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+export function AppSidebar({ ...props }:  &React.ComponentProps<typeof Sidebar>) {
   return (
-    <Sidebar variant="inset" {...props}>
+    <Sidebar collapsible="icon" variant="inset" className="sticky"  {...props}>
       <SidebarHeader className="mt-4">
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild >
               <HoverCard>
                 <HoverCardTrigger asChild>
-                  <a href="/dashboard"  className="flex gap-3">
+                  <a  className="flex gap-3">
                     <div >
                       {/* <Command className="size-4" /> */}
                       <Image 
