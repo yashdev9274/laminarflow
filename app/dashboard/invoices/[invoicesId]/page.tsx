@@ -41,7 +41,7 @@ export default async function InvoicesIdPage({
     // console.log("Raw params:", params);
     
     // Directly access the parameter using the name from your folder structure
-    const invoicesId = params.invoicesId;
+    const {invoicesId} = await params;
     // console.log("invoicesId value:", invoicesId);
     
     const session = await requireUser();
