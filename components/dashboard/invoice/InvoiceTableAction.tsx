@@ -33,7 +33,11 @@ export default function InvoiceTableAction({ status, id }: { status: string; id:
                             Pay with Stripe
                         </Link>
                     </DropdownMenuItem>
-                    <DropdownMenuItem><Download/> Download</DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                        <Link href={`/api/invoices/${id}`}>  
+                            <Download/> Download
+                        </Link>
+                    </DropdownMenuItem>
                 </DropdownMenuGroup>
             </DropdownMenuContent>
         </DropdownMenu>
