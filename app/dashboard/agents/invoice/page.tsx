@@ -10,6 +10,7 @@ import { Separator } from "@/components/ui/separator";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { FileText, Send, Loader2, DollarSign, Calendar, User, Building, ShoppingCart, FileUp } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/dashboard/alert";
+import CopyToClipboard, { samplePrompt } from "@/components/dashboard/agents/samplePropmptTab";
 // import { Alert, AlertDescription } from "@/components/ui/alert";
 
 // Define the expected structure of the result
@@ -281,6 +282,8 @@ export default function Agent() {
 
   return (
     <div className="container mx-auto py-8 px-4 max-w-6xl">
+      <CopyToClipboard text={samplePrompt} />
+
       <Card className="bg-card border-border">
         <CardHeader className="pb-4">
           <CardTitle className="text-2xl flex items-center gap-2">
