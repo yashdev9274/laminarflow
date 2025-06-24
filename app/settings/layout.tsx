@@ -58,7 +58,7 @@ export default async function SettingsLayout({ children }: SettingsLayoutProps){
               <NavItem href="/settings" active>
                 Profile
               </NavItem>
-              <NavItem href="/settings">General</NavItem>
+              <NavItem href="/settings/general">General</NavItem>
               <NavItem href="/settings">Calendars</NavItem>
               <NavItem href="/settings">Conferencing</NavItem>
               <NavItem href="/settings">Appearance</NavItem>
