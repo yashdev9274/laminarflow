@@ -119,7 +119,7 @@ const data = {
         },
         {
           title: "TransactionAgent",
-          url: "/dashboard/agents/transaction",
+          url: "",
           icon: BadgeIndianRupee
         },
       ],
