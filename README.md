@@ -2,7 +2,7 @@
 
 # LaminarFlow
 
-A comprehensive FinTech platform designed for modern startups and businesses to streamline their financial operations, invoice management, and payment tracking.
+An open-sourced AI-native FinTech platform designed for modern startups and businesses to streamline their financial operations payment tracking and customer managements.
 
 ## About
 

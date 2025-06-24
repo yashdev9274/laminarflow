@@ -1,5 +1,5 @@
+
 import { prisma } from "@/app/utils/db";
-// import InvoicesEditPage from "../../../../components/dashboard/invoice/page";
 import { notFound } from "next/navigation";
 import { requireUser } from "@/app/utils/requireAuth";
 import { Button } from "@/components/ui/button";
@@ -9,6 +9,11 @@ import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { ChevronLeft, MapPin, Twitter, User2Icon, X } from "lucide-react";
 import Link from "next/link";
+import { Badge } from "@/components/ui/badge";
+import { SandClockIcon } from "@/components/icons/sandClockIcon";
+import { XCircle } from "lucide-react";
+import { CheckIcon } from "@/components/icons/checkIcon";
+
 
 async function getData(invoiceId: string, userId: string){
     if (!invoiceId || !userId) {
@@ -57,6 +62,40 @@ export default async function InvoicesIdPage({
         return notFound();
     }
 
+    // invoiceData
+
+    const invoiceData = data;
+
+    // status badges
+
+    
+const getInvoicesStatusBadge = (status: string) => {
+    switch (status.toLowerCase()) {
+        case "pending":
+            return (
+                <Badge variant="outline" className="gap-1 rounded bg-yellow-100 text-yellow-800 border-yellow-300 px-2 py-1">
+                    <SandClockIcon size={18} aria-hidden="true" className="text-yellow-600"/>
+                    {status}
+                </Badge>
+            );
+        
+        case "failed":
+            return (
+                <Badge variant="outline" className="gap-1 rounded bg-red-100 text-red-800 border-red-300 px-2 py-1">
+                    <XCircle size={18} aria-hidden="true" className="text-red-600"/>
+                    {status}
+                </Badge>
+            );
+        default:
+            return (
+                <Badge variant="outline" className="gap-1 bg-green-100 text-green-800 border-green-300 px-2 py-1 rounded">
+                    <CheckIcon className="text-emerald-500" size={18}/>
+                    {status}
+                </Badge>
+            );
+    }
+};
+
     return(
         <div className="flex text-gray-300">    
             {/* Left side */}
@@ -69,8 +108,8 @@ export default async function InvoicesIdPage({
                                 <User2Icon
                                     className="w-8 h-8 text-gray-400 rounded-md"
                                 />
-                                <h1 className="text-white text-2xl font-semibold mb-1">Airbnb</h1>
-                                <p className="text-gray-500 text-sm">Added about 4 hours ago</p>
+                                <h1 className="text-white text-2xl font-semibold mb-1">{invoiceData.clientName}</h1>
+                                {/* <p className="text-gray-500 text-sm">Added about 4 hours ago</p> */}
                             </div>
 
                             <div className="space-y-4 flex-1">
@@ -80,7 +119,7 @@ export default async function InvoicesIdPage({
                                             <MapPin/> Address
                                         </span>
                                     </div>
-                                    <div className="flex-1 text-white"> India</div>
+                                    <div className="flex-1 text-white"> {invoiceData.clientAddress}</div>
                                 </div>
 
                                 <div className="flex items-start">
@@ -88,7 +127,7 @@ export default async function InvoicesIdPage({
                                     <span className="mr-2">🏢</span>
                                     ARR
                                     </div>
-                                    <div className="flex-1 text-gray-500">Empty</div>
+                                    <div className="flex-1 text-gray-500">N/A</div>
                                 </div>
 
                                 <div className="flex items-start">
@@ -97,21 +136,21 @@ export default async function InvoicesIdPage({
                                     Created by
                                     </div>
                                     <div className="flex-1 text-white">
-                                    <span className="bg-gray-700 text-xs px-2 py-1 rounded">System</span>
+                                        <span className="bg-gray-700 text-xs px-2 py-1 rounded">{(session.user && session.user.email) ? session.user.email.split('@')[0] : 'Unknown User'}</span>
                                     </div>
                                 </div>
 
-                                <div className="flex items-start">
+                                {/* <div className="flex items-start">
                                     <div className="w-32 text-gray-500 flex items-center">
                                     <span className="mr-2">🔗</span>
                                     Domain Name
                                     </div>
                                     <div className="flex-1 text-white">
-                                    <span className="bg-gray-800 text-xs px-2 py-1 rounded">airbnb.com</span>
+                                    <span className="bg-gray-800 text-xs px-2 py-1 rounded">{invoiceData.domain}</span>
                                     </div>
-                                </div>
+                                </div> */}
 
-                                <div className="flex items-start">
+                                {/* <div className="flex items-start">
                                     <div className="w-32 text-gray-500 flex items-center">
                                     <span className="mr-2">👥</span>
                                     Employees
@@ -137,22 +176,22 @@ export default async function InvoicesIdPage({
                                     LinkedIn
                                     </div>
                                     <div className="flex-1 text-gray-500">Empty</div>
-                                </div>
+                                </div> */}
 
                                 <div className="flex items-start">
                                     <div className="w-32 text-gray-500 flex items-center">
                                     <span className="mr-2">🕒</span>
                                     Last update
                                     </div>
-                                    <div className="flex-1 text-white">about 4 hours ago</div>
+                                    <div className="flex-1 text-white">{invoiceData.updatedAt.toLocaleDateString()}</div>
                                 </div>
 
-                                <div className="flex items-start">
+                                {/* <div className="flex items-start">
                                     <div className="w-32 text-gray-500 flex items-center">
                                     <span className="mr-2">𝕏</span>X
                                     </div>
                                     <div className="flex-1 text-gray-500">Empty</div>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </CardContent>
@@ -175,7 +214,7 @@ export default async function InvoicesIdPage({
                                     <ChevronLeft className="h-4 w-4 align-right" />
                                 </Button>
                             </Link>
-                            Invoices to BNL Inc.
+                            Invoices to {invoiceData.clientName}
                         </div>
                     </CardHeader>
                     <Separator className="bg-neutral-600"/>
@@ -183,20 +222,20 @@ export default async function InvoicesIdPage({
                         
                         {/* Invoices status */}
                         <div>
-                            <span className="inline-block px-3 py-1 bg-green-100 text-green-800 rounded-md text-sm">PAID</span>
+                            {getInvoicesStatusBadge(invoiceData.status)}
                         </div>
 
                         {/* Amount */}
 
                         <div>
-                            <h1 className="text-4xl font-bold text-neutral-100">$400</h1>
+                            <h1 className="text-4xl font-bold text-neutral-100">{invoiceData.total}</h1>
                         </div>
 
                         {/* Payment Details */}
 
                         <div className="space-y-1">
                             <h3 className="text-lg font-medium text-neutral-300">Paid on Apr 25</h3>
-                            <p className="text-neutral-500">Paid via Pay with Mercury</p>
+                            <p className="text-neutral-500">Paid via- <Badge>Unknown</Badge></p>
                         </div>
 
                         <Separator className="bg-neutral-600"/>
@@ -206,17 +245,17 @@ export default async function InvoicesIdPage({
                         <div className="space-y-4 pt-3">
                             <div className="flex justify-between items-center">
                                 <span className="text-neutral-400">Due date</span>
-                                <span className="text-neutral-300 font-medium">May 25</span>
+                                <span className="text-neutral-300 font-medium">{invoiceData.dueDate}</span>
                             </div>
 
                             <div className="flex justify-between items-center">
                                 <span className="text-neutral-400">Invoice date</span>
-                                <span className="text-neutral-300 font-medium">April 25</span>
+                                <span className="text-neutral-300 font-medium">{invoiceData.createdAt.toLocaleDateString()}</span>
                             </div>
 
                             <div className="flex justify-between items-center">
                                 <span className="text-neutral-400">Invoice no.</span>
-                                <span className="text-neutral-300 font-medium">INV-017-1</span>
+                                <span className="text-neutral-300 font-medium">{invoiceData.invoiceNumber}</span>
                             </div>
                         </div>
 
@@ -229,7 +268,9 @@ export default async function InvoicesIdPage({
                                     className="bg-[#1c1c1c] border-[#333] text-white h-8 w-full rounded"
                                 >
                                     <span className="flex items-center justify-between ml-5 mt-1">
-                                        https://demo.mercury.com/invoice...
+                                        <Link href={`/api/invoices/${invoicesId}`}>
+                                            <span className="text-blue-500 hover:underline">Preview</span>
+                                        </Link>
                                     </span>
                                 </div>
                                 {/* Copy button */}
@@ -251,26 +292,30 @@ export default async function InvoicesIdPage({
                                 </Button>
 
                                 {/* Download Button */}
-                                <Button variant="secondary" className="w-8 h-8 p-3 gap-x-2 rounded-md text-blue-500 hover:text-gray-700">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        className="h-5 w-5"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        stroke="currentColor"
-                                    >
-                                        <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth={2}
-                                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-                                        />
-                                    </svg>
-                                </Button>
+                                <Link
+                                    href={`/api/invoices/${invoicesId}`}
+                                >
+                                    <Button variant="secondary" className="w-8 h-8 p-3 gap-x-2 rounded-md text-blue-500 hover:text-gray-700">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            className="h-5 w-5"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                        >
+                                            <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth={2}
+                                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                                            />
+                                        </svg>
+                                    </Button>
+                                </Link>
                             </div>
                         </div>
 
-                        <div className="space-y-2 border-t pt-4">
+                        {/* <div className="space-y-2 border-t pt-4">
                             <label className="block text-neutral-300">Destination account</label>
                             <div className="border rounded p-3 flex items-center justify-between">
                                 <div className="flex items-center">
@@ -278,7 +323,7 @@ export default async function InvoicesIdPage({
                                     <span className="text-gray-500">AR</span>
                                 </div>
                                 <div>
-                                    <span className="text-gray-700">AR</span>
+                                    <span className="text-gray-700">{invoiceData.}</span>
                                     <div className="text-gray-500 text-sm">$0.00 / Checking ••4296</div>
                                 </div>
                                 </div>
@@ -323,12 +368,12 @@ export default async function InvoicesIdPage({
                                 />
                                 </svg>
                             </div>
-                            </div>
+                        </div> */}
 
                             {/* Internal Note */}
                             <div className="space-y-2 border-t pt-4">
                             <label className="block text-neutral-300">Internal note</label>
-                            <div className="border rounded p-3 text-neutral-500">Earth garbage cleanup</div>
+                            <div className="border rounded p-3 text-neutral-500">{invoiceData.note}</div>
                             </div>
                     </CardContent>
                 </Card>

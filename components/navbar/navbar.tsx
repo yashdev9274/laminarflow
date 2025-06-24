@@ -62,12 +62,12 @@ export function NavbarDemo() {
           <NavItems items={navItems} />
           <div className="flex items-center gap-4 ml-5">
             <NavbarButton className="bg-hidden text-white" variant="secondary">
-              {/* <Link
+              <Link
                 href={session?'/dashboard':"/login"}
               >
                 {session?'Login':'Get Started'}
-              </Link> */}
-              Login
+              </Link>
+              
             </NavbarButton>
             <NavbarButton variant="primary" className="rounded bg-white text-black font-bold" href = "https://cal.link/LF-Founder-chat">Book a call</NavbarButton>
             {/* <RedirectButton text="Contact for Demo" href = "https://cal.link/LF-Founder-chat" className="align-right rounded" /> */}
@@ -104,11 +104,11 @@ export function NavbarDemo() {
                 variant="primary"
                 className="w-full"
               >
-                {/* <Link
+                <Link
                   href={session?'/dashboard':"/login"}
                 >
                   {session?'Login':'Get Started'}
-                </Link> */}
+                </Link>
                 Login
               </NavbarButton>
               <NavbarButton
