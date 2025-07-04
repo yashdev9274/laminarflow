@@ -21,7 +21,7 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="w-full py-11 mt-20 bg-black/20 backdrop-blur-sm border rounded-xl border-[#2B2B2B]">
+    <footer className="w-full py-8 md:py-11 mt-20 bg-black/20 backdrop-blur-sm border rounded-xl border-[#2B2B2B]">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
           <div className="flex justify-center md:justify-start gap-6">
@@ -39,7 +39,7 @@ export default function Footer() {
             ))}
           </div>
 
-          <div className="flex justify-center gap-8 text-sm">
+          <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 text-sm">
             <Link 
               href="/" 
               className="text-gray-400 font-mono hover:text-white transition-colors duration-200"
@@ -68,7 +68,7 @@ export default function Footer() {
 
           <div className="text-center md:text-right text-sm font-mono text-gray-400">
             LaminarFlow Inc. © 2025
-            <div className="font-mono">
+            <div className="font-mono mt-1">
               Made with ❤️ by Yash
             </div>
           </div>

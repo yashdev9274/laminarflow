@@ -2,8 +2,7 @@ import { NavbarDemo } from "./navbar";
 
 export default function NewNavbar() {
    return (
-
-         <header className=" border rounded border-[#565555] bg-neutral-900/60 top-0 mt-7 mb-5 mx-auto backdrop-blur">
+         <header className="border rounded border-[#565555] bg-neutral-900/60 top-0 mt-4 md:mt-7 mb-4 md:mb-5 w-[98vw] max-w-4xl mx-auto backdrop-blur">
                {/* you can replace sticky -> relative */}
                   {/* <div className="flex justify-between items-center container"> */}
                      {/* <Link href='/' className='relative mr-6 flex items-center space-x-2'> */}

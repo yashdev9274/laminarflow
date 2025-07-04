@@ -14,7 +14,7 @@ import Pointer from "./pointer"
 export default function Hero(){
 
     return(
-        <section className="py-24 mb-5 ">
+        <section className="py-16 md:py-24 mb-5">
 
             <div className="container relative mt-5">
                 
@@ -44,14 +44,14 @@ export default function Hero(){
                 </div>
             
                 <div className="container">
-                    <p className="text-center text-sm font-semibold leading-tight tracking-[-0.03em]  text-zinc-400 sm:text-6xl md:px-0">The #1 </p>
-                    <p className="text-center text-4xl font-bold tracking-tighter bg-white bg-[radial-gradient(100%_100%_at_top_left, white, white, rgb(74,32,138), rgb(255,255,255,0.5))] text-transparent bg-clip-text  text-white sm:text-6xl md:px-0"> 
+                    <p className="text-center text-sm font-semibold leading-tight tracking-[-0.03em]  text-zinc-400 sm:text-base md:text-lg">The #1 </p>
+                    <p className="text-center text-4xl font-bold tracking-tighter bg-white bg-[radial-gradient(100%_100%_at_top_left, white, white, rgb(74,32,138), rgb(255,255,255,0.5))] text-transparent bg-clip-text  text-white sm:text-5xl md:text-6xl"> 
                         Open-Sourced <TypingText text="Fintech" cursor cursorClassName="h-9"/>
 
                     </p>
                 </div>
-                <div className="grid grid-col mx-auto w-full max-w-4xl">
-                    <Balancer className="text-shinyGray mx-auto mt-3 mb-5 text-center text-[15px] leading-tight sm:text-[22px] ">
+                <div className="grid grid-col mx-auto w-full max-w-2xl md:max-w-4xl">
+                    <Balancer className="text-shinyGray mx-auto mt-3 mb-5 text-center text-sm leading-tight sm:text-lg md:text-[22px] ">
                         Manage your business with <span className="font-mono">LaminarFlow</span> – a
                         modern, powerful, and affordable platform to manage your business&apos;s financial workflow
                     </Balancer>
