@@ -35,14 +35,14 @@ import Balancer from "react-wrap-balancer"
  
  export default function FAQ2() {
    return (
-      <section className="container px-10 md:px-6 py-5 md:py-20">
+      <section className="container px-6 md:px-10 py-10 md:py-20">
          <div className="space-y-4">
             
             <div className="mx-auto flex max-w-4xl flex-col items-center justify-center text-center">
-                <h2 className="font-display text-4xl font-bold tracking-tight sm:text-5xl">
+                <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
                     Frequently Asked Questions
                 </h2>
-                <p className="mt-4 text-lg text-muted-foreground">
+                <p className="mt-4 text-base text-muted-foreground md:text-lg">
                     <Balancer>
                         Everything you need to know about LaminarFlow
                     </Balancer>
@@ -50,7 +50,7 @@ import Balancer from "react-wrap-balancer"
             </div>
 
             {/* Accordian */}
-            <div className="mx-auto mt-4 md:mt-16 max-w-2xl md:max-w-3xl">
+            <div className="mx-auto mt-8 md:mt-16 max-w-2xl md:max-w-3xl">
                <Accordion
                   type="single"
                   collapsible

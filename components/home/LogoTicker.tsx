@@ -61,7 +61,7 @@ export default function LogoTicker() {
                                 key={index}
                                 src={logo.src}
                                 alt={logo.src}
-                                className="h-6 w-auto flex-none"
+                                className="h-4 md:h-6 w-auto flex-none"
                             />
                         ))}
                     </motion.div>
