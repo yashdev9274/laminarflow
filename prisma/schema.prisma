@@ -30,6 +30,7 @@ model User {
   companies Companies[]
   transactions Transactions[]
   tasks Tasks[]
+  polarAccounts PolarAccount[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -200,4 +201,87 @@ model InvoiceAnalysis {
   createdAt      DateTime @default(now())
   // If you want a relation to Invoice:
   // invoice        Invoice  @relation(fields: [invoiceId], references: [id])
+}
+
+model PolarAccount {
+  id                  String   @id @default(cuid())
+  userId              String
+  organizationToken   String
+  developerApiToken   String
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+  user                User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model PolarOrganization {
+  id          String   @id
+  name        String
+  slug        String
+  avatarUrl   String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model PolarCustomer {
+  id                  String   @id
+  email               String?
+  name                String?
+  organizationId      String
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+}
+
+model PolarSubscription {
+  id                  String   @id
+  status              String
+  price_currency      String
+  price_amount        Int
+  start_date          DateTime
+  end_date            DateTime?
+  customer_id         String
+  organization_id     String
+  product_id          String
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+}
+
+model PolarOrder {
+  id                  String   @id
+  amount              Int
+  currency            String
+  customer_id         String
+  organization_id     String
+  subscription_id     String?
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+}
+
+model PolarProduct {
+  id                  String   @id
+  name                String
+  description         String?
+  organization_id     String
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+}
+
+model PolarCheckout {
+  id                  String   @id
+  amount              Int
+  currency            String
+  customer_id         String
+  organization_id     String
+  product_id          String
+  checkout_link_id    String
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+}
+
+model PolarCheckoutLink {
+  id                  String   @id
+  url                 String
+  organization_id     String
+  product_id          String
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
 }
