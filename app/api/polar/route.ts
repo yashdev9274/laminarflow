@@ -3,8 +3,6 @@ import { handle } from 'hono/vercel';
 import { prisma } from '@/app/utils/db';
 import { auth } from '@/app/utils/auth';
 
-export const runtime = 'edge';
-
 if (!process.env.POLAR_API_BASE_URL) {
     throw new Error('POLAR_API_BASE_URL is not set');
 }
