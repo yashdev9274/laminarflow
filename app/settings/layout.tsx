@@ -55,24 +55,23 @@ export default async function SettingsLayout({ children }: SettingsLayoutProps){
 
           <nav className="space-y-6">
             <div className="space-y-1">
-              <NavItem href="/settings" active>
+              <NavItem href="/settings/profile" active>
                 Profile
               </NavItem>
               <NavItem href="/settings/general">General</NavItem>
-              <NavItem href="/settings">Calendars</NavItem>
-              <NavItem href="/settings">Conferencing</NavItem>
+              {/* <NavItem href="/settings">Calendars</NavItem> */}
+              {/* <NavItem href="/settings">Conferencing</NavItem> */}
               <NavItem href="/settings">Appearance</NavItem>
               <NavItem href="/settings">Out of office</NavItem>
-              <NavItem href="/settings">Push Notifications</NavItem>
+              <NavItem href="/settings">Notifications</NavItem>
             </div>
 
-            <div className="space-y-1">
+            {/* <div className="space-y-1">
               <div className="flex items-center gap-2 px-2 py-1 text-gray-400">
-                {/* <Shield className="h-4 w-4" /> */}
                 <LogoutComponent/>
                 
               </div>
-            </div>
+            </div> */}
 
             {/* <div className="space-y-1">
               <div className="flex items-center gap-2 px-2 py-1 text-gray-400">
