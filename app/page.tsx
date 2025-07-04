@@ -21,8 +21,8 @@ export default function Home() {
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
         <div className="h-[500px] w-[500px] bg-[linear-gradient(90deg,#ffd5d0_0%,#ffafcc_30%,#dbffe4_70%,#e2d6ff_100%)] rounded-lg blur-[120px] opacity-5 dark:opacity-10" />
       </div>
+      <NewNavbar/>
       <div className="relative mx-auto flex flex-col max-w-7xl px-4 md:px-6 mb-9">
-        <NewNavbar/>
         <Hero/>
         <LogoTicker/>
         <FeatureSection1/>

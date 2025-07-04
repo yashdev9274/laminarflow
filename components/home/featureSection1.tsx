@@ -216,7 +216,7 @@ export default function Features() {
   ]
 
   return (
-    <div className="min-h-screen bg-black p-6 dark:bg-black">
+    <div className="min-h-screen bg-black p-4 md:p-6 dark:bg-black">
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial="hidden"
