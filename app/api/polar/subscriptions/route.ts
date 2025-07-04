@@ -3,8 +3,6 @@ import { handle } from 'hono/vercel';
 import { prisma } from '@/app/utils/db';
 import { auth } from '@/app/utils/auth';
 
-export const runtime = 'edge';
-
 const app = new Hono().basePath('/api/polar/subscriptions');
 
 app.get('/', async () => {
