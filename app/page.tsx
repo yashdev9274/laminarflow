@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
 import { signIn } from "./utils/auth";
+import FeatureShowcase from "@/components/home/FeatureShowcase";
 import Hero from "@/components/home/hero";
 import Footer from "@/components/home/footer";
 import FAQ from "@/components/home/faq";
@@ -24,6 +25,7 @@ export default function Home() {
       <NewNavbar/>
       <div className="relative mx-auto flex flex-col max-w-7xl px-4 md:px-6 mb-9">
         <Hero/>
+        <FeatureShowcase/>
         <LogoTicker/>
         <FeatureSection1/>
         <Features/>
