@@ -14,7 +14,7 @@ import Pointer from "./pointer"
 export default function Hero(){
 
     return(
-        <section className="py-16 md:py-24 mb-5">
+        <section className="py-16 md:py-24 mt-10 mb-5">
 
             <div className="container relative mt-5">
                 
@@ -44,7 +44,7 @@ export default function Hero(){
                 </div>
             
                 <div className="container">
-                    <p className="text-center text-sm font-semibold leading-tight tracking-[-0.03em]  text-zinc-400 sm:text-base md:text-lg">The #1 </p>
+                    <p className="text-center text-4xl font-semibold leading-tight tracking-[-0.03em] text-zinc-400 sm:text-base md:text-lg">The #1 </p>
                     <p className="text-center text-4xl font-bold tracking-tighter bg-white bg-[radial-gradient(100%_100%_at_top_left, white, white, rgb(74,32,138), rgb(255,255,255,0.5))] text-transparent bg-clip-text  text-white sm:text-5xl md:text-6xl"> 
                         Open-Sourced <TypingText text="Fintech" cursor cursorClassName="h-9"/>
 
