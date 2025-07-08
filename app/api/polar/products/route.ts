@@ -6,11 +6,11 @@ import { auth } from '@/app/utils/auth';
 
 const app = new Hono().basePath('/api/polar/products');
 
-app.get('/', async () => {
+app.get('/', async (c) => {
     const session = await auth();
 
     if (!session?.user?.id) {
-        return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401 });
+        return c.json({ error: 'Unauthorized' }, 401);
     }
 
     const polarAccount = await prisma.polarAccount.findFirst({
@@ -20,18 +20,34 @@ app.get('/', async () => {
     });
 
     if (!polarAccount) {
-        return new Response(JSON.stringify({ error: 'Polar account not found' }), { status: 404 });
+        return c.json({ error: 'Polar account not found' }, 404);
     }
 
-    const response = await fetch(`${process.env.POLAR_API_BASE_URL}/products`, {
+    // First, get the organizations for the user
+    const orgsResponse = await fetch('https://api.polar.sh/v1/organizations', {
         headers: {
             Authorization: `Bearer ${polarAccount.organizationToken}`,
         },
     });
 
-    const data = await response.json();
+    const orgsData = await orgsResponse.json();
+    const organizations = orgsData.items || [];
 
-    return new Response(JSON.stringify(data));
+    let allProducts = [];
+
+    for (const org of organizations) {
+        const productsResponse = await fetch(`https://api.polar.sh/v1/products?organization_id=${org.id}`, {
+            headers: {
+                Authorization: `Bearer ${polarAccount.organizationToken}`,
+            },
+        });
+        const productsData = await productsResponse.json();
+        if (productsData.items) {
+            allProducts = allProducts.concat(productsData.items);
+        }
+    }
+
+    return c.json(allProducts);
 });
 
 export const GET = handle(app);
