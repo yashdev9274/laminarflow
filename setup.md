@@ -29,7 +29,7 @@ npm install -g pnpm
 ---
 
 ## Getting started
-### 1. Clone the reporsitory
+### 1. Clone the repository
 ```
 git clone <your-repo-url>
 cd your-project
@@ -84,7 +84,7 @@ Uses `@arcjet/next` in `lib/` and `trpc/`:
 * Token bucket model (10 requests/hour)
 
 ---
-## Tooling & Configuration:
+## Tooling & Configuration
 ESLint (`.eslintrc.json`)
 * Uses `next/core-web-vitals` config
 * Custom rules for TS usage and relaxed JSX handling
@@ -102,7 +102,7 @@ Run lint checks:
 pnpm lint
 ```
 
-Or auro-fix:
+Or auto-fix:
 ```
 pnpm lint --fix
 ```
@@ -114,10 +114,10 @@ You can deploy to Vercel, Netlify, or any Node-compatible environment. Make sure
 
 ---
 
-## Aditional Notes
+## Additional Notes
 * Uses `tailwind-merge` and `clsx` for clean class name composition
 * Generates consistent section IDs with `createSectionId` helper
 * Prisma Client and database utils found under `app/utils/db.ts`
 
-## Licences
+## Licenses
 MIT License – free to use and modify.
