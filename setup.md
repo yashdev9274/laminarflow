@@ -12,6 +12,8 @@ Ensure you have the following installed:
 
 Install it with:
 ```
+bash 
+
 npm install -g pnpm
 ```
 
@@ -31,11 +33,15 @@ npm install -g pnpm
 ## Getting started
 ### 1. Clone the repository
 ```
+bash 
+
 git clone <your-repo-url>
 cd your-project
 ```
 ### 2. Install dependencies
 ```
+bash
+
 pnpm install
 ```
 ### 3. Set up your environment variables
@@ -52,10 +58,14 @@ pnpx prisma migrate dev --name init
 ```
 You can also introspect the existing DB schema if needed:
 ```
+bash
+
 pnpx prisma db pull
 ```
 ### 5. Start the development server
 ```
+bash
+
 pnpm dev
 ```
 
@@ -99,11 +109,15 @@ TypeScript (`tsconfig.json`)
 ## Quality & Linting
 Run lint checks:
 ```
+bash
+
 pnpm lint
 ```
 
 Or auto-fix:
 ```
+bash
+
 pnpm lint --fix
 ```
 
