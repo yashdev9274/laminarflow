@@ -11,14 +11,14 @@ import {
 
 export function SectionCards() {
   return (
-    <div className="flex flex-wrap justify-center gap-4 px-4">
+    <div className="grid grid-cols-2 justify-center md:grid-cols-2 lg:flex-col lg:flex-1 gap-4 px-4">
       <Card className="@container/card">
-        <CardHeader className="relative">
+        <CardHeader className="relative text-sm lg:text-2xl">
           <CardDescription>Total Revenue</CardDescription>
-          <CardTitle className="@[250px]/card:text-3xl text-2xl font-semibold tabular-nums">
+          <CardTitle className="@[250px]/card:text-3xl text-sm lg:text-2xl font-semibold tabular-nums">
             $1,250.00
           </CardTitle>
-          <div className="absolute right-4 top-4">
+          <div className="absolute right-4 top-4 ">
             <Badge variant="outline" className="flex gap-1 rounded-lg text-xs">
               <TrendingUpIcon className="size-3" />
               +12.5%
@@ -37,7 +37,7 @@ export function SectionCards() {
       <Card className="@container/card">
         <CardHeader className="relative">
           <CardDescription>New Customers</CardDescription>
-          <CardTitle className="@[250px]/card:text-3xl text-2xl font-semibold tabular-nums">
+          <CardTitle className="@[250px]/card:text-3xl text-sm lg:text-2xl font-semibold tabular-nums">
             1,234
           </CardTitle>
           <div className="absolute right-4 top-4">
@@ -59,10 +59,10 @@ export function SectionCards() {
       <Card className="@container/card">
         <CardHeader className="relative">
           <CardDescription>Active Accounts</CardDescription>
-          <CardTitle className="@[250px]/card:text-3xl text-2xl font-semibold tabular-nums">
+          <CardTitle className="@[250px]/card:text-3xl text-sm lg:text-2xl font-semibold tabular-nums">
             45,678
           </CardTitle>
-          <div className="absolute right-4 top-4">
+          <div className="absolute right-4 top-4 text-sm lg:text-2xl">
             <Badge variant="outline" className="flex gap-1 rounded-lg text-xs">
               <TrendingUpIcon className="size-3" />
               +12.5%
