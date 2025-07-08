@@ -5,6 +5,11 @@ import { auth } from '@/app/utils/auth';
 
 const app = new Hono().basePath('/api/polar');
 
+interface Organization {
+    id: string;
+    // Add other properties if needed
+}
+
 app.get('/organizations', async (c) => {
     console.log('Fetching organizations...');
     const session = await auth();
@@ -45,21 +50,66 @@ app.get('/organizations', async (c) => {
         }
 
         const data = await response.json();
-        console.log('Data received from Polar API:', JSON.stringify(data, null, 2));
 
-        // The Polar API might return an object with an 'items' array
+        let organizations = [];
         if (data && Array.isArray(data.items)) {
-            console.log('Returning items array.');
-            return c.json(data.items);
+            organizations = data.items;
+        } else if (Array.isArray(data)) {
+            organizations = data;
         }
 
-        // Or it might return a direct array
-        if (Array.isArray(data)) {
-            console.log('Returning direct array.');
-            return c.json(data);
+        const organizationsWithStats = await Promise.all(
+            organizations.map(async (org: Organization) => {
+                // Fetch metrics
+                const metricsResponse = await fetch(`https://api.polar.sh/v1/metrics?organization_id=${org.id}`, {
+                    headers: {
+                        Authorization: `Bearer ${polarAccount.organizationToken}`,
+                    },
+                });
+                const metricsData = await metricsResponse.json();
+
+                // Fetch subscriptions
+                const subscriptionsResponse = await fetch(`https://api.polar.sh/v1/subscriptions?organization_id=${org.id}&status=active`, {
+                    headers: {
+                        Authorization: `Bearer ${polarAccount.organizationToken}`,
+                    },
+                });
+                const subscriptionsData = await subscriptionsResponse.json();
+
+                // Fetch account balance
+                const accountsResponse = await fetch(`https://api.polar.sh/v1/accounts?organization_id=${org.id}`, {
+                    headers: {
+                        Authorization: `Bearer ${polarAccount.organizationToken}`,
+                    },
+                });
+                const accountsData = await accountsResponse.json();
+                const accountBalance = accountsData.items?.[0]?.balance ?? 0;
+
+                // Fetch products
+                const productsResponse = await fetch(`https://api.polar.sh/v1/products?organization_id=${org.id}`, {
+                    headers: {
+                        Authorization: `Bearer ${polarAccount.organizationToken}`,
+                    },
+                });
+                const productsData = await productsResponse.json();
+                const products = productsData.items || [];
+
+
+                return {
+                    ...org,
+                    revenue: metricsData.revenue?.total ?? 0,
+                    activeSubscriptions: subscriptionsData.pagination.total_count ?? 0,
+                    orders: metricsData.orders?.total ?? 0,
+                    accountBalance: accountBalance,
+                    products: products,
+                };
+            })
+        );
+
+        if (organizationsWithStats.length > 0) {
+            return c.json(organizationsWithStats);
         }
 
-        console.log('Unexpected data format from Polar API. Returning empty array.');
         return c.json([]);
 
     } catch (error) {
