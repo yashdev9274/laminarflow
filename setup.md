@@ -48,11 +48,11 @@ ARCJET_KEY=your_arcjet_key
 ```
 ### 4. Run the database migration
 ```
-npx prisma migrate dev --name init
+pnpx prisma migrate dev --name init
 ```
 You can also introspect the existing DB schema if needed:
 ```
-npx prisma db pull
+pnpx prisma db pull
 ```
 ### 5. Start the development server
 ```
@@ -65,7 +65,7 @@ Visit [Preview Website](http://localhost:3000) to view the app.
 
 ## Key Features
 ### 1. Invoice Intelligence (AI-powered)
-Located in `/lib/invoiceAgent.ts`
+Located in `lib/agents/invoice-analysis.ts`
 
 * Extracts structured data from invoice text
 * Performs financial insights analysis
