@@ -11,7 +11,7 @@ Ensure you have the following installed:
 *  **pnpm** ≥ v8+
 
 Install it with:
-```bash 
+```bash
 
 npm install -g pnpm
 ```
@@ -20,7 +20,8 @@ npm install -g pnpm
 ---
 ## Directory Structure Overview
 
-```
+```text
+
 /app             - App routes, API, UI components
 /components      - Reusable UI elements
 /lib             - Utilities (CSV export, invoice agents)
@@ -31,7 +32,7 @@ npm install -g pnpm
 
 ## Getting started
 ### 1. Clone the repository
-```bash 
+```bash
 
 git clone <your-repo-url>
 cd your-project
@@ -44,14 +45,15 @@ pnpm install
 ### 3. Set up your environment variables
 Create a `.env` file at the root of your project. You can copy from `.env.example` if provided, and define the following:
 
-```
+```dotenv
+
 DATABASE_URL=postgresql://user:password@localhost:5432/dbname
 LANGBASE_API_KEY=your_langbase_key
 GOOGLE_API_KEY=your_google_api_key
 ARCJET_KEY=your_arcjet_key
 ```
 ### 4. Run the database migration
-```bash 
+```bash
 
 pnpx prisma migrate dev --name init
 ```
