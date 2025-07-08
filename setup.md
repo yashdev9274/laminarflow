@@ -1,6 +1,6 @@
 # Project Setup Guide
 
-Welcome to the D3Flo Invoice Intelligence Platform! This guide walks you through the full setup required to run the application locally or in a development environment.
+Welcome to the LaminarFlow! This guide walks you through the full setup required to run the application locally or in a development environment.
 
 ---
 ## Prerequisites
