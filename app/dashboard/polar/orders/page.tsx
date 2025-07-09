@@ -1,5 +1,5 @@
 import { Order, columns } from "./columns"
-import { DataTable } from "@/app/dashboard/components/data-table"
+import { DataTable } from "@/components/ui/data-table"
 import { auth } from "@/app/utils/auth"
 import { db } from "@/app/utils/db"
 

@@ -3,8 +3,9 @@ import { DataTable } from "@/components/ui/data-table"
 import { auth } from "@/app/utils/auth"
 import { prisma } from "@/app/utils/db"
 import CreateButton from "@/app/components/createButton"
+import { headers } from "next/headers"
 
-async function getData(): Promise<{customers: Customer[], polarAccount: any}> {
+async function getData(requestHeaders: Headers): Promise<{customers: Customer[], polarAccount: any}> {
   const session = await auth()
   if (!session?.user?.id) {
     return {customers: [], polarAccount: null}
@@ -21,7 +22,9 @@ async function getData(): Promise<{customers: Customer[], polarAccount: any}> {
   }
 
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
-  const res = await fetch(`${baseUrl}/api/polar/customers`);
+  const res = await fetch(`${baseUrl}/api/polar/customers`, {
+    headers: requestHeaders,
+  });
   const data = await res.json()
 
   if (data.items) {
@@ -52,7 +55,9 @@ async function getData(): Promise<{customers: Customer[], polarAccount: any}> {
 }
 
 export default async function CustomersPage() {
-  const {customers, polarAccount} = await getData()
+  const rawHeaders = await headers();
+  const requestHeaders = new Headers(rawHeaders);
+  const {customers, polarAccount} = await getData(requestHeaders)
 
   return (
     <div className="ml-7">
