@@ -1,28 +1,40 @@
-'use client';
+import { Order, columns } from "./columns"
+import { DataTable } from "@/components/ui/data-table"
+import { auth } from "@/app/utils/auth"
+import { db } from "@/app/utils/db"
 
-import { useState, useEffect } from 'react';
+async function getData(): Promise<Order[]> {
+  const session = await auth()
+  if (!session?.user?.id) {
+    return []
+  }
 
-export default function OrdersPage() {
-    const [orders, setOrders] = useState([]);
+  const userId = session.user.id
 
-    useEffect(() => {
-        const fetchOrders = async () => {
-            const response = await fetch('/api/polar/orders');
-            const data = await response.json();
-            setOrders(data);
-        };
+  const polarAccount = await db.polarAccount.findUnique({
+    where: { userId },
+  })
 
-        fetchOrders();
-    }, []);
+  if (!polarAccount) {
+    return []
+  }
 
-    return (
-        <div>
-            <h1 className="text-2xl font-bold">Orders</h1>
-            <ul>
-                {orders.map((order: any) => (
-                    <li key={order.id}>{order.id}</li>
-                ))}
-            </ul>
-        </div>
-    );
+  const orders = await db.polarOrder.findMany({
+    where: {
+      organizationId: polarAccount.organizationId,
+    },
+  })
+
+  return orders
+}
+
+export default async function OrdersPage() {
+  const data = await getData()
+
+  return (
+    <div className="container mx-auto py-10">
+      <h1 className="text-2xl font-bold mb-4">Orders</h1>
+      <DataTable columns={columns} data={data} />
+    </div>
+  )
 }
