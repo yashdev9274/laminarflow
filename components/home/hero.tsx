@@ -9,6 +9,7 @@ import demoImage2 from "@/public/asset/images/2.png"
 import Waitlist from "./waitlist"
 import Image from "next/image"
 import Pointer from "./pointer"
+import { CardIcon } from "../../components/icons/cardIcon"
 
 
 export default function Hero(){
@@ -35,7 +36,7 @@ export default function Hero(){
                         height={250}
                     />
                 </div>
-                <div className="absolute left-56 top-20 hidden lg:block">
+                <div className="absolute left-56 top-15 hidden lg:block">
                     <Pointer name="Yash"/>
                 </div>
 
@@ -55,6 +56,10 @@ export default function Hero(){
                         Manage your business with <span className="font-mono">LaminarFlow</span> – a
                         modern, powerful, and affordable platform to manage your business&apos;s financial workflow
                     </Balancer>
+                    <div className="text-gray-400 mb-2 text-center flex items-center justify-center gap-2">
+                        <CardIcon className="inline-block text-lg text-orange-600" />
+                        <span>No credit card required.</span>
+                    </div>
                     {/* <RedirectButton text="Join Waitlist" href='/early-access'/> */}
                     <Waitlist/>
                 </div>
