@@ -21,7 +21,8 @@ import {
   Settings,
   Search,
   MessageCircle,
-  FileTextIcon
+  FileTextIcon,
+  Archive
 } from "lucide-react"
 
 import { NavMain } from "@/components/dashboard/sidebar/nav-main"
@@ -43,6 +44,7 @@ import Image from "next/image"
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card"
 import { NavAgents } from "./nav-agent"
 import { WalletIcon } from "@/components/icons/walletIcon"
+import { NavLocker } from "./nav-locker"
 // import { NavAgent } from "./nav-agent"
 
 const data = {
@@ -126,6 +128,14 @@ const data = {
     },
     
   ],
+
+  navLocker: [
+    {
+      title: "Safe",
+      url: "/dashboard/safe",
+      icon: Archive,
+    },
+  ],
   navSecondary: [
     {
       title: "Settings",
@@ -156,7 +166,7 @@ const data = {
 
 export function AppSidebar({ ...props }:  &React.ComponentProps<typeof Sidebar>) {
   return (
-    <Sidebar collapsible="icon" variant="inset" className="sticky"  {...props}>
+    <Sidebar collapsible="icon" variant="inset" className="sticky sidebar"  {...props}>
       <SidebarHeader className="mt-4">
         <SidebarMenu>
           <SidebarMenuItem>
@@ -208,6 +218,7 @@ export function AppSidebar({ ...props }:  &React.ComponentProps<typeof Sidebar>)
         <NavCrm items={data.navCrm} />
         {/* <NavProjects projects={data.projects} /> */}
         <NavAgents items={data.navAgents} />
+        <NavLocker items={data.navLocker} />
         <NavSecondary items={data.navSecondary} className="mt-auto mb-5" />
       </SidebarContent>
       <SidebarFooter className="mb-5">
