@@ -1,49 +1,42 @@
 "use client"
 
-import type React from "react"
-import { useEffect, useRef, useState, useCallback } from "react"
+import { useState, useEffect, useRef } from "react"
 import { FileHeader } from "./file-header"
-import { FileUploaderEmptyState } from "./file-uploader-emptystate"
 import { FileTable, type FileItem } from "./file-table"
-import { formatFileSize, generateTags } from "../../../lib/file-utils"
+import { generateTags } from "../../../lib/file-utils"
+import { UploadDropzone, UploadButton } from "@/app/utils/uploadthing"
+import { getUploadedFiles } from "@/app/dashboard/safe/actions"
 
-export default function FileUploader() {
-  const [files, setFiles] = useState<FileItem[]>([])
+interface FileUploaderProps {
+  initialFiles: FileItem[]
+}
+
+export default function FileUploader({ initialFiles }: FileUploaderProps) {
+  const [files, setFiles] = useState<FileItem[]>(initialFiles)
   const [searchQuery, setSearchQuery] = useState("")
   const [viewMode, setViewMode] = useState<"grid" | "list">("list")
-  const fileInputRef = useRef<HTMLInputElement>(document.createElement('input'));
+  const uploadContainerRef = useRef<HTMLDivElement>(null)
+
+  const fetchFiles = async () => {
+    const uploadedFiles = await getUploadedFiles()
+    const formattedFiles: FileItem[] = uploadedFiles.map((file) => ({
+      id: file.id,
+      name: file.name,
+      size: "N/A", // UploadThing doesn't provide size in the server response
+      tags: generateTags(file.name),
+      uploadDate: file.createdAt,
+    }))
+    setFiles(formattedFiles)
+  }
 
   useEffect(() => {
-    // Create the input element after the component mounts
-    const input = document.createElement('input');
-    input.type = 'file';
-    input.multiple = true;
-    input.accept = ".pdf,.doc,.docx,.txt,.png,.jpg,.jpeg";
-    fileInputRef.current = input; // Assign to ref
-  }, []);
-
-  const handleFileUpload = useCallback((uploadedFiles: FileList) => {
-    const newFiles: FileItem[] = Array.from(uploadedFiles).map((file, index) => ({
-      id: `file-${Date.now()}-${index}`,
-      name: file.name,
-      size: formatFileSize(file.size),
-      tags: generateTags(file.name),
-      uploadDate: new Date(),
-    }))
-
-    setFiles((prev) => [...prev, ...newFiles])
-  }, [])
-
-  const handleFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (fileInputRef.current && e.target.files) {
-      handleFileUpload(e.target.files)
-    }
-  }
+    setFiles(initialFiles)
+  }, [initialFiles])
 
   const handleFileAction = (fileId: string, action: string) => {
     switch (action) {
       case "delete":
-        setFiles((prev) => prev.filter((file) => file.id !== fileId))
+        console.log(`Deleting file: ${fileId}`)
         break
       case "download":
         console.log(`Downloading file: ${fileId}`)
@@ -72,28 +65,43 @@ export default function FileUploader() {
         onSearchChange={setSearchQuery}
         viewMode={viewMode}
         onViewModeChange={setViewMode}
-        onUploadClick={() => fileInputRef.current?.click()}
+        onUploadClick={() => {
+          if (uploadContainerRef.current) {
+            ;(uploadContainerRef.current.querySelector("button") as HTMLElement)?.click()
+          }
+        }}
       />
+
+      {/* Hidden uploader for the plus button */}
+      <div ref={uploadContainerRef} className="hidden">
+        <UploadButton
+          endpoint="fileUploader"
+          onClientUploadComplete={() => {
+            fetchFiles()
+            alert("Upload Completed")
+          }}
+          onUploadError={(error: Error) => {
+            alert(`ERROR! ${error.message}`)
+          }}
+        />
+      </div>
 
       <div className="p-6">
         {files.length === 0 ? (
-          <FileUploaderEmptyState onFileUpload={handleFileUpload} fileInputRef={fileInputRef!} />
+          <UploadDropzone
+            endpoint="fileUploader"
+            onClientUploadComplete={() => {
+              fetchFiles()
+              alert("Upload Completed")
+            }}
+            onUploadError={(error: Error) => {
+              alert(`ERROR! ${error.message}`)
+            }}
+          />
         ) : (
           <FileTable files={filteredFiles} onFileAction={handleFileAction} />
         )}
       </div>
-
-      {/* Hidden File Input */}
-      {fileInputRef.current && (
-        <input
-          ref={fileInputRef}
-          type="file"
-          multiple
-          className="hidden"
-          onChange={handleFileInputChange}
-          accept=".pdf,.doc,.docx,.txt,.png,.jpg,.jpeg"
-        />
-      )}
     </div>
   )
 }
