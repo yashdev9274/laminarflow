@@ -1,19 +1,17 @@
 
 
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode } from "react";
 import { requireUser } from "../utils/requireAuth";
 import { AppSidebar } from "@/components/dashboard/sidebar/app-sidebar";
-import { Sidebar, SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { Sidebar, SidebarInset, SidebarProvider, SidebarTrigger, SidebarRightTrigger } from "@/components/ui/sidebar";
 import { Separator } from "@/components/ui/separator";
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList } from "@/components/ui/breadcrumb";
 import { prisma } from "../utils/db";
 import { redirect } from "next/navigation";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { SidebarRight } from "@/components/ui/sidebar-right";
 
 async function getUser(userId: string){
-  
   const data = await prisma.user.findUnique({
-
     where:{
       id: userId,
     },
@@ -30,38 +28,40 @@ async function getUser(userId: string){
 }
 
 export default async function DashboardLayout({children}:{children: ReactNode}){
-
     const session = await requireUser();
-    const data = await getUser(session.user?.id as string)
+    const userId = (session.user as { id: string }).id;
+
+    await getUser(userId);
 
     return(
-        <>
-            <SidebarProvider className=" relative"> 
-                <AppSidebar />
-                {/* <ScrollArea className="w-full h-96"> */}
-                  <SidebarInset>
-                      <header className="flex h-16 shrink-0 items-center gap-2">
-                        <div className="flex items-center gap-2 px-4">
-                          <SidebarTrigger className="-ml-1" />
-                          <Separator orientation="vertical" className="mr-2 h-4" />
-                          <Breadcrumb>
-                            <BreadcrumbList>
-                              <BreadcrumbItem className="hidden md:block">
-                                <BreadcrumbLink>
-                                  User Dashboard
-                                </BreadcrumbLink>
-                              </BreadcrumbItem>
-                            </BreadcrumbList>
-                          </Breadcrumb>
+        <SidebarProvider className="relative"> 
+            <AppSidebar />
+            {/* <div className="flex h-full"> */}
+                <SidebarInset className="flex-1">
+                    <header className="flex h-16 shrink-0 items-center gap-2">
+                      <div className="flex items-center gap-2 px-4">
+                        <SidebarTrigger className="-ml-1" />
+                        <Separator orientation="vertical" className="mr-2 h-4" />
+                        <Breadcrumb>
+                          <BreadcrumbList>
+                            <BreadcrumbItem className="hidden md:block">
+                              <BreadcrumbLink>
+                                User Dashboard
+                              </BreadcrumbLink>
+                            </BreadcrumbItem>
+                          </BreadcrumbList>
+                        </Breadcrumb>
+                        <div className="ml-auto align-right">
+                          <SidebarRightTrigger />
                         </div>
-                      </header>
-                      <main>
-                        {children}
-                      </main>
-                  </SidebarInset>
-                {/* <ScrollBar orientation="vertical" /> */}
-                {/* </ScrollArea>     */}
-            </SidebarProvider>
-        </>
+                      </div>
+                    </header>
+                    <main className="p-4">
+                      {children}
+                    </main>
+                </SidebarInset>
+                <SidebarRight userId={userId} />
+            {/* </div> */}
+        </SidebarProvider>
     )
 }
