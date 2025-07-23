@@ -137,6 +137,8 @@ async function invoiceAnalysisWorkflow({ input, env }: { input: string; env: Inv
     },
   });
 
+  console.log("Extracted Invoice Data:", extractedInvoice);
+
   // Step 2: Analyze the invoice and provide business insights
   const invoiceAnalysis = await step({
     id: "analyze_invoice",
@@ -157,8 +159,9 @@ async function invoiceAnalysisWorkflow({ input, env }: { input: string; env: Inv
           3. Client relationship insights
           4. Suggestions for follow-up actions
           5. Any potential issues or discrepancies in the invoice
-          
+
           Be specific, practical, and business-oriented in your analysis.
+          Provide the analysis as a clear, concise text response, without any JSON formatting.
         `,
         input: [
           { 
@@ -179,6 +182,7 @@ async function invoiceAnalysisWorkflow({ input, env }: { input: string; env: Inv
         stream: false,
       });
       
+      console.log("Invoice Analysis LLM Output:", output);
       return output;
     },
   });

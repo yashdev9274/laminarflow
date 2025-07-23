@@ -11,6 +11,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { FileText, Send, Loader2, DollarSign, Calendar, User, Building, ShoppingCart, FileUp } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/dashboard/alert";
 import CopyToClipboard, { samplePrompt } from "@/components/dashboard/agents/samplePropmptTab";
+import { useRouter } from "next/navigation";
 // import { Alert, AlertDescription } from "@/components/ui/alert";
 
 // Define the expected structure of the result
@@ -57,6 +58,8 @@ export default function Agent() {
   const [isLoading, setIsLoading] = useState(false);
   const [result, setResult] = useState<InvoiceResult | null>(null);
   const [error, setError] = useState(null);
+  const [isSaving, setIsSaving] = useState(false);
+  const router = useRouter();
 
   const processInvoice = async () => {
     if (!input.trim()) {
@@ -111,6 +114,36 @@ export default function Agent() {
       });
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const handleSaveInvoice = async () => {
+    if (!result?.invoiceData) {
+      toast.error("No invoice data to save.", { closeButton: true });
+      return;
+    }
+
+    setIsSaving(true);
+    try {
+      const response = await fetch("/api/agents/invoice/saveInvoice", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ invoiceData: result.invoiceData }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok || data.error) {
+        throw new Error(data.error || "Failed to save invoice.");
+      }
+
+      toast.success("Invoice saved successfully!", { closeButton: true, duration: 3000 });
+      router.push("/dashboard/agents/invoice-data"); // Redirect after successful save
+    } catch (err: any) {
+      console.error("Error saving invoice:", err);
+      toast.error(err.message || "Failed to save invoice to database.", { closeButton: true, duration: Infinity });
+    } finally {
+      setIsSaving(false);
     }
   };
 
@@ -329,6 +362,26 @@ export default function Agent() {
                 </>
               )}
             </Button>
+
+            {result && result.invoiceData && (
+              <Button
+                onClick={handleSaveInvoice}
+                disabled={isSaving}
+                className="w-full"
+              >
+                {isSaving ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Saving...
+                  </>
+                ) : (
+                  <>
+                    <FileText className="mr-2 h-4 w-4" />
+                    Save Invoice to Database
+                  </>
+                )}
+              </Button>
+            )}
 
             {result && (
               <Tabs defaultValue="invoice" className="w-full">
