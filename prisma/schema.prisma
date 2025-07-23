@@ -31,6 +31,7 @@ model User {
   transactions Transactions[]
   tasks Tasks[]
   polarAccounts PolarAccount[]
+  generatedInvoices GeneratedInvoice[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   UploadedFile UploadedFile[]
@@ -202,6 +203,33 @@ enum TaskStatus{
   Todo
   InProgress
   Done
+}
+
+model GeneratedInvoice {
+  id             String   @id @default(uuid())
+  userId         String
+  user           User     @relation(fields: [userId], references: [id])
+  invoiceName    String
+  invoiceNumber  String
+  date           String
+  dueDate        String
+  status         String
+  currency       String
+  subtotal       Int
+  taxAmount      Int
+  totalAmount    Int
+  fromName       String
+  fromEmail      String
+  fromAddress    String
+  clientName     String
+  clientEmail    String
+  clientAddress  String
+  items          Json?    // Store the array of item objects as JSON
+  paymentTerms   String?
+  paymentMethod  String?
+  note           String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 }
 
 model InvoiceAnalysis {
