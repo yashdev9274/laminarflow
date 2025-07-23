@@ -30,7 +30,7 @@ interface InvoiceResult {
       quantity?: number;
       unitPrice?: number;
       amount?: number;
-    };
+    }[];
     subtotal?: number;
     taxAmount?: number;
     totalAmount?: number;
@@ -198,7 +198,7 @@ export default function Agent() {
                   </tr>
                 </thead>
                 <tbody>
-                  {Array.isArray(invoiceData.items) ? (
+                  {Array.isArray(invoiceData.items) && invoiceData.items.length > 0 ? (
                     invoiceData.items.map((item, index) => (
                       <tr key={index} className="border-b border-border/30">
                         <td className="p-2">{item.description || 'N/A'}</td>
@@ -208,11 +208,8 @@ export default function Agent() {
                       </tr>
                     ))
                   ) : (
-                    <tr className="border-b border-border/30">
-                      <td className="p-2">{invoiceData.items?.description || 'N/A'}</td>
-                      <td className="p-2 text-right">{invoiceData.items?.quantity || 'N/A'}</td>
-                      <td className="p-2 text-right">{formatCurrency(invoiceData.items?.unitPrice)}</td>
-                      <td className="p-2 text-right">{formatCurrency(invoiceData.items?.amount)}</td>
+                    <tr>
+                      <td colSpan={4} className="p-2 text-center text-muted-foreground">No items found</td>
                     </tr>
                   )}
                 </tbody>
@@ -223,7 +220,7 @@ export default function Agent() {
           <div className="space-y-2">
             <div className="flex justify-between border-t border-border pt-2">
               <span>Subtotal:</span>
-              <span>{formatCurrency(invoiceData.subtotal || invoiceData.totalAmount)}</span>
+              <span>{formatCurrency(invoiceData.subtotal || 0)}</span>
             </div>
             <div className="flex justify-between">
               <span>Tax:</span>
@@ -231,7 +228,7 @@ export default function Agent() {
             </div>
             <div className="flex justify-between font-bold border-t border-border pt-2">
               <span>Total:</span>
-              <span>{formatCurrency(invoiceData.totalAmount || invoiceData.totalAmount)}</span>
+              <span>{formatCurrency(invoiceData.totalAmount)}</span>
             </div>
           </div>
 
@@ -240,7 +237,7 @@ export default function Agent() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="bg-secondary/50 p-3 rounded-md">
                 <div className="text-sm font-medium">Payment Terms</div>
-                <div className="text-sm">{invoiceData.paymentTerms || invoiceData.dueDate || 'N/A'}</div>
+                <div className="text-sm">{invoiceData.paymentTerms || 'N/A'}</div>
               </div>
               <div className="bg-secondary/50 p-3 rounded-md">
                 <div className="text-sm font-medium">Payment Method</div>
