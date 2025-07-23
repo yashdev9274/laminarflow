@@ -11,6 +11,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { FileText, Send, Loader2, DollarSign, Calendar, User, Building, ShoppingCart, FileUp } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/dashboard/alert";
 import CopyToClipboard, { samplePrompt } from "@/components/dashboard/agents/samplePropmptTab";
+import { useRouter } from "next/navigation";
 // import { Alert, AlertDescription } from "@/components/ui/alert";
 
 // Define the expected structure of the result
@@ -30,7 +31,7 @@ interface InvoiceResult {
       quantity?: number;
       unitPrice?: number;
       amount?: number;
-    };
+    }[];
     subtotal?: number;
     taxAmount?: number;
     totalAmount?: number;
@@ -57,6 +58,8 @@ export default function Agent() {
   const [isLoading, setIsLoading] = useState(false);
   const [result, setResult] = useState<InvoiceResult | null>(null);
   const [error, setError] = useState(null);
+  const [isSaving, setIsSaving] = useState(false);
+  const router = useRouter();
 
   const processInvoice = async () => {
     if (!input.trim()) {
@@ -111,6 +114,36 @@ export default function Agent() {
       });
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const handleSaveInvoice = async () => {
+    if (!result?.invoiceData) {
+      toast.error("No invoice data to save.", { closeButton: true });
+      return;
+    }
+
+    setIsSaving(true);
+    try {
+      const response = await fetch("/api/agents/invoice/saveInvoice", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ invoiceData: result.invoiceData }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok || data.error) {
+        throw new Error(data.error || "Failed to save invoice.");
+      }
+
+      toast.success("Invoice saved successfully!", { closeButton: true, duration: 3000 });
+      router.push("/dashboard/agents/invoice-data"); // Redirect after successful save
+    } catch (err: any) {
+      console.error("Error saving invoice:", err);
+      toast.error(err.message || "Failed to save invoice to database.", { closeButton: true, duration: Infinity });
+    } finally {
+      setIsSaving(false);
     }
   };
 
@@ -198,7 +231,7 @@ export default function Agent() {
                   </tr>
                 </thead>
                 <tbody>
-                  {Array.isArray(invoiceData.items) ? (
+                  {Array.isArray(invoiceData.items) && invoiceData.items.length > 0 ? (
                     invoiceData.items.map((item, index) => (
                       <tr key={index} className="border-b border-border/30">
                         <td className="p-2">{item.description || 'N/A'}</td>
@@ -208,11 +241,8 @@ export default function Agent() {
                       </tr>
                     ))
                   ) : (
-                    <tr className="border-b border-border/30">
-                      <td className="p-2">{invoiceData.items?.description || 'N/A'}</td>
-                      <td className="p-2 text-right">{invoiceData.items?.quantity || 'N/A'}</td>
-                      <td className="p-2 text-right">{formatCurrency(invoiceData.items?.unitPrice)}</td>
-                      <td className="p-2 text-right">{formatCurrency(invoiceData.items?.amount)}</td>
+                    <tr>
+                      <td colSpan={4} className="p-2 text-center text-muted-foreground">No items found</td>
                     </tr>
                   )}
                 </tbody>
@@ -223,7 +253,7 @@ export default function Agent() {
           <div className="space-y-2">
             <div className="flex justify-between border-t border-border pt-2">
               <span>Subtotal:</span>
-              <span>{formatCurrency(invoiceData.subtotal || invoiceData.totalAmount)}</span>
+              <span>{formatCurrency(invoiceData.subtotal || 0)}</span>
             </div>
             <div className="flex justify-between">
               <span>Tax:</span>
@@ -231,7 +261,7 @@ export default function Agent() {
             </div>
             <div className="flex justify-between font-bold border-t border-border pt-2">
               <span>Total:</span>
-              <span>{formatCurrency(invoiceData.totalAmount || invoiceData.totalAmount)}</span>
+              <span>{formatCurrency(invoiceData.totalAmount)}</span>
             </div>
           </div>
 
@@ -240,7 +270,7 @@ export default function Agent() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="bg-secondary/50 p-3 rounded-md">
                 <div className="text-sm font-medium">Payment Terms</div>
-                <div className="text-sm">{invoiceData.paymentTerms || invoiceData.dueDate || 'N/A'}</div>
+                <div className="text-sm">{invoiceData.paymentTerms || 'N/A'}</div>
               </div>
               <div className="bg-secondary/50 p-3 rounded-md">
                 <div className="text-sm font-medium">Payment Method</div>
@@ -332,6 +362,26 @@ export default function Agent() {
                 </>
               )}
             </Button>
+
+            {result && result.invoiceData && (
+              <Button
+                onClick={handleSaveInvoice}
+                disabled={isSaving}
+                className="w-full"
+              >
+                {isSaving ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Saving...
+                  </>
+                ) : (
+                  <>
+                    <FileText className="mr-2 h-4 w-4" />
+                    Save Invoice to Database
+                  </>
+                )}
+              </Button>
+            )}
 
             {result && (
               <Tabs defaultValue="invoice" className="w-full">
