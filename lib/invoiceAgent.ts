@@ -24,21 +24,28 @@ async function invoiceAnalysisWorkflow({ input, env }: { input: string; env: Inv
       // Define schema matching your existing invoice structure
       const invoiceSchemaZod = z.object({
         invoiceName: z.string(),
-        invoiceNumber: z.string(),
+        invoiceNumber: z.union([z.string(), z.number().transform(val => String(val))]),
         date: z.string(),
-        dueDate: z.string(),
+        dueDate: z.union([z.string(), z.number().transform(val => String(val))]),
         status: z.string(),
         currency: z.string(),
-        total: z.number(),
+        subtotal: z.number(),
+        taxAmount: z.number(),
+        totalAmount: z.number(),
         fromName: z.string(),
         fromEmail: z.string(),
         fromAddress: z.string(),
         clientName: z.string(),
         clientEmail: z.string(),
         clientAddress: z.string(),
-        invoiceItemDescription: z.string(),
-        invoiceItemQuantity: z.number(),
-        invoiceItemRate: z.number(),
+        items: z.array(z.object({
+          description: z.string(),
+          quantity: z.number(),
+          unitPrice: z.number(),
+          amount: z.number(),
+        })).optional(),
+        paymentTerms: z.string().optional(),
+        paymentMethod: z.string().optional(),
         note: z.string().optional(),
       });
       
@@ -49,19 +56,28 @@ async function invoiceAnalysisWorkflow({ input, env }: { input: string; env: Inv
         "invoiceName": "string - The name of the invoice",
         "invoiceNumber": "string - The invoice number",
         "date": "string - The invoice date (ISO format)",
-        "dueDate": "string - Payment terms (0, 15, or 30)",
+        "dueDate": "string - Payment terms (e.g., "Net 30" or "Due on Receipt")",
         "status": "string - Current status (Draft, Sent, Paid, etc.)",
         "currency": "string - Currency code (INR, USD, EUR)",
-        "total": number - Total invoice amount,
+        "subtotal": "number - Subtotal invoice amount",
+        "taxAmount": "number - Tax amount",
+        "totalAmount": "number - Total invoice amount",
         "fromName": "string - Sender's name",
         "fromEmail": "string - Sender's email",
         "fromAddress": "string - Sender's address",
         "clientName": "string - Client's name",
         "clientEmail": "string - Client's email",
         "clientAddress": "string - Client's address",
-        "invoiceItemDescription": "string - Description of the service/product",
-        "invoiceItemQuantity": number - Quantity of items,
-        "invoiceItemRate": number - Rate per item,
+        "items": [
+          {
+            "description": "string - Description of the service/product",
+            "quantity": "number - Quantity of items",
+            "unitPrice": "number - Rate per item",
+            "amount": "number - Total amount for this item"
+          }
+        ],
+        "paymentTerms": "string - Payment terms (e.g., 'Due on receipt', 'Net 30')",
+        "paymentMethod": "string - Preferred payment method (e.g., 'Bank Transfer', 'Credit Card')",
         "note": "string - Additional notes (optional)"
       }
       

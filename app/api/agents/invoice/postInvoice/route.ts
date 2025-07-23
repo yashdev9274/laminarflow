@@ -13,9 +13,16 @@ export async function POST(request: NextRequest) {
     };
     
     // Create an env object with the required API keys
+    const LANGBASE_API_KEY = process.env.LANGBASE_API_KEY;
+    const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
+
+    if (!LANGBASE_API_KEY || !GOOGLE_API_KEY) {
+      throw new Error("Missing API keys. Please set LANGBASE_API_KEY and GOOGLE_API_KEY in your environment.");
+    }
+
     const env = {
-      LANGBASE_API_KEY: process.env.LANGBASE_API_KEY || "user_3mEbufY5DQ2PLnUVJ6SvpttjRqUQ4c9MKUEBma9EET3tNWqAmd3qkh79xKgXVvYjmXZLVAtVZkZnmqhYevyHBYs2",
-      GOOGLE_API_KEY: process.env.GOOGLE_API_KEY || "AIzaSyAPuwY4qoRyY_Fkec_N6w7fa4GD8WyVFys"
+      LANGBASE_API_KEY,
+      GOOGLE_API_KEY,
     };
 
     // Call the agent's main function
