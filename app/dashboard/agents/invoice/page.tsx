@@ -12,6 +12,7 @@ import { FileText, Send, Loader2, DollarSign, Calendar, User, Building, Shopping
 import { Alert, AlertDescription } from "@/components/dashboard/alert";
 import CopyToClipboard, { samplePrompt } from "@/components/dashboard/agents/samplePropmptTab";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 // import { Alert, AlertDescription } from "@/components/ui/alert";
 
 // Define the expected structure of the result
@@ -315,14 +316,16 @@ export default function Agent() {
       <CopyToClipboard text={samplePrompt} />
 
       <Card className="bg-card border-border">
-        <CardHeader className="pb-4">
+        <CardHeader className="pb-4 flex flex-row items-center justify-between">
           <CardTitle className="text-2xl flex items-center gap-2">
             <FileText className="h-6 w-6" />
             Invoice Agent
           </CardTitle>
-          <CardDescription>
-            Paste your invoice text below and let AI extract and analyze the information for you.
-          </CardDescription>
+          <Link href="/dashboard/agents/invoice-data" passHref>
+            <Button variant="outline" className="gap-2">
+              View Saved Invoices <FileText className="h-4 w-4" />
+            </Button>
+          </Link>
         </CardHeader>
         <CardContent>
           <div className="grid gap-6">
