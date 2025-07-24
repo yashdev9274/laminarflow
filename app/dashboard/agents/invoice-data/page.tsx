@@ -4,32 +4,12 @@ import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { FileText, Loader2, Calendar, User, DollarSign } from "lucide-react";
+import { FileText, Loader2, Calendar, User, DollarSign, ChevronLeft } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/dashboard/alert";
-
-interface GeneratedInvoice {
-  id: string;
-  invoiceName: string;
-  invoiceNumber: string;
-  date: string;
-  dueDate: string;
-  status: string;
-  currency: string;
-  subtotal: number;
-  taxAmount: number;
-  totalAmount: number;
-  fromName: string;
-  fromEmail: string;
-  fromAddress: string;
-  clientName: string;
-  clientEmail: string;
-  clientAddress: string;
-  items: string; // Stored as JSON string
-  paymentTerms?: string;
-  paymentMethod?: string;
-  note?: string;
-  createdAt: string;
-}
+import { Button } from "@/components/ui/button"; // Import Button component
+import Link from "next/link"; // Import Link component
+import { GeneratedInvoiceTable } from "@/components/dashboard/invoice/GeneratedInvoiceTable"; // Import the new table component
+import { GeneratedInvoice } from "@/types/invoice"; // Import the shared interface
 
 export default function InvoiceData() {
   const [invoices, setInvoices] = useState<GeneratedInvoice[]>([]);
@@ -46,7 +26,13 @@ export default function InvoiceData() {
           throw new Error(data.error || "Failed to fetch invoices");
         }
 
-        setInvoices(data);
+        // The items field is already parsed by Prisma in the API, so no need for JSON.parse() here
+        const parsedInvoices = data.map((invoice: any) => ({
+          ...invoice,
+          items: invoice.items || [], // Ensure it's an array, even if null/undefined
+        }));
+
+        setInvoices(parsedInvoices);
       } catch (err: any) {
         console.error("Error fetching generated invoices:", err);
         setError(err.message);
@@ -89,11 +75,16 @@ export default function InvoiceData() {
   return (
     <div className="container mx-auto py-8 px-4 max-w-6xl">
       <Card className="bg-card border-border">
-        <CardHeader className="pb-4">
+        <CardHeader className="pb-4 flex flex-row items-center justify-between">
           <CardTitle className="text-2xl flex items-center gap-2">
             <FileText className="h-6 w-6" />
             Saved Invoices
           </CardTitle>
+          <Link href="/dashboard/agents/invoice" passHref>
+            <Button variant="outline" className="gap-2">
+              <ChevronLeft className="h-4 w-4" /> Back to Invoice Agent
+            </Button>
+          </Link>
         </CardHeader>
         <CardContent>
           {invoices.length === 0 ? (
@@ -135,6 +126,13 @@ export default function InvoiceData() {
                         <p>{invoice.note}</p>
                       </div>
                     )}
+                    <div className="mt-6 flex justify-end">
+                      <Link href={`/api/agents/invoice/downloadGeneratedInvoice/${invoice.id}`} passHref>
+                        <Button variant="outline" className="gap-2">
+                          <FileText className="h-4 w-4" /> Download PDF
+                        </Button>
+                      </Link>
+                    </div>
                   </Card>
                 ))}
               </div>
@@ -142,6 +140,20 @@ export default function InvoiceData() {
           )}
         </CardContent>
       </Card>
+      
+      {invoices.length > 0 && (
+        <Card className="bg-card border-border mt-6">
+          <CardHeader className="pb-4">
+            <CardTitle className="text-2xl flex items-center gap-2">
+              <FileText className="h-6 w-6" />
+              All Generated Invoices
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <GeneratedInvoiceTable invoices={invoices} />
+          </CardContent>
+        </Card>
+      )}
     </div>
   );
 } 
