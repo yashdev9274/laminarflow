@@ -159,7 +159,7 @@ async function invoiceAnalysisWorkflow({ input, env }: { input: string; env: Inv
           3. Client relationship insights
           4. Suggestions for follow-up actions
           5. Any potential issues or discrepancies in the invoice
-
+          
           Be specific, practical, and business-oriented in your analysis.
           Provide the analysis as a clear, concise text response, without any JSON formatting.
         `,
