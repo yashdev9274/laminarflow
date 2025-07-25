@@ -215,9 +215,9 @@ model GeneratedInvoice {
   dueDate        String
   status         String
   currency       String
-  subtotal       Int
-  taxAmount      Int
-  totalAmount    Int
+  subtotal       Float // Changed from Int
+  taxAmount      Float // Changed from Int
+  totalAmount    Float // Changed from Int
   fromName       String
   fromEmail      String
   fromAddress    String
