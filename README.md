@@ -1,134 +1,126 @@
-![hero](public/github.png)
+![hero](public/LF-banner.png)
 
 # LaminarFlow
 
-An open-sourced AI-native FinTech platform designed for modern startups and businesses to streamline their financial operations payment tracking and customer managements.
+**LaminarFlow is the open-source, AI-native finance platform for startups.** We are building the financial operating system for the next generation of companies, helping you automate financial operations, control spending, and accelerate growth—all with the trust and transparency of open-source.
 
-## About
+Think of us as an AI-powered alternative to platforms like Mercury and Ramp, built for founders who want to move fast without losing control of their finances.
 
- LaminarFlow is a robust financial management solution that helps businesses handle their finances, invoicing, tracking payments and project workflows efficiently. Built with modern technologies and best practices, it provides a seamless experience for managing business finances.
+## ✨ Features
 
-## Features
+Our vision is to create a unified platform that serves as the command center for your company's finances.
 
-### Financial Management
-- Complete overview of business finances
-- Track income and expenses
-- Generate financial reports
-- Multi-currency support
-- Real-time financial insights
+- **AI Financial Copilot**: At the core of LaminarFlow is an autonomous agent workforce that automates your tedious financial tasks.
+    - **Invoice Intelligence**: Automatically extract data from PDF invoices and record them.
+    - **Smart Categorization**: AI-powered transaction categorization to eliminate manual data entry.
+    - **Spend Anomaly Detection**: Proactively identify unusual spending patterns and potential savings.
 
-### Payment Tracking
-- Monitor payment status
-- Automated payment reminders
-- Payment history tracking
-- Multiple payment gateway integrations
-- Late payment notifications
+<!-- 
+- **Spend Management & Corporate Cards (Vision)**: Issue virtual and physical cards with built-in spend controls, automated expense reporting, and real-time tracking. Eliminate expense reports and close your books faster. -->
 
-### Invoicing
-- Create professional invoices
-- Customizable invoice templates
-- Recurring invoice automation
-- Digital signature support
-- Invoice status tracking
+- **Smart Accounts Payable**: A full-cycle AP solution.
+    - **Automated Bill Pay**: Pay bills via ACH, wire, or check.
+    - **Approval Workflows**: Create custom approval chains to ensure every payment is authorized.
+    - **Vendor Management**: A centralized dashboard for all your vendor information and payment history.
 
-### Project Workflow
-- Project-based invoicing
-- Milestone tracking
-- Time tracking integration
-- Client portal
-- Team collaboration tools
+- **Accounts Receivable & Invoicing**:
+    - **Professional Invoicing**: Create, customize, and send invoices in seconds.
+    - **Automated Reminders**: Let our agents follow up on overdue invoices.
+    - **Payment Integration**: Accept payments directly via Stripe.
 
-### Seamless Export
-- Export invoices as PDF/CSV/Excel
-- Financial report exports
-- Batch export capabilities
-- Data backup options
-- API integration support
+- **Financial Command Center**: A real-time, interactive dashboard that provides a single source of truth for your company's financial health.
+    - **Cash Flow Analytics**: Visualize and forecast your cash flow to make smarter decisions.
+    - **Seamless Accounting Sync**: Integrate directly with QuickBooks, Xero, and other accounting software.
 
-## Tech Stack
+- **Open & Extensible**:
+    - **Open-Source Core**: Our core platform is open-source, giving you unparalleled transparency and the ability to self-host.
+    - **Developer API**: Access your financial data programmatically to build custom integrations and workflows.
 
-- Next.js
-- TypeScript
-- Tailwind CSS
-- ShadcnUI
-- Auth.js
-- Prisma
-- PostgreSQL
-- Neon
-- Resend
+## 🚀 Tech Stack
 
-## App Architecture
+- **Framework**: [Next.js](https://nextjs.org/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **UI Components**: [shadcn/ui](https://ui.shadcn.com/), [Radix UI](https://www.radix-ui.com/), [Headless UI](https://headlessui.dev/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **API**: [tRPC](https://trpc.io/), [Hono](https://hono.dev/)
+- **Authentication**: [NextAuth.js](https://next-auth.js.org/)
+- **ORM**: [Prisma](https://www.prisma.io/)
+- **Database**: [PostgreSQL](https://www.postgresql.org/)
+- **Schema Validation**: [Zod](https://zod.dev/)
+- **File Uploads**: [UploadThing](https://uploadthing.com/)
+- **Email**: [Resend](https://resend.com/), [Nodemailer](https://nodemailer.com/), [Mailtrap](https://mailtrap.io/)
+- **AI**: [OpenAI](https://openai.com/), [Langbase](https://langbase.com/)
+- **Payments/Monetization**: [Polar](https://polar.sh/), [Stripe](https://stripe.com/)
+- **Analytics**: [Vercel Analytics](https://vercel.com/analytics)
+- **Security**: [Arcjet](https://arcjet.com/)
+
+## 🏛️ App Architecture
 
 ```
-┌─────────────────┐
-│    Frontend     │
-│  (Next.js/React)│
-└────────┬────────┘
-         │
-┌────────┴────────┐
-│    API Layer    │
-│   (Next.js API) │
-└────────┬────────┘
-         │
-┌────────┴────────┐
-│  Database Layer │
-│    (PostgreSQL) │
-└─────────────────┘
+┌───────────────────────────┐
+│        Frontend           │
+│ (Next.js, React, tRPC)    │
+└────────────┬──────────────┘
+             │
+┌────────────┴──────────────┐
+│         API Layer         │
+│ (Next.js API, tRPC, Hono) │
+└────────────┬──────────────┘
+             │
+┌────────────┴──────────────┐
+│      Database Layer       │
+│(PostgreSQL, Prisma, Neon) │
+└───────────────────────────┘
 ```
 
-## Project Structure
+## 📂 Project Structure
 
 ```
 d3-invoice/
 ├── app/
-│   ├── api/           # API routes
-│   ├── auth/          # Authentication pages
-│   ├── dashboard/     # Dashboard pages
-│   └── page.tsx       # Landing page
+│   ├── (pages)/              # Marketing pages (blog, pricing, etc.)
+│   ├── api/                  # API routes (Hono, NextAuth, UploadThing, etc.)
+│   ├── dashboard/            # Core application dashboard routes
+│   │   ├── agents/           # AI agent interfaces
+│   │   ├── invoices/         # Invoice management pages
+│   │   ├── safe/             # Secure file storage
+│   │   └── ...               # Other dashboard sections
+│   ├── layout.tsx            # Root layout
+│   └── page.tsx              # Landing page
 ├── components/
-│   ├── ui/           # Shadcn UI components
-│   ├── forms/        # Form components
-│   └── dashboard/    # Dashboard components
+│   ├── ui/                   # Core UI components from shadcn/ui
+│   ├── dashboard/            # Components specific to the dashboard layout and pages
+│   ├── chat/                 # Components for the AI chat interface
+│   ├── home/                 # Components for the marketing landing page
+│   └── ...
 ├── lib/
-│   ├── prisma/       # Database utilities
-│   └── utils/        # Helper functions
-├── public/           # Static assets
-└── styles/          # Global styles
+│   ├── utils.ts              # General utility functions
+│   ├── invoiceAgent.ts       # Logic for the AI invoice agent
+│   └── ...
+├── prisma/
+│   └── schema.prisma         # Database schema definition
+├── public/                   # Static assets (images, fonts, etc.)
+├── trpc/
+│   ├── index.ts              # tRPC router definition
+│   └── trpc.ts               # tRPC context and initialization
+└── ...
 ```
 
-## Hosting
+## 🌐 Hosting
 
-- Frontend: Vercel
-- Database: Neon (PostgreSQL)
-- Assets: Vercel Edge Network
-- Emails: Resend
+- **Frontend**: [Vercel](https://vercel.com/)
+- **Database**: [Neon](https://neon.tech/) (PostgreSQL)
+- **File Storage**: [UploadThing](https://uploadthing.com/)
 
-## Services
+## 🤝 Contributing
 
-- Authentication: Auth.js
-- Database: Neon PostgreSQL
-- ORM: Prisma
-- Email: Resend
-- Payments: Stripe
-- File Storage: AWS S3
-
-
-## Self-Hosting
-
-You can self-host [LaminarFlow](lamflo.xyz) for greater control over your data and design. [Read this guide]() to learn more.
-
-## Contributing
-
-We love our contributors! Here's how you can contribute:
-
-- [Open an issue](https://github.com/yashdev9274/laminarflow/issues) if you believe you've encountered a bug.
-- Follow the [local development guide](https://github.com/yashdev9274/laminarflow/contribute.md) to get your local dev environment set up.
-- Make a [pull request](https://github.com/yashdev9274/laminarflow/pull) to add new features/make quality-of-life improvements/fix bugs.
+We are building LaminarFlow in the open. If you'd like to contribute, please check out our [contributing guide](contribute.md).
 
 <a href="https://github.com/yashdev9274/laminarflow/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=yashdev9274/laminarflow" />
 </a>
 
-## Repo Activity
+## 📈 Repo Activity
 
-![LaminarLFow's repo activity – generated by Axiom](https://repobeats.axiom.co/api/embed/b01e9610c15d5795fb60ac9f0f6cbfaf1151d3a6.svg "Repobeats analytics image")
+![LaminarFlow's repo activity – generated by Axiom](https://repobeats.axiom.co/api/embed/b01e9610c15d5795fb60ac9f0f6cbfaf1151d3a6.svg "Repobeats analytics image")
