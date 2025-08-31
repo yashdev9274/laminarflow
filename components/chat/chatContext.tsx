@@ -1,4 +1,5 @@
-import { createContext } from "react";
+import { ReactNode, createContext, useState } from "react";
+import { useToast } from "../ui/use-toast";
 
 type StreamResponse = {
    addMessage: ()=> void,
@@ -7,11 +8,20 @@ type StreamResponse = {
    isLoading: boolean,
 }
 
-export const ChatContext = createContext({
+export const ChatContext = createContext<StreamResponse>({
    addMessage: ()=>{},
-   message: [],
+   message: '',
    handleInputChange: ()=>{},
    isLoading: false,
 })
 
-export const ChatContextProvider = ({})
+interface Props{
+   fileId: string
+   children: ReactNode
+}
+
+export const ChatContextProvider = ({fileId, children}: Props)=>{
+   const [message, setMesasge] = useState<string>('')
+
+   const {toast} = useToast()
+}
