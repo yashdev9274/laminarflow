@@ -21,7 +21,7 @@ export function SidebarRight({ userId, className }: SidebarRightProps) {
   return (
     <div
       className={cn(
-        "sticky top-0 h-svh w-90 border-l flex-col lg:flex",
+        "sticky top-0 h-svh w-80 border-l flex-col lg:flex",
         className
       )}
     >
