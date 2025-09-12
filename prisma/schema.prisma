@@ -32,6 +32,8 @@ model User {
   tasks Tasks[]
   polarAccounts PolarAccount[]
   generatedInvoices GeneratedInvoice[]
+  File File[]
+  Message Message[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   UploadedFile UploadedFile[]
@@ -323,4 +325,41 @@ model PolarCheckoutLink {
   product_id          String
   createdAt           DateTime @default(now())
   updatedAt           DateTime @updatedAt
+}
+
+enum UploadStatus {
+  PENDING
+  PROCESSING
+  FAILED
+  SUCCESS
+}
+
+model File {
+  id   String @id @default(cuid())
+  name String
+
+  uploadStatus UploadStatus @default(PENDING)
+
+  url      String
+  key      String
+  messages Message[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  User      User?    @relation(fields: [userId], references: [id])
+  userId    String?
+}
+
+model Message {
+  id   String @id @default(cuid())
+  text String @db.Text()
+
+  isUserMessage Boolean
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  User      User?    @relation(fields: [userId], references: [id])
+  userId    String?
+  File      File?    @relation(fields: [fileId], references: [id])
+  fileId    String?
 }
