@@ -34,13 +34,20 @@ import { toast } from "sonner";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Alert, AlertDescription } from "@/components/dashboard/alert";
+import jsPDF from "jspdf";
 
 
 interface InvoiceResult {
   invoiceData?: {
+    invoiceName?: string;
     invoiceNumber?: string;
     date?: string;
     dueDate?: string;
+    status?: string;
+    currency?: string;
+    subtotal?: number;
+    taxAmount?: number;
+    totalAmount?: number;
     fromName?: string;
     fromAddress?: string;
     fromEmail?: string;
@@ -53,9 +60,6 @@ interface InvoiceResult {
       unitPrice?: number;
       amount?: number;
     }[];
-    subtotal?: number;
-    taxAmount?: number;
-    totalAmount?: number;
     paymentTerms?: string;
     paymentMethod?: string;
     note?: string;
@@ -69,6 +73,7 @@ interface InvoiceResult {
       address?: string;
       contactInfo?: string;
     };
+    id?: string; // Added for potential future use
   };
   paymentReminder?: string;
   analysis?: string;
@@ -379,6 +384,120 @@ Payment Method: Bank Transfer`;
 
   const handleLoginToast = () => {
     toast.info("Login to our platform to get started");
+  };
+
+  const handleDownloadPdf = (invoiceDataParam: InvoiceResult['invoiceData']) => {
+    if (!invoiceDataParam) {
+      toast.error("No invoice data available to download.", { closeButton: true });
+      return;
+    }
+
+    const invoiceData = invoiceDataParam; // Type narrowed to non-nullable
+
+    const pdf = new jsPDF({
+      orientation: "portrait",
+      unit: "mm",
+      format: "a4",
+    });
+
+    pdf.setFont("helvetica");
+
+    pdf.setFontSize(24);
+    pdf.text(invoiceData.invoiceName ?? "Invoice", 20, 20);
+
+    pdf.setFontSize(12);
+    pdf.text("From", 20, 40);
+    pdf.setFontSize(10);
+    pdf.text(
+      [
+        invoiceData.fromName || invoiceData.vendor?.name || 'N/A',
+        invoiceData.fromEmail || invoiceData.vendor?.contactInfo || 'N/A',
+        invoiceData.fromAddress || invoiceData.vendor?.address || 'N/A',
+      ],
+      20,
+      45
+    );
+
+    pdf.setFontSize(12);
+    pdf.text("Bill to", 20, 70);
+    pdf.setFontSize(10);
+    pdf.text(
+      [
+        invoiceData.clientName || invoiceData.client?.name || 'N/A',
+        invoiceData.clientEmail || invoiceData.client?.contactInfo || 'N/A',
+        invoiceData.clientAddress || invoiceData.client?.address || 'N/A',
+      ],
+      20,
+      75
+    );
+
+    pdf.setFontSize(10);
+    pdf.text(`Invoice Number: #${invoiceData.invoiceNumber || 'N/A'}`, 120, 40);
+    pdf.text(`Date: ${invoiceData.date || 'N/A'}`, 120, 45);
+    pdf.text(`Due Date: ${invoiceData.dueDate || 'N/A'}`, 120, 50);
+
+    let yOffset = 100;
+
+    pdf.setFontSize(10);
+    pdf.setFont("helvetica", "bold");
+    pdf.text("Description", 20, yOffset);
+    pdf.text("Quantity", 80, yOffset);
+    pdf.text("Rate", 120, yOffset);
+    pdf.text("Amount", 160, yOffset);
+    pdf.line(20, yOffset + 2, 190, yOffset + 2);
+    yOffset += 10;
+
+    pdf.setFont("helvetica", "normal");
+    invoiceData.items?.forEach((item: any) => {
+      pdf.text(item.description || 'N/A', 20, yOffset);
+      pdf.text(item.quantity?.toString() || 'N/A', 80, yOffset);
+      pdf.text(formatLocalCurrency(item.unitPrice), 120, yOffset);
+      pdf.text(formatLocalCurrency(item.amount), 160, yOffset);
+      yOffset += 7;
+    });
+
+    yOffset += 5; // Extra space after items
+
+    pdf.line(20, yOffset, 190, yOffset);
+    yOffset += 5;
+
+    pdf.setFont("helvetica", "normal");
+    pdf.text(`Subtotal:`, 130, yOffset);
+    pdf.text(formatLocalCurrency(invoiceData.subtotal || 0), 160, yOffset);
+    yOffset += 7;
+
+    pdf.text(`Tax:`, 130, yOffset);
+    pdf.text(formatLocalCurrency(invoiceData.taxAmount || 0), 160, yOffset);
+    yOffset += 7;
+
+    pdf.setFont("helvetica", "bold");
+    pdf.text(`Total (${invoiceData.currency ?? 'USD'}):`, 130, yOffset);
+    pdf.text(formatLocalCurrency(invoiceData.totalAmount), 160, yOffset);
+    yOffset += 10;
+
+    if (invoiceData.paymentTerms) {
+      pdf.setFont("helvetica", "normal");
+      pdf.setFontSize(10);
+      pdf.text(`Payment Terms: ${invoiceData.paymentTerms}`, 20, yOffset);
+      yOffset += 7;
+    }
+
+    if (invoiceData.paymentMethod) {
+      pdf.setFont("helvetica", "normal");
+      pdf.setFontSize(10);
+      pdf.text(`Payment Method: ${invoiceData.paymentMethod}`, 20, yOffset);
+      yOffset += 7;
+    }
+
+    if (invoiceData.note) {
+      pdf.setFont("helvetica", "normal");
+      pdf.setFontSize(10);
+      pdf.text("Note:", 20, yOffset);
+      pdf.text(invoiceData.note, 20, yOffset + 5);
+    }
+
+    pdf.save(`invoice_${invoiceData.invoiceNumber || 'generated'}.pdf`);
+    toast.success("Invoice PDF downloaded successfully!", { closeButton: true });
   };
 
   const renderInvoiceData = () => {
@@ -918,6 +1037,13 @@ Payment Method: Bank Transfer`;
                       </CardHeader>
                       <CardContent>
                         {renderInvoiceData()}
+                        {result.invoiceData && (
+                          <div className="mt-6 flex justify-end">
+                            <Button onClick={() => handleDownloadPdf(result.invoiceData)} className="gap-2">
+                              <FileText className="h-4 w-4" /> Download PDF
+                            </Button>
+                          </div>
+                        )}
                       </CardContent>
                     </Card>
                   </TabsContent>
