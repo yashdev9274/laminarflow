@@ -17,6 +17,14 @@ export default function Hero(){
     return(
         <section className="py-16 md:py-24 mt-10 mb-5">
 
+                <div className="flex items-center justify-center">
+                    <span className="bg-zinc-800 text-neutral-200 px-4 py-2 rounded-full flex items-center space-x-2">
+                        <span>Rejected by</span>
+                        <span className="bg-orange-600 text-neutral-200 font-bold px-2 text-md rounded-md">Y</span>
+                        <span>Combinator</span>
+                    </span>
+                </div>
+
             <div className="container relative mt-5">
                 
                 <div className="absolute -left-32 top-16 hidden lg:block">
@@ -43,7 +51,7 @@ export default function Hero(){
                 <div className="absolute right-80 -top-4 hidden lg:block">
                     <Pointer name="Dew" color="red"/>
                 </div>
-            
+                
                 <div className="container">
                     <p className="text-center text-4xl font-semibold leading-tight tracking-[-0.03em] text-zinc-400 sm:text-base md:text-lg">The #1 </p>
                     <p className="text-center text-4xl font-bold tracking-tighter bg-white bg-[radial-gradient(100%_100%_at_top_left, white, white, rgb(74,32,138), rgb(255,255,255,0.5))] text-transparent bg-clip-text  text-white sm:text-5xl md:text-6xl"> 
