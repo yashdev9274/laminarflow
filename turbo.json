@@ -1,5 +1,23 @@
 {
   "$schema": "https://turbo.build/schema.json",
+  "globalEnv": [
+    "MAILTRAP_TOKEN",
+    "AUTH_RESEND_KEY",
+    "DATABASE_URL",
+    "EXPERIMENTATION_CONFIG_ITEM_KEY",
+    "STATSIG_SERVER_API_KEY",
+    "ARCJET_KEY",
+    "POLAR_API_BASE_URL",
+    "UPLOADTHING_TOKEN",
+    "LANGBASE_API_KEY",
+    "GOOGLE_API_KEY",
+    "AUTH_SECRET",
+    "AUTH_URL",
+    "NEXTAUTH_URL",
+    "OPENAI_API_KEY",
+    "RESEND_API_KEY",
+    "UPLOADTHING_SECRET"
+  ],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
