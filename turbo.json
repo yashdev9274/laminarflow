@@ -1,0 +1,41 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalEnv": [
+    "MAILTRAP_TOKEN",
+    "AUTH_RESEND_KEY",
+    "DATABASE_URL",
+    "EXPERIMENTATION_CONFIG_ITEM_KEY",
+    "STATSIG_SERVER_API_KEY",
+    "ARCJET_KEY",
+    "POLAR_API_BASE_URL",
+    "UPLOADTHING_TOKEN",
+    "LANGBASE_API_KEY",
+    "GOOGLE_API_KEY",
+    "AUTH_SECRET",
+    "AUTH_URL",
+    "NEXTAUTH_URL",
+    "OPENAI_API_KEY",
+    "RESEND_API_KEY",
+    "UPLOADTHING_SECRET",
+    "AUTH_GITHUB_ID",
+    "AUTH_GITHUB_SECRET",
+    "EMAIL_SERVER_USER",
+    "EMAIL_SERVER_PASSWORD",
+    "EMAIL_SERVER_HOST",
+    "EMAIL_SERVER_PORT",
+    "EMAIL_FROM"
+  ],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": [".next/**", "!.next/cache/**"]
+    },
+    "lint": {
+      "dependsOn": ["^lint"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    }
+  }
+}

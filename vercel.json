@@ -1,11 +1,5 @@
 {
-  "buildCommand": "prisma generate && next build",
-  "installCommand": "pnpm install",
-  "framework": "nextjs",
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/next"
-    }
-  ]
-} 
+  "buildCommand": "turbo build --filter=web",
+  "outputDirectory": "apps/web/.next",
+  "installCommand": "pnpm install"
+}
