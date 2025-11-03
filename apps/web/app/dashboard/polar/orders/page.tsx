@@ -1,7 +1,7 @@
 import { Order, columns } from "./columns"
 import { DataTable } from "@/components/ui/data-table"
 import { auth } from "@/app/utils/auth"
-import { db } from "@/app/utils/db"
+import { prisma as db } from "@/app/utils/db";
 
 async function getData(): Promise<Order[]> {
   const session = await auth()
