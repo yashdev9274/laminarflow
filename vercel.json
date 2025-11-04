@@ -1,5 +1,5 @@
 {
-  "buildCommand": "turbo build --filter=web",
+  "buildCommand": "cd apps/web && pnpm install && pnpm run build",
   "outputDirectory": "apps/web/out",
   "installCommand": "pnpm install"
 }
