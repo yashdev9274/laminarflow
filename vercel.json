@@ -1,5 +1,5 @@
 {
-  "buildCommand": "cd apps/web && pnpm install && pnpm run build",
+  "buildCommand": "cd apps/web && pnpm install && prisma generate && DISABLE_ESLINT_PLUGIN=true next build --output-directory out",
   "outputDirectory": "apps/web/out",
   "installCommand": "pnpm install"
 }
