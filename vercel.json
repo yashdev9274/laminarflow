@@ -1,6 +1,5 @@
 {
-  "root": "apps/web",
-  "buildCommand": "cd apps/web && pnpm install && pnpm exec prisma generate && DISABLE_ESLINT_PLUGIN=true pnpm exec next build",
-  "outputDirectory": "out",
+  "buildCommand": "pnpm install && pnpm exec prisma generate && DISABLE_ESLINT_PLUGIN=true pnpm exec next build",
+  "outputDirectory": "apps/web/.next",
   "installCommand": "pnpm install"
 }
